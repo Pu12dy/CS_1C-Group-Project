@@ -1,0 +1,4 @@
+Project Daily Sprint Log
+
+Nov 5, 2019
+Lam and Mike to finish Vector implementation
