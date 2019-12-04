@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>img/1024px-Oxygen480-actions-application-exit.svg.png</file>
+        <file>img/login.jpg</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewShape</class>
+ <widget class="QDialog" name="NewShape">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>299</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>121</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Create a New Shape</string>
+   </property>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>481</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="pageLine">
+    <widget class="QLabel" name="lineLabel">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>54</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Line</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addLine">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>190</y>
+       <width>80</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add Line</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>451</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="shapeLocationLayout_line">
+      <item>
+       <widget class="QGroupBox" name="point1_line">
+        <property name="title">
+         <string>Point 1</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>201</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="point1Layout_line">
+          <item>
+           <layout class="QHBoxLayout" name="x1Layout_line">
+            <item>
+             <widget class="QLabel" name="x1Label_line">
+              <property name="text">
+               <string>X1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="x1LineInput_line"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="y1Layout_line">
+            <item>
+             <widget class="QLabel" name="y1Label_line">
+              <property name="text">
+               <string>Y1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="y1LineInput_line"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="point2_line">
+        <property name="title">
+         <string>Point 2</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>201</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="point2Layout_line">
+          <item>
+           <layout class="QHBoxLayout" name="x2Layout_line">
+            <item>
+             <widget class="QLabel" name="x2Label_line">
+              <property name="text">
+               <string>X2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="x2LineInput_line"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="y2Layout_line">
+            <item>
+             <widget class="QLabel" name="y2Label_line">
+              <property name="text">
+               <string>Y2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="y2LineInput_line"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <zorder>layoutWidget</zorder>
+        <zorder>point1_line</zorder>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <zorder>lineLabel</zorder>
+    <zorder>addLine</zorder>
+    <zorder>layoutWidget</zorder>
+    <zorder>x1LineInput_line</zorder>
+    <zorder>penColor</zorder>
+    <zorder>penCap</zorder>
+    <zorder>penStyle</zorder>
+    <zorder>penJoin</zorder>
+    <zorder>penWidth</zorder>
+    <zorder>penWidthLabel</zorder>
+   </widget>
+   <widget class="QWidget" name="Rectangle">
+    <widget class="QLabel" name="label_rect">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>61</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Rectangle</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addRectangle">
+     <property name="geometry">
+      <rect>
+       <x>329</x>
+       <y>170</y>
+       <width>101</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add Rectangle</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>11</x>
+       <y>31</y>
+       <width>421</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="shapeLocationLayout_rect">
+      <item>
+       <widget class="QGroupBox" name="point1_rect">
+        <property name="title">
+         <string>Point 1</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="point1Layout_rect">
+          <item>
+           <layout class="QHBoxLayout" name="x1Layout_rect">
+            <item>
+             <widget class="QLabel" name="x1Label_rect">
+              <property name="text">
+               <string>X1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="x1LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="y1Layout_rect">
+            <item>
+             <widget class="QLabel" name="y1Label_rect">
+              <property name="text">
+               <string>Y1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="y1LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="point2_rect">
+        <property name="title">
+         <string>Point 2</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget_6">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="point2Layout_rect">
+          <item>
+           <layout class="QHBoxLayout" name="x2Layout_rect">
+            <item>
+             <widget class="QLabel" name="x2Label_rect">
+              <property name="text">
+               <string>X2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="x2LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="y2Layout_rect">
+            <item>
+             <widget class="QLabel" name="y2Label_rect">
+              <property name="text">
+               <string>Y2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="y2LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <zorder>layoutWidget_6</zorder>
+        <zorder>point1_rect</zorder>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="point3_rect">
+        <property name="title">
+         <string>Point 3</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget_8">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="point3Layout_rect">
+          <item>
+           <layout class="QHBoxLayout" name="x3Layout_rect">
+            <item>
+             <widget class="QLabel" name="x3Label_rect">
+              <property name="text">
+               <string>X3</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="x3LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="y3Layout_rect">
+            <item>
+             <widget class="QLabel" name="y3Label_rect">
+              <property name="text">
+               <string>Y3</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="y3LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="point4_rect">
+        <property name="title">
+         <string>Point 4</string>
+        </property>
+        <widget class="QWidget" name="layoutWidget_9">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>30</y>
+           <width>81</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="point4Layout_rect">
+          <item>
+           <layout class="QHBoxLayout" name="x4Layout_rect">
+            <item>
+             <widget class="QLabel" name="x4Label_rect">
+              <property name="text">
+               <string>X4</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="x4LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="y4Layout_rect">
+            <item>
+             <widget class="QLabel" name="y4Label_rect">
+              <property name="text">
+               <string>Y4</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="y4LineInput_rect"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

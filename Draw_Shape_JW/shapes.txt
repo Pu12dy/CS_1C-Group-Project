@@ -1,0 +1,32 @@
+Line
+500
+20 500 300 20
+PenColor: green
+PenWidth: 8
+PenStyle: dash dot dot line
+PenCap: round cap
+PenJoin: round join
+BrushColor: black
+BrushStyle: SolidPattern
+
+Rectangle
+100
+20 0 310 205
+abcPenColor: blue
+PenWidth: 2
+PenStyle: dash dot dot line
+PenCap: round cap
+PenJoin: round join
+BrushColor: green
+BrushStyle: HorPattern
+
+Line
+5
+100 400 100 201
+PenColor: red
+PenWidth: 8
+PenStyle: dash dot dot line
+PenCap: round cap
+PenJoin: round join
+BrushColor: blue
+BrushStyle: VerPattern
