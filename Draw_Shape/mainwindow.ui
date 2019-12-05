@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>762</width>
-    <height>541</height>
+    <width>1299</width>
+    <height>635</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,12 +17,77 @@
    <widget class="canvas" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>10</y>
-      <width>731</width>
-      <height>451</height>
+      <width>1000</width>
+      <height>500</height>
      </rect>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>1000</width>
+      <height>500</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="adminFuncs">
+    <property name="geometry">
+     <rect>
+      <x>1020</x>
+      <y>10</y>
+      <width>271</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Admin Functionalities:</string>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>81</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Select Shape</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="selectShape">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>111</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>30</y>
+       <width>111</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Create New Shape</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>50</y>
+       <width>111</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -30,7 +95,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>762</width>
+     <width>1299</width>
      <height>22</height>
     </rect>
    </property>
@@ -39,6 +104,9 @@
      <string>File</string>
     </property>
     <addaction name="actionLog_In"/>
+    <addaction name="actionTestimonials"/>
+    <addaction name="actionContact_Us"/>
+    <addaction name="actionLogout"/>
     <addaction name="actionExit"/>
    </widget>
    <addaction name="menuFile"/>
@@ -60,6 +128,21 @@
    </property>
    <property name="text">
     <string>Exit...</string>
+   </property>
+  </action>
+  <action name="actionContact_Us">
+   <property name="text">
+    <string>Contact Us</string>
+   </property>
+  </action>
+  <action name="actionTestimonials">
+   <property name="text">
+    <string>Testimonials</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Logout</string>
    </property>
   </action>
  </widget>

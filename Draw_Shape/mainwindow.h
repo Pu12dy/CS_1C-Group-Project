@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include "login.h"
+#include "contactus.h"
+#include "viewtestimonials.h"
 #include <QMainWindow>
+#include "User.h"
 
 namespace Ui {
 class MainWindow;
@@ -25,8 +28,20 @@ private slots:
 
     void on_actionLog_In_triggered();
 
+    void on_actionContact_Us_triggered();
+
+    void on_actionTestimonials_triggered();
+
+    bool adminStatus();
+
+    void userIsAdmin();
+
+    void on_actionLogout_triggered();
+
 private:
     Ui::MainWindow *ui;
+    bool enableAdminFunctions;
+    login* logWindow;
 //    QLabel    *penColorLabel;
 //    QLabel    *penWidthLabel;
 //    QLabel    *penStyleLabel;

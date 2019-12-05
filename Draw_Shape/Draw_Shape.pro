@@ -32,8 +32,13 @@ SOURCES += \
     shape.cpp \
     text.cpp \
     login.cpp \
-    circle.cpp \
-    ellipse.cpp
+    ellipse.cpp \
+    shapeparser.cpp \
+    polyline.cpp \
+    User.cpp \
+    contactus.cpp \
+    Testimonial.cpp \
+    viewtestimonials.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,12 +50,22 @@ HEADERS += \
     line.h \
     text.h \
     login.h \
-    circle.h \
-    ellipse.h
+    ellipse.h \
+    shapeParser.h \
+    polyline.h \
+    User.h \
+    contactus.h \
+    Testimonial.h \
+    viewtestimonials.h
 
 FORMS += \
         mainwindow.ui \
-    login.ui
+    login.ui \
+    contactus.ui \
+    viewtestimonials.ui
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    shapes.txt
