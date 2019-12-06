@@ -10,29 +10,31 @@
 #include "text.h"
 #include "vector.h"
 #include "polyline.h"
+#include "polygon.h"
+#include "ellipse.h"
 
 class canvas : public QWidget
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit canvas(QWidget *parent = nullptr);
-    void paintEvent(QPaintEvent *event) override;
-    shape* get(int a);
-    int numberOfShapes();
+	explicit canvas(QWidget *parent = nullptr);
+	void paintEvent(QPaintEvent *event) override;
+	shape* get(int a);
+	int numberOfShapes();
 
-    void addShape(shape* p);
-    void addNewLine(int shapeID, int x1, int y1, int x2, int y2);
-    void addNewRect(int shapeID, int x, int y, int l, int w);
-    shape* getActiveShape();
-    void moveShape(int shapeIndex, int offSetX, int offSetY);
-    void setPenColor(int shapeIndex, std::string color);
-    void setPenWidth(int shapeIndex, int penWidth);
-    void setPenStyle(int shapeIndex, std::string style);
+	void addShape(shape* p);
+	void addNewLine(int shapeID, int x1, int y1, int x2, int y2);
+	void addNewRect(int shapeID, int x, int y, int l, int w);
+	shape* getActiveShape();
+	void moveShape(int shapeIndex, int offSetX, int offSetY);
+	void setPenColor(int shapeIndex, std::string color);
+	void setPenWidth(int shapeIndex, int penWidth);
+	void setPenStyle(int shapeIndex, std::string style);
 
 
 private:
-    Vector<shape*> vectShape;
-    Vector<shape*> vectShapeParsed;        
+	Vector<shape*> vectShape;
+	Vector<shape*> vectShapeParsed;
 
 signals:
 
