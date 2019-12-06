@@ -9,12 +9,17 @@
 #include "rectangle.h"
 #include "text.h"
 #include "vector.h"
+#include "ellipse.h"
+#include "circle.h"
 #include "polyline.h"
+#include "polygon.h"
 
 class canvas : public QWidget
 {
     Q_OBJECT
 public:
+
+
     explicit canvas(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event) override;
     shape* get(int a);
@@ -28,11 +33,15 @@ public:
     void setPenColor(int shapeIndex, std::string color);
     void setPenWidth(int shapeIndex, int penWidth);
     void setPenStyle(int shapeIndex, std::string style);
+    void setPenCapStyle(int shapeIndex, std::string style);
+    void setPenJoinStyle(int shapeIndex, std::string style);
+    void setBrushColor(int shapeIndex, std::string color);
+    void setBrushStyle(int shapeIndex, std::string style);
 
 
 private:
     Vector<shape*> vectShape;
-    Vector<shape*> vectShapeParsed;        
+    Vector<shape*> vectShapeParsed;
 
 signals:
 

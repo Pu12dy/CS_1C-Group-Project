@@ -33,20 +33,48 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->penStyle_list->addItem("Dash Dot Dot Line");
 
 
+    //Populating Pen Cap Style
+    ui->penCapStyle_list->addItem("Select");
+    ui->penCapStyle_list->addItem("Flat Cap");
+    ui->penCapStyle_list->addItem("Square Cap");
+    ui->penCapStyle_list->addItem("Round Cap");
+
+    //Populationg Pen Join Style
+    ui->penJoinStyle_list->addItem("Select");
+    ui->penJoinStyle_list->addItem("MiterJoin");
+    ui->penJoinStyle_list->addItem("BevelJoin");
+    ui->penJoinStyle_list->addItem("RoundJoin");
+
+    //Populating the brush color drop down box
+    ui->brushColor_list->addItem("Select");
+    ui->brushColor_list->addItem("White");
+    ui->brushColor_list->addItem("Black");
+    ui->brushColor_list->addItem("Red");
+    ui->brushColor_list->addItem("Green");
+    ui->brushColor_list->addItem("Blue");
+    ui->brushColor_list->addItem("Cyan");
+    ui->brushColor_list->addItem("Magenta");
+    ui->brushColor_list->addItem("Yellow");
+    ui->brushColor_list->addItem("Gray");
+
+    //Populating the brush style drop down box
+    ui->brushStyle_list->addItem("Select");
+    ui->brushStyle_list->addItem("SolidPattern");
+    ui->brushStyle_list->addItem("HorPattern");
+    ui->brushStyle_list->addItem("VerPattern");
+    ui->brushStyle_list->addItem("NoBrush");
 
 
-
-    //enableAdminFunctions = false;
     //ui->adminFuncs->setVisible(false);
-    logWindow = new login(this);
-    connect(logWindow, &login::userIsAdmin, this, &MainWindow::userIsAdmin);
+
+
 }
 
 
 MainWindow::~MainWindow()
 {
-    delete logWindow;
-    delete activeShape;
+    //delete logWindow;
+    //delete activeShape;
     delete ui;
 }
 
@@ -57,8 +85,10 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionLog_In_triggered()
 {
-    logWindow->setModal(true);
-    logWindow->exec();
+    login logWindow;
+    connect(&logWindow, &login::userIsAdmin, this, &MainWindow::userIsAdmin);
+    logWindow.setModal(true);
+    logWindow.exec();
 }
 
 void MainWindow::on_actionContact_Us_triggered()
@@ -75,16 +105,10 @@ void MainWindow::on_actionTestimonials_triggered()
     testimonials.exec();
 }
 
-bool MainWindow::adminStatus()
-{
-    return enableAdminFunctions;
-}
-
 void MainWindow::userIsAdmin()
 {
 
     QMessageBox::information(this, "Login", "Username and Password is Correct");
-    enableAdminFunctions = true;
     ui->adminFuncs->setVisible(true);
 
 }
@@ -112,17 +136,41 @@ void MainWindow::on_changePen_clicked()
     }
 
     // Change pen width
-
     if (ui->penWidth_lineEdit->text().toInt() >= 0 && ui->penWidth_lineEdit->text().toInt() <= 20 )
     {
         ui->widget->setPenWidth(ui->selectShape->currentIndex(), ui->penWidth_lineEdit->text().toInt());
     }
 
-    if (ui->penWidth_lineEdit->text().toInt() >= 0 && ui->penWidth_lineEdit->text().toInt() <= 20 )
+    // Change pen style
+    if (ui->penStyle_list->currentIndex() > 0)
     {
         ui->widget->setPenStyle(ui->selectShape->currentIndex(), ui->penStyle_list->currentText().toLower().toStdString());
     }
 
+    // Change pen cap style
+    if (ui->penCapStyle_list->currentIndex() > 0)
+    {
+        ui->widget->setPenCapStyle(ui->selectShape->currentIndex(), ui->penCapStyle_list->currentText().toLower().toStdString());
+    }
 
+    //Change pen join Style
+    if (ui->penJoinStyle_list->currentIndex() > 0)
+    {
+        ui->widget->setPenCapStyle(ui->selectShape->currentIndex(), ui->penJoinStyle_list->currentText().toLower().toStdString());
+    }
+}
 
+void MainWindow::on_changeBrush_clicked()
+{
+    //Change brush color
+    if (ui->brushColor_list->currentIndex() > 0)
+    {
+        ui->widget->setBrushColor(ui->selectShape->currentIndex(), ui->brushColor_list->currentText().toLower().toStdString());
+    }
+
+    //Change brush Style
+    if (ui->brushStyle_list->currentIndex() > 0)
+    {
+        ui->widget->setBrushStyle(ui->selectShape->currentIndex(), ui->brushStyle_list->currentText().toLower().toStdString());
+    }
 }

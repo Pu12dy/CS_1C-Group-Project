@@ -44,6 +44,18 @@ polygon::polygon(int shapeID, vector<QPoint> p1)
     lines.push_back(temp);
 }
 
+polygon::polygon(int shapeID, vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin)
+    : polygon(shapeID, p1)
+{
+    setPenColor(penColor);
+    setPenWidth(penWidth);
+    setPenStyle(penStyle);
+    setPenCapStyle(penCap);
+    setPenJoinStyle(penJoin);
+}
+
+polygon::~polygon(){}
+
 void polygon::draw(QPaintDevice *toDraw)
 {
     for (int i = 0; i < lines.size(); ++i)
@@ -51,3 +63,11 @@ void polygon::draw(QPaintDevice *toDraw)
         lines[i]->draw(toDraw);
     }
 }
+
+ void polygon::moveShape(int offsetX, int offsetY)
+ {
+     for (int i = 0; i < lines.size(); ++i)
+     {
+         lines[i]->moveShape(offsetX, offsetY);
+     }
+ }

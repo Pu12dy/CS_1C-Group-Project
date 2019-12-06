@@ -40,10 +40,31 @@ polyline::polyline(int shapeID, vector<QPoint> p1)
     }
 }
 
+polyline::polyline(int shapeID, vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin)
+    : polyline(shapeID, p1)
+{
+    setPenColor(penColor);
+    setPenWidth(penWidth);
+    setPenStyle(penStyle);
+    setPenCapStyle(penCap);
+    setPenJoinStyle(penJoin);
+}
+
+polyline::~polyline(){}
+
 void polyline::draw(QPaintDevice *toDraw)
 {
     for (int i = 0; i < lines.size(); ++i)
     {
         lines[i]->draw(toDraw);
+    }
+}
+
+
+void polyline::moveShape(int offsetX, int offsetY)
+{
+    for (int i = 0; i < lines.size(); ++i)
+    {
+        lines[i]->moveShape(offsetX, offsetY);
     }
 }

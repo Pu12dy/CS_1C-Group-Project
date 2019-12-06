@@ -11,8 +11,10 @@ class polyline : public shape
 public:
     polyline();
     polyline(int shapeID, vector<QPoint> p1);
+    polyline(int shapeID, vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
+    virtual ~polyline();
     void draw(QPaintDevice *toDraw);
-    //    void move();// Moves the center of the shape
+    void moveShape(int offsetX, int offsetY);
     //    int perimeter();// Calculates the perimeters
     //    double area();// Calculates the area
 
