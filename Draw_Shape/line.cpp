@@ -43,6 +43,13 @@ line::line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, in
     setBrushStyle(bStyle);
 }
 
+line::line(int shapeID, QPoint p1, QPoint p2)
+{
+	setShapeID(shapeID);
+	this->p1 = p1;
+	this->p2 = p2;
+}
+
 void line::draw(QPaintDevice *toDraw){
     getQPainter().begin(toDraw);
     getQPainter().setPen(getQPen());
