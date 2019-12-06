@@ -20,6 +20,7 @@ public:
     void setTextFontFamily(std::string textFont) override;
     void setTextFontStyle(std::string textFStyle) override;
     void setTextFontWeight(std::string textFWeight) override;
+    void moveShape(int offsetX, int offsetY);
 
 private:
     QString *str;

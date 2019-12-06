@@ -13,6 +13,7 @@ public:
               std::string bColor, std::string bStyle);
     rectangle(int shapeID, int x, int y, int l, int w, const QColor& color, int penWidth, Qt::PenStyle pStyle, Qt::PenCapStyle pcStyle, Qt::PenJoinStyle pjStyle);
     void draw(QPaintDevice *toDraw);
+    void moveShape(int offsetX, int offsetY);
 
 
 private:

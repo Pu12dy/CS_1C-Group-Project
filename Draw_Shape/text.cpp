@@ -95,3 +95,9 @@ void text::setTextFontWeight(std::string textFWeight)
     else
         textFontWeight = QFont::Normal;
 }
+
+void text::moveShape(int offsetX, int offsetY)
+{
+    x += offsetX;
+    y += offsetY;
+}

@@ -57,3 +57,9 @@ void rectangle::draw(QPaintDevice *toDraw){
     getQPainter().drawRect(x1,y1,length,width);
     getQPainter().end();
 }
+
+void rectangle::moveShape(int offsetX, int offsetY)
+{
+    x1 += offsetX;
+    y1 += offsetY;
+}

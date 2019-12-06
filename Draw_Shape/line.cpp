@@ -51,10 +51,12 @@ void line::draw(QPaintDevice *toDraw){
     getQPainter().end();
 }
 
-void line::moveShape(QPoint p1, QPoint p2)
+void line::moveShape(int offsetX, int offsetY)
 {
-    this->p1 += p1;
-    this->p2 += p2;
-    qDebug() << "moveShape called.";
+    p1.setX(p1.x() + offsetX);
+    p1.setY(p1.y() + offsetY);
+
+    p2.setX(p2.x() + offsetX);
+    p2.setY(p2.y() + offsetY);
 }
 

@@ -26,6 +26,8 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 
 }
 
+
+
 void canvas::addShape(shape *p)
 {
     //use whichever vector we decide
@@ -44,10 +46,10 @@ void canvas::addNewRect(int shapeID, int x, int y, int l, int w)
 
 
 void canvas::paintEvent(QPaintEvent *event){
-    /*
+
     for(int i = 0; i < vectShape.size(); i++){
         vectShape[i]->draw(this);
-    }*/
+    }
 
     for(int i = 0; i < vectShapeParsed.size(); ++i){
         vectShapeParsed[i]->draw(this);
@@ -62,9 +64,32 @@ shape* canvas::get(int a)
     return vectShape[a];
 }
 
+
 int canvas::numberOfShapes()
 {
     return vectShape.size();
 }
 
+void canvas::moveShape(int shapeIndex, int offSetX, int offSetY)// Need to add limits to moving the shape, prevent shape from exiting screen
+{
+    vectShape[shapeIndex]->moveShape(offSetX,offSetY);//call the shape's native
+    this->update();
+}
 
+void canvas::setPenColor(int shapeIndex, std::string color)
+{
+    vectShape[shapeIndex]->setPenColor(color);//call the shape's native
+    this->update();
+}
+
+void canvas::setPenWidth(int shapeIndex, int penWidth)
+{
+    vectShape[shapeIndex]->setPenWidth(penWidth);//call the shape's native
+    this->update();
+}
+
+void canvas::setPenStyle(int shapeIndex, std::string style)
+{
+    vectShape[shapeIndex]->setPenStyle(style);//call the shape's native
+    this->update();
+}

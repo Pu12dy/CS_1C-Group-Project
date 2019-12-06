@@ -15,8 +15,8 @@ public:
          std::string bColor, std::string bStyle);
 
     void draw(QPaintDevice *toDraw); // Draws the shape
-
-    void moveShape(QPoint offsetX, QPoint offsetY);
+    void moveShape(int offsetX, int offsetY);
+    //void moveShape(QPoint offsetX, QPoint offsetY);
 //    void move(int offsetX, int offsetY);// Moves the center of the shape
 //    int perimeter();// Calculates the perimeters
 //    double area();// Calculates the area

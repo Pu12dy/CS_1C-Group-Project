@@ -102,6 +102,8 @@ void shape::setPenWidth(int penWidth){
 void shape::setPenStyle(std::string style){
     if(style == "solid line")
         pen.setStyle(Qt::SolidLine);
+    else if(style == "no pen")
+        pen.setStyle(Qt::NoPen);
     else if(style == "dash line")
         pen.setStyle(Qt::DashLine);
     else if(style == "dot line")
@@ -192,12 +194,3 @@ void shape::setTextFontFamily(std::string textFont) {}
 void shape::setTextFontStyle(std::string textFStyle) {}
 void shape::setTextFontWeight(std::string textFWeight) {}
 
-void shape::moveShape(QPoint offsetX, QPoint offsetY)
-{
-
-}
-
-void shape::moveShape(int offsetX, int offsetY)
-{
-
-}

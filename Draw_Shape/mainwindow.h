@@ -6,6 +6,7 @@
 #include "viewtestimonials.h"
 #include <QMainWindow>
 #include "User.h"
+#include "shape.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,10 +39,15 @@ private slots:
 
     void on_actionLogout_triggered();
 
+    void on_moveShape_clicked();
+
+    void on_changePen_clicked();
+
 private:
     Ui::MainWindow *ui;
     bool enableAdminFunctions;
     login* logWindow;
+    shape* activeShape;
 //    QLabel    *penColorLabel;
 //    QLabel    *penWidthLabel;
 //    QLabel    *penStyleLabel;

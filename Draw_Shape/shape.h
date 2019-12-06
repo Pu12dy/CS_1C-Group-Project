@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <string>
 #include <QDebug>
+#include <QKeyEvent>
 
 class shape
 {
@@ -18,8 +19,8 @@ public:
     QPen& getQPen();
     QBrush& getQBrush();
 
+
     virtual void draw(QPaintDevice *toDraw) = 0;
-//    virtual void move() = 0;// Moves the center of the shape
 //    virtual int perimeter() = 0;// Calculates the perimeters
 //    virtual double area() = 0;// Calculates the area
 //    int getShapeID();
@@ -28,9 +29,7 @@ public:
 //    void setPen(const QPen& pen);
 //    void setBrush(const QBrush& brush);
 //    void setText(const text& text);
-
-    virtual void moveShape(QPoint offsetX, QPoint offsetY);
-    virtual void moveShape(int offsetX, int offsetY);
+    virtual void moveShape(int offsetX, int offsetY) = 0;
 
     virtual void setPenColor(std::string color);
     virtual void setPenColor(const QColor& color);
