@@ -1,54 +1,54 @@
-//#include "Circle.h"
+//#include "circle.h"
 
-//// =============================================================================
-//// To do: Implement file input for Circle dimensions.
-//Circle::Circle() :
-//  shape::shape{},
-//  x1{0},
-//  y1{0},
-//  radius{0}
+//circle::circle() : circle(222,300,300,30)
 //{
-
+//    //shapeId = 222;
+//    //x1 = 90;
+//    //y1 = 90;
+//    //r = 30;
 //}
 
-//// =============================================================================
-
-//Circle::~Circle()
+//circle::circle(int shapeId, int x1, int y1, int r)
 //{
-
+//    setShapeID(shapeId);
+//    this->x1 = x1;
+//    this->y1 = y1;
+//    this->r = r;
 //}
 
-//// =============================================================================
+//circle::circle(int shapeId, int x1, int y1, int r, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin) : circle(shapeId,x1,y1,r)
 
-//virtual void Circle::draw()
 //{
-
+//    setPenColor(penColor);
+//    setPenWidth(penWidth);
+//    setPenStyle(penStyle);
+//    setPenCapStyle(penCap);
+//    setPenJoinStyle(penJoin);
 //}
 
-//// =============================================================================
-
-//virtual void Circle::move()
+//circle::circle(int shapeID, int x, int y, int r, const QColor& color, int penWidth, Qt::PenStyle pStyle, Qt::PenCapStyle pcStyle, Qt::PenJoinStyle pjStyle) :
+//    circle(shapeID, x, y, r)
 //{
-
+//    setPenColor(color);
+//    setPenWidth(penWidth);
+//    setPenStyle(pStyle);
+//    setPenCapStyle(pcStyle);
+//    setPenJoinStyle(pjStyle);
 //}
 
-//// =============================================================================
-
-//virtual int Circle::perimeter()
+//void circle::moveShape(int offsetX, int offsetY)
 //{
-//  return (2 * C_PI * radius);
+//    x1 += offsetX;
+//    y1 += offsetY;
 //}
 
-//// =============================================================================
-
-//virtual double Circle::area()
+//void circle::draw(QPaintDevice *toDraw)
 //{
-//  double area = 0;
-
-//  area = radius * radius;
-//  area = area * C_PI;
-
-//  return area;
+//    getQPainter().begin(toDraw);
+//    getQPainter().setPen(getQPen());
+//    getQPainter().setBrush(getQBrush());
+//    getQPainter().drawEllipse(QRect(x1,y1,r,r));
+//    getQPainter().end();
 //}
 
-//// =============================================================================
+

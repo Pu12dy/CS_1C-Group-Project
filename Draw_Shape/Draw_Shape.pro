@@ -24,9 +24,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    circle.cpp \
         main.cpp \
         mainwindow.cpp \
     canvas.cpp \
+    polygon.cpp \
+    polyline.cpp \
     rectangle.cpp \
     line.cpp \
     shape.cpp \
@@ -34,14 +37,17 @@ SOURCES += \
     login.cpp \
     ellipse.cpp \
     shapeparser.cpp \
-    polyline.cpp \
     User.cpp \
     contactus.cpp \
     Testimonial.cpp \
     viewtestimonials.cpp
 
 HEADERS += \
+    circle.h \
+    extraCredit.h \
         mainwindow.h \
+    polygon.h \
+    polyline.h \
     shape.h \
     canvas.h \
     vector.h \
@@ -52,7 +58,6 @@ HEADERS += \
     login.h \
     ellipse.h \
     shapeParser.h \
-    polyline.h \
     User.h \
     contactus.h \
     Testimonial.h \
