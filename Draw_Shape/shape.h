@@ -21,11 +21,11 @@ public:
 
 
     virtual void draw(QPaintDevice *toDraw) = 0;
-//    virtual int perimeter() = 0;// Calculates the perimeters
-//    virtual double area() = 0;// Calculates the area
-//    int getShapeID();
+    virtual int perimeter() const = 0;// Calculates the perimeters
+    virtual double area() const = 0;// Calculates the area
+
     void setShapeID(int num);
-    int getShapeID();
+    int getShapeID() const;
 //    void setPen(const QPen& pen);
 //    void setBrush(const QBrush& brush);
 //    void setText(const text& text);

@@ -21,7 +21,8 @@ public:
     void setTextFontStyle(std::string textFStyle) override;
     void setTextFontWeight(std::string textFWeight) override;
     void moveShape(int offsetX, int offsetY);
-
+    int perimeter() const;
+    double area() const override;
 private:
     QString *str;
     int x; //x position

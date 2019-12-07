@@ -8,13 +8,17 @@
 class polygon : public shape
 {
 public:
-	polygon();
-	polygon(int shapeID, vector<QPoint> p1);
-	void draw(QPaintDevice *toDraw);
-	void moveShape(int offsetX, int offsetY);
-	//  void move();  // Moves the center of the shape
+    polygon();
+    polygon(int shapeID, vector<QPoint> p1);
+    polygon(int shapeID, vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
+    virtual ~polygon();
+    void draw(QPaintDevice *toDraw);
+    void moveShape(int offsetX, int offsetY);
+    int perimeter() const override;
+    double area() const override;
+
 private:
-	vector<line*> lines;
+    vector<line*> lines;
 };
 
 #endif // POLYGON_H
