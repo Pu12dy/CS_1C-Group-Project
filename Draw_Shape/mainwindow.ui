@@ -36,81 +36,35 @@
       <x>1020</x>
       <y>10</y>
       <width>271</width>
-      <height>581</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="title">
      <string>Admin Functionalities:</string>
     </property>
-    <widget class="QLabel" name="selectShape_label">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>81</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Select Shape</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="selectShape">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>111</width>
-       <height>25</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="createShape_label">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>30</y>
-       <width>111</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Create New Shape</string>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="createNewShape_Box">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>50</y>
-       <width>111</width>
-       <height>25</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="moveShape">
      <property name="geometry">
       <rect>
-       <x>150</x>
-       <y>100</y>
-       <width>75</width>
-       <height>23</height>
+       <x>210</x>
+       <y>20</y>
+       <width>51</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="text">
-      <string>Move Shape</string>
+      <string>Move</string>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>90</y>
+       <x>90</x>
+       <y>20</y>
        <width>120</width>
        <height>43</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QHBoxLayout" name="moveShape_layout">
       <item>
        <layout class="QVBoxLayout" name="offSetX_layout">
         <item>
@@ -130,7 +84,7 @@
         <item>
          <widget class="QLabel" name="offSetY_label">
           <property name="text">
-           <string>OffsetY</string>
+           <string>Offset Y</string>
           </property>
          </widget>
         </item>
@@ -141,95 +95,504 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>11</x>
-       <y>141</y>
-       <width>121</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetFixedSize</enum>
-      </property>
-      <item>
-       <widget class="QLabel" name="penColor_label">
-        <property name="text">
-         <string>Pen Color</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="penColor_list">
-        <property name="editable">
-         <bool>false</bool>
-        </property>
-        <property name="frame">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QPushButton" name="changePen">
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>470</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Change Pen</string>
-     </property>
-    </widget>
-    <widget class="QWidget" name="">
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>140</y>
-       <width>111</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetFixedSize</enum>
-      </property>
-      <item>
-       <widget class="QLabel" name="penWidth_label">
-        <property name="text">
-         <string>Pen Width</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="penWidth_lineEdit"/>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="">
+    <widget class="QGroupBox" name="penSettings">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>190</y>
-       <width>121</width>
+       <y>70</y>
+       <width>251</width>
+       <height>171</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Pen Settings</string>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="penColor_Layout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <item>
+        <widget class="QLabel" name="penColor_label">
+         <property name="text">
+          <string>Pen Color</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="penColor_list">
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="frame">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>20</y>
+        <width>135</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="penWidth_layout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <item>
+        <widget class="QLabel" name="penWidth_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Pen Width</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="penWidth_lineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="penStyle_layout">
+       <item>
+        <widget class="QLabel" name="penStyle_label">
+         <property name="text">
+          <string>Pen Style</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="penStyle_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>70</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="penCap_layout">
+       <item>
+        <widget class="QLabel" name="penCapStyle_label">
+         <property name="text">
+          <string>Pen Cap Style</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="penCapStyle_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>121</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="penJoinStyle_label">
+         <property name="text">
+          <string>Pen Join Style</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="penJoinStyle_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="changePen">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>120</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="brushSettings">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>240</y>
+       <width>251</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Brush Settings</string>
+     </property>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="brushColor_label">
+         <property name="text">
+          <string>Brush Color</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="brushColor_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>71</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QLabel" name="brushStyle_label">
+         <property name="text">
+          <string>Brush Style</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="brushStyle_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="changeBrush">
+      <property name="geometry">
+       <rect>
+        <x>184</x>
+        <y>22</y>
+        <width>61</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QGroupBox" name="textSettings">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>320</y>
+       <width>251</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Text Settings</string>
+     </property>
+     <widget class="QWidget" name="layoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textColor_layout">
+       <item>
+        <widget class="QLabel" name="textColor_label">
+         <property name="text">
+          <string>Text Color</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="textColor_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textPointSize_layout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <item>
+        <widget class="QLabel" name="textPointSize_labe">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Text Point Size</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="textPointSize_lineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textAlignment_layout">
+       <item>
+        <widget class="QLabel" name="textAlignment_label">
+         <property name="text">
+          <string>Text Alignment</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="textAlignment_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>70</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textFontFamily_layout">
+       <item>
+        <widget class="QLabel" name="textFontFamily_label">
+         <property name="text">
+          <string>Text Font Family</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="textFontFamily_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textFontWeight_layout">
+       <item>
+        <widget class="QLabel" name="textFontWeight_label">
+         <property name="text">
+          <string>Text Font Weight</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="textFontWeight_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>120</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textFontStyle_layout">
+       <item>
+        <widget class="QLabel" name="textFontStyle_label">
+         <property name="text">
+          <string>Text Font Style</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="textFontStyle_list"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="changeText">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>170</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textString_layout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <item>
+        <widget class="QLabel" name="textString_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Text String</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="textString_lineEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>550</y>
+       <width>111</width>
        <height>51</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="text">
+      <string>Remove Shape</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>71</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="selectShape_layout">
       <item>
-       <widget class="QLabel" name="penStyle_label">
+       <widget class="QLabel" name="selectShape_label">
         <property name="text">
-         <string>Pen Style</string>
+         <string>Select Shape</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QComboBox" name="penStyle_list"/>
+       <widget class="QComboBox" name="selectShape"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>550</y>
+       <width>111</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="createShape_layout">
+      <item>
+       <widget class="QLabel" name="createShape_label">
+        <property name="text">
+         <string>Create New Shape</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="createNewShape_Box"/>
       </item>
      </layout>
     </widget>

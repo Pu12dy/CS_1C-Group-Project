@@ -2,21 +2,28 @@
 //#define CIRCLE_H
 
 //#include "shape.h"
+//#include <QPoint>
+//#include <string>
 
-//class Circle : public Shape
+//class circle : public shape
 //{
 //private:
-//  int x1;
-//  int y1;
-//  int radius;
-//  static const double C_PI = 3.14;
+//    int x1;
+//    int y1;
+//    int r; // radius
+//    int shapeId;
+
 //public:
-//  Circle();
-//  virtual ~Circle();
-//  virtual void draw();
-//  virtual void move();
-//  virtual int perimeter();
-//  virtual double area();
+//    circle();
+//    circle(int shapeId, int x1, int y1, int r);
+//    circle(int shapeId, int x1, int y1, int r, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
+//    circle(int shapeId, int x, int y, int r, const QColor& color, int penWidth, Qt::PenStyle pStyle, Qt::PenCapStyle pcStyle, Qt::PenJoinStyle pjStyle);
+
+
+//    void draw(QPaintDevice *toDraw); // Draws the shape
+//    void moveShape(int offsetX, int offsetY); // Moves the center of the shape
+//    int perimeter() const;
+//    double area() const;	 // Calculates the area (PI * a * b = area)
 //};
 
-//#endif
+//#endif // CIRCLE_H

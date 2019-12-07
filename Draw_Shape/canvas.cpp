@@ -40,14 +40,12 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 
 
     // TESTING sort
-   // std::sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
     for(int i = 0; i < vectShape.size(); i++)
     {
        qDebug() << "ShapeID[" << i << "] = "<< vectShape[i]->getShapeID();
     }
 
-    //std::sort(vectShape.begin(), vectShape.end(), Cmp_by_perimeter());
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_perimeter());
     // TESTING perimeter
     for(int i = 0; i < vectShape.size(); i++)
@@ -55,7 +53,6 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
        qDebug() << "Perimeter[" << i << "] = "<< vectShape[i]->perimeter();
     }
 
-    //std::sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
    // TESTING area
     for(int i = 0; i < vectShape.size(); i++)
