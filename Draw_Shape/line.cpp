@@ -5,13 +5,23 @@ line::line() : line(100,50,100,100,10)
 
 }
 
+line::line(int shapeID, QPoint p1, QPoint p2)
+{
+    setShapeID(shapeID);
+    this->p1 = p1;
+    this->p2 = p2;
+}
+
+line::line(int shapeID, QPoint p1, QPoint p2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin,
+     std::string bColor, std::string bStyle)
+    : line(shapeID, p1.x(), p1.y(), p2.x(), p2.y(), penColor, penWidth, penStyle, penCap, penJoin, bColor, bStyle)
+{
+
+}
+
 line::line(int shapeID, int x1, int y1, int x2, int y2)
 {
     setShapeID(shapeID);
-    this->x1 = x1;
-    this->y1 = y1;
-    this->x2 = x2;
-    this->y2 = y2;
     p1.setX(x1);
     p1.setY(y1);
     p2.setX(x2);
@@ -21,9 +31,6 @@ line::line(int shapeID, int x1, int y1, int x2, int y2)
 
 line::line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin) : line(shapeID, x1, y1, x2, y2)
 {
-    const char* penCol = penColor.c_str();
-    qDebug() << penCol;
-
     setPenColor(penColor);
     setPenWidth(penWidth);
     setPenStyle(penStyle);
@@ -43,12 +50,8 @@ line::line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, in
     setBrushStyle(bStyle);
 }
 
-line::line(int shapeID, QPoint p1, QPoint p2)
-{
-	setShapeID(shapeID);
-	this->p1 = p1;
-	this->p2 = p2;
-}
+line::~line()
+{}
 
 void line::draw(QPaintDevice *toDraw){
     getQPainter().begin(toDraw);

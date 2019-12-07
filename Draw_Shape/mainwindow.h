@@ -33,8 +33,6 @@ private slots:
 
     void on_actionTestimonials_triggered();
 
-    bool adminStatus();
-
     void userIsAdmin();
 
     void on_actionLogout_triggered();
@@ -43,11 +41,26 @@ private slots:
 
     void on_changePen_clicked();
 
+    void on_changeBrush_clicked();
+
+    void on_changeText_clicked();
+
+    void on_moveUp_button_clicked();
+
+    void on_moveLeft_button_clicked();
+
+    void on_moveRight_button_clicked();
+
+    void on_moveDown_button_clicked();
+
 private:
     Ui::MainWindow *ui;
-    bool enableAdminFunctions;
-    login* logWindow;
-    shape* activeShape;
+
+    void arrowPressed(QKeyEvent* keyEvent);
+
+    //bool enableAdminFunctions;
+    //login* logWindow;
+    //shape* activeShape;
 //    QLabel    *penColorLabel;
 //    QLabel    *penWidthLabel;
 //    QLabel    *penStyleLabel;
