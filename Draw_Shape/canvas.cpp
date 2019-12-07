@@ -128,3 +128,45 @@ void canvas::setBrushStyle(int shapeIndex, std::string style)
     vectShape[shapeIndex]->setBrushStyle(style);//call the shape's native
     this->update();
 }
+
+void canvas::setTextString(int shapeIndex, std::string text)
+{
+    vectShape[shapeIndex]->setTextString(text);//call the shape's native
+    this->update();
+}
+
+void canvas::setTextColor(int shapeIndex, std::string textColor)
+{
+    vectShape[shapeIndex]->setTextColor(textColor);//call the shape's native
+    this->update();
+}
+
+void canvas::setTextAlignment(int shapeIndex, std::string textAlign)
+{
+    vectShape[shapeIndex]->setTextAlignment(textAlign);//call the shape's native
+    this->update();
+}
+
+void canvas::setTextPointSize(int shapeIndex, int textPointSize)
+{
+    vectShape[shapeIndex]->setTextPointSize(textPointSize);//call the shape's native
+    this->update();
+}
+
+void canvas::setTextFontFamily(int shapeIndex, std::string textFont)
+{
+    vectShape[shapeIndex]->setTextFontFamily(textFont);//call the shape's native
+    this->update();
+}
+
+void canvas::setTextFontStyle(int shapeIndex, std::string textFStyle)
+{
+    vectShape[shapeIndex]->setTextFontStyle(textFStyle);//call the shape's native
+    this->update();
+}
+
+void canvas::setTextFontWeight(int shapeIndex, std::string textFWeight)
+{
+    vectShape[shapeIndex]->setTextFontWeight(textFWeight);//call the shape's native
+    this->update();
+}

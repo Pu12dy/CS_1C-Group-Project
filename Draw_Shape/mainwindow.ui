@@ -150,7 +150,7 @@
       </property>
       <layout class="QVBoxLayout" name="penWidth_layout">
        <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
+        <enum>QLayout::SetMinAndMaxSize</enum>
        </property>
        <item>
         <widget class="QLabel" name="penWidth_label">
@@ -333,7 +333,7 @@
        <x>10</x>
        <y>320</y>
        <width>251</width>
-       <height>221</height>
+       <height>281</height>
       </rect>
      </property>
      <property name="title">
@@ -366,13 +366,13 @@
        <rect>
         <x>130</x>
         <y>20</y>
-        <width>111</width>
+        <width>135</width>
         <height>41</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="textPointSize_layout">
        <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
+        <enum>QLayout::SetMinAndMaxSize</enum>
        </property>
        <item>
         <widget class="QLabel" name="textPointSize_labe">
@@ -491,7 +491,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>170</y>
+        <y>220</y>
         <width>111</width>
         <height>41</height>
        </rect>
@@ -505,13 +505,13 @@
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>111</width>
+        <width>135</width>
         <height>41</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="textString_layout">
        <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
+        <enum>QLayout::SetMinAndMaxSize</enum>
        </property>
        <item>
         <widget class="QLabel" name="textString_label">
@@ -538,19 +538,28 @@
        </item>
       </layout>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="pushButton">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>550</y>
-       <width>111</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Remove Shape</string>
-     </property>
+     <widget class="QWidget" name="layoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>170</y>
+        <width>111</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textFamily_layout">
+       <item>
+        <widget class="QLabel" name="textFamily_label">
+         <property name="text">
+          <string>Text Font Family</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="textFamily_list"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
@@ -574,13 +583,26 @@
       </item>
      </layout>
     </widget>
+   </widget>
+   <widget class="QGroupBox" name="additionalSettings_groupbox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>510</y>
+      <width>1001</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Additional Settings</string>
+    </property>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>550</y>
+       <x>10</x>
+       <y>20</y>
        <width>111</width>
-       <height>51</height>
+       <height>41</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="createShape_layout">
@@ -595,6 +617,84 @@
        <widget class="QComboBox" name="createNewShape_Box"/>
       </item>
      </layout>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>111</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Remove Shape</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>20</y>
+       <width>91</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Move Shape</string>
+     </property>
+     <widget class="QPushButton" name="moveUp_button">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>U</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="moveLeft_button">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>L</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="moveRight_button">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>30</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>R</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="moveDown_button">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>50</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>D</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

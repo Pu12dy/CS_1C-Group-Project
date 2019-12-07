@@ -43,6 +43,16 @@ private slots:
 
     void on_changeBrush_clicked();
 
+    void on_changeText_clicked();
+
+    void on_moveUp_button_clicked();
+
+    void on_moveLeft_button_clicked();
+
+    void on_moveRight_button_clicked();
+
+    void on_moveDown_button_clicked();
+
 private:
     Ui::MainWindow *ui;
 

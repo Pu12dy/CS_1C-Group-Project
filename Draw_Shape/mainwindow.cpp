@@ -41,9 +41,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Populationg Pen Join Style
     ui->penJoinStyle_list->addItem("Select");
-    ui->penJoinStyle_list->addItem("MiterJoin");
-    ui->penJoinStyle_list->addItem("BevelJoin");
-    ui->penJoinStyle_list->addItem("RoundJoin");
+    ui->penJoinStyle_list->addItem("Miter Join");
+    ui->penJoinStyle_list->addItem("Bevel Join");
+    ui->penJoinStyle_list->addItem("Round Join");
 
     //Populating the brush color drop down box
     ui->brushColor_list->addItem("Select");
@@ -59,11 +59,51 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Populating the brush style drop down box
     ui->brushStyle_list->addItem("Select");
-    ui->brushStyle_list->addItem("SolidPattern");
-    ui->brushStyle_list->addItem("HorPattern");
-    ui->brushStyle_list->addItem("VerPattern");
-    ui->brushStyle_list->addItem("NoBrush");
+    ui->brushStyle_list->addItem("Solid Pattern");
+    ui->brushStyle_list->addItem("Hor Pattern");
+    ui->brushStyle_list->addItem("Ver Pattern");
+    ui->brushStyle_list->addItem("No Brush");
 
+    //Populating the text color drop down box
+    ui->textColor_list->addItem("Select");
+    ui->textColor_list->addItem("White");
+    ui->textColor_list->addItem("Black");
+    ui->textColor_list->addItem("Red");
+    ui->textColor_list->addItem("Green");
+    ui->textColor_list->addItem("Blue");
+    ui->textColor_list->addItem("Cyan");
+    ui->textColor_list->addItem("Magenta");
+    ui->textColor_list->addItem("Yellow");
+    ui->textColor_list->addItem("Gray");
+
+    //Populating the text alignment drop down box
+    ui->textAlignment_list->addItem("Select");
+    ui->textAlignment_list->addItem("Align Left");
+    ui->textAlignment_list->addItem("Align Right");
+    ui->textAlignment_list->addItem("Align Top");
+    ui->textAlignment_list->addItem("Align Bottom");
+    ui->textAlignment_list->addItem("Align Center");
+
+    //Populating the text font style drop down box
+    ui->textFontStyle_list->addItem("Select");
+    ui->textFontStyle_list->addItem("StyleNormal");
+    ui->textFontStyle_list->addItem("StyleItalic");
+    ui->textFontStyle_list->addItem("StyleOblique");
+
+    //Populating the text font weight drop down box
+    ui->textFontWeight_list->addItem("Select");
+    ui->textFontWeight_list->addItem("Thin");
+    ui->textFontWeight_list->addItem("Light");
+    ui->textFontWeight_list->addItem("Normal");
+    ui->textFontWeight_list->addItem("Bold");
+
+    //Populating the text font family drop down box
+    ui->textFontFamily_list->addItem("Select");
+    ui->textFontFamily_list->addItem("Comic");
+    ui->textFontFamily_list->addItem("Sans MS");
+    ui->textFontFamily_list->addItem("Courier");
+    ui->textFontFamily_list->addItem("Helvetica");
+    ui->textFontFamily_list->addItem("Times");
 
     //ui->adminFuncs->setVisible(false);
 
@@ -173,4 +213,68 @@ void MainWindow::on_changeBrush_clicked()
     {
         ui->widget->setBrushStyle(ui->selectShape->currentIndex(), ui->brushStyle_list->currentText().toLower().toStdString());
     }
+}
+
+void MainWindow::on_changeText_clicked()
+{
+    //Change text string
+    if (ui->textString_lineEdit->text() != "")
+    {
+        ui->widget->setTextString(ui->selectShape->currentIndex(), ui->textString_lineEdit->text().toStdString());
+    }
+
+    //Change text color
+    if (ui->textColor_list->currentIndex() > 0)
+    {
+        ui->widget->setTextColor(ui->selectShape->currentIndex(), ui->textColor_list->currentText().toLower().toStdString());
+    }
+
+    //Change text alignment
+    if (ui->textAlignment_list->currentIndex() > 0)
+    {
+        ui->widget->setTextAlignment(ui->selectShape->currentIndex(), ui->textAlignment_list->currentText().toLower().toStdString());
+    }
+
+    //Change text point size
+    if (ui->textPointSize_lineEdit->text().toInt() >= -1 && ui->textPointSize_lineEdit->text().toInt() <= 50 )
+    {
+        ui->widget->setTextPointSize(ui->selectShape->currentIndex(), ui->textPointSize_lineEdit->text().toInt());
+    }
+
+    //Change text font family
+    if (ui->textFontFamily_list->currentIndex() > 0)
+    {
+        ui->widget->setTextFontFamily(ui->selectShape->currentIndex(), ui->textFontFamily_list->currentText().toLower().toStdString());
+    }
+    //Change text font weight
+    if (ui->textFontWeight_list->currentIndex() > 0)
+    {
+        ui->widget->setTextFontWeight(ui->selectShape->currentIndex(), ui->textFontWeight_list->currentText().toLower().toStdString());
+    }
+    //Change text font style
+    if (ui->textFontStyle_list->currentIndex() > 0)
+    {
+        ui->widget->setTextFontStyle(ui->selectShape->currentIndex(), ui->textFontStyle_list->currentText().toLower().toStdString());
+    }
+
+}
+
+void MainWindow::on_moveUp_button_clicked()
+{
+    ui->widget->moveShape(ui->selectShape->currentIndex(), 0, -50);
+}
+
+void MainWindow::on_moveLeft_button_clicked()
+{
+    ui->widget->moveShape(ui->selectShape->currentIndex(), -50, 0);
+}
+
+void MainWindow::on_moveRight_button_clicked()
+{
+    ui->widget->moveShape(ui->selectShape->currentIndex(), 50, 0);
+}
+
+void MainWindow::on_moveDown_button_clicked()
+{
+    ui->widget->moveShape(ui->selectShape->currentIndex(), 0, 50);
 }

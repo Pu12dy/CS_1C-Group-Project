@@ -37,6 +37,14 @@ public:
     void setPenJoinStyle(int shapeIndex, std::string style);
     void setBrushColor(int shapeIndex, std::string color);
     void setBrushStyle(int shapeIndex, std::string style);
+    void setTextFontWeight(int shapeIndex, std::string textFWeight);   
+    void setTextString(int shapeIndex, std::string text);
+    void setTextColor(int shapeIndex, std::string textColor);
+    void setTextAlignment(int shapeIndex, std::string textAlign);
+    void setTextPointSize(int shapeIndex, int textPointSize);
+    void setTextFontFamily(int shapeIndex, std::string textFont);
+    void setTextFontStyle(int shapeIndex, std::string textFStyle);
+
 
 
 private:
