@@ -68,3 +68,14 @@ void polyline::moveShape(int offsetX, int offsetY)
         lines[i]->moveShape(offsetX, offsetY);
     }
 }
+
+int polyline::perimeter() const
+{
+    return 0;
+}
+
+double polyline::area() const
+{
+    return 0;
+}
+

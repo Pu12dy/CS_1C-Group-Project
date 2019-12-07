@@ -49,7 +49,7 @@ void shape::setShapeID(int num)
     shapeID = num;
 }
 
-int shape::getShapeID()
+int shape::getShapeID() const
 {
     return shapeID;
 }

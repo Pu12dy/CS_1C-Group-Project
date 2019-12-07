@@ -24,7 +24,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    circle.cpp \
         main.cpp \
         mainwindow.cpp \
     canvas.cpp \
@@ -43,7 +42,7 @@ SOURCES += \
     viewtestimonials.cpp
 
 HEADERS += \
-    circle.h \
+    extraCredit.h \
         mainwindow.h \
     polygon.h \
     polyline.h \

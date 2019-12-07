@@ -70,3 +70,22 @@ void line::moveShape(int offsetX, int offsetY)
     p2.setY(p2.y() + offsetY);
 }
 
+const QPoint line::getP1() const
+{
+    return p1;
+}
+
+const QPoint line::getP2() const
+{
+    return p2;
+}
+
+int line::perimeter() const
+{
+    return 0;
+}
+
+double line::area() const
+{
+    return 0;
+}

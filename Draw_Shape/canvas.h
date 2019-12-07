@@ -10,9 +10,9 @@
 #include "text.h"
 #include "vector.h"
 #include "ellipse.h"
-#include "circle.h"
 #include "polyline.h"
 #include "polygon.h"
+#include "extraCredit.h"
 
 class canvas : public QWidget
 {

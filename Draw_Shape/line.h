@@ -20,13 +20,12 @@ public:
 
     void draw(QPaintDevice *toDraw); // Draws the shape
     void moveShape(int offsetX, int offsetY);
-    //void moveShape(QPoint offsetX, QPoint offsetY);
-//    void move(int offsetX, int offsetY);// Moves the center of the shape
-//    int perimeter();// Calculates the perimeters
-//    double area();// Calculates the area
+    const QPoint getP1() const;
+    const QPoint getP2() const;
+    int perimeter() const;// Calculates the perimeters
+    double area() const;// Calculates the area
 
 private:
-
     QPoint p1;
     QPoint p2;
 
