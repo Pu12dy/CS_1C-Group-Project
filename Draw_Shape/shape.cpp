@@ -31,6 +31,10 @@ QBrush& shape::getQBrush()
     return brush;
 }
 
+QFont& shape::getQFont()
+{
+    return tFont;
+}
 
 
 void shape::draw(QPaintDevice *toDraw)
@@ -186,11 +190,58 @@ void shape::setBrushStyle(Qt::BrushStyle style){
     brush.setStyle(style);
 }
 
+
+
 void shape::setTextString(std::string text){}
-void shape::setTextColor(std::string textColor) {}
-void shape::setTextAlignment(std::string textAlign) {}
-void shape::setTextPointSize(int textPointSize) {}
-void shape::setTextFontFamily(std::string textFont) {}
-void shape::setTextFontStyle(std::string textFStyle) {}
-void shape::setTextFontWeight(std::string textFWeight) {}
+void shape::setTextColor(std::string textColor) {
+    setPenColor(textColor);
+}
+//void shape::setTextAlignment(std::string textAlign) {
+
+//}
+
+Qt::AlignmentFlag shape::setTextAlign(std::string textAlign)
+{
+    if(textAlign == "AlignLeft")
+        return Qt::AlignLeft;
+    else if(textAlign == "AlignRight")
+        return Qt::AlignRight;
+    else if(textAlign == "AlignTop")
+       return Qt::AlignTop;
+    else if(textAlign == "AlignBottom")
+        return Qt::AlignBottom;
+    else if(textAlign == "AlignCenter")
+        return Qt::AlignBottom;
+    else
+        return Qt::AlignLeft;
+}
+void shape::setTextPointSize(int textPointSize) {
+    tFont.setPointSize(textPointSize);
+}
+void shape::setTextFontFamily(std::string textFont) {
+    tFont.setFamily(textFont.c_str());
+}
+
+void shape::setTextFontStyle(std::string textFStyle) {
+    if(textFStyle == "StyleNormal")
+        tFont.setStyle(QFont::StyleNormal);
+    else if(textFStyle == "StyleItalic")
+        tFont.setStyle(QFont::StyleItalic);
+    else if(textFStyle == "StyleOblique")
+        tFont.setStyle(QFont::StyleOblique);
+    else
+        tFont.setStyle(QFont::StyleNormal); //Default
+}
+void shape::setTextFontWeight(std::string textFWeight) {
+    if(textFWeight == "Thin")
+        tFont.setWeight(QFont::Thin);
+    else if(textFWeight == "Light")
+        tFont.setWeight(QFont::Light);
+    else if(textFWeight == "Normal")
+        tFont.setWeight(QFont::Normal);
+    else if(textFWeight == "Bold")
+        tFont.setWeight(QFont::Bold);
+    else
+        tFont.setWeight(QFont::Normal); //Default
+}
 

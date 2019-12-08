@@ -12,12 +12,12 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 	//in actual project, need to pass in vector filled with info from text
 	shape* sh1 = new rectangle(1, 10, 10, 50, 100, "blue", 3, "dash dot line", "round cap", "round join");
 	shape* sh2 = new line();
-	shape* sh3 = new text("Memory is leaking...");
+    shape* sh3 = new text(120,240,400,100, "HellO", "red", "AlignRight", 50, "Courier", "StyleItalic", "Thin");
 	shape* square = new rectangle(3, 40, 200, 100, 100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
 	shape* sh5 = new polygon();
 	shape* sh6 = new polyline();
-	shape* sh7 = new Ellipse();
-	shape* circle = new Ellipse(314, 200, 200, 60, 60);
+    shape* sh7 = new ellipse();
+    shape* circle = new ellipse(314, 200, 200, 60, 60);
 
 
 	vectShape.push_back(sh1);
