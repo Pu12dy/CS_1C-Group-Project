@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <QWidget>
 #include <QDebug>
+#include <QString>
 #include "shapeParser.h"
 #include "shape.h"
 #include "line.h"

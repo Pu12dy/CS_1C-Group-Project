@@ -51,7 +51,7 @@ void ellipse::moveShape(int offsetX, int offsetY)
     y1 += offsetY;
 }
 
-int ellipse::perimeter() const
+double ellipse::perimeter() const
 {
     return ((2 * PI) * sqrt(pow(a,2) + pow(b,2) / 2));
 }
@@ -59,4 +59,9 @@ int ellipse::perimeter() const
 double ellipse::area() const
 {
     return PI * a * b;
+}
+
+std::string ellipse::getShapeType()
+{
+    return "Ellipse";
 }

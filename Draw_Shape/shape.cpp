@@ -49,9 +49,9 @@ void shape::setShapeID(int num)
     shapeID = num;
 }
 
-int shape::getShapeID() const
+std::string shape::getShapeID() const
 {
-    return shapeID;
+    return std::to_string(shapeID);
 }
 
 //void shape::setPen(const QPen& pen)
@@ -194,3 +194,8 @@ void shape::setTextFontFamily(std::string textFont) {}
 void shape::setTextFontStyle(std::string textFStyle) {}
 void shape::setTextFontWeight(std::string textFWeight) {}
 
+
+std::string shape::getShapeName()
+{
+    return getShapeType() + " " + getShapeID();
+}

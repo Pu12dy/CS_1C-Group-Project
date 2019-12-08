@@ -24,7 +24,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    circle.cpp \
         main.cpp \
         mainwindow.cpp \
     canvas.cpp \

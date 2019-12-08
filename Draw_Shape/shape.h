@@ -12,7 +12,7 @@ class shape
 {
 public:
     shape();
-    ~shape();
+    virtual ~shape();
     shape(const shape &source);
 
     QPainter& getQPainter();
@@ -21,11 +21,13 @@ public:
 
 
     virtual void draw(QPaintDevice *toDraw) = 0;
-    virtual int perimeter() const = 0;// Calculates the perimeters
+    virtual double perimeter() const = 0;// Calculates the perimeters
     virtual double area() const = 0;// Calculates the area
-
+    std::string getShapeName();
+    virtual std::string getShapeType() = 0;
     void setShapeID(int num);
-    int getShapeID() const;
+    std::string getShapeID() const;
+
 //    void setPen(const QPen& pen);
 //    void setBrush(const QBrush& brush);
 //    void setText(const text& text);

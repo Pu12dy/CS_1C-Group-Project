@@ -38,12 +38,11 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     vectShape.push_back(sh7);
     vectShape.push_back(circle);
 
-
     // TESTING sort
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
     for(int i = 0; i < vectShape.size(); i++)
     {
-       qDebug() << "ShapeID[" << i << "] = "<< vectShape[i]->getShapeID();
+       qDebug() << "ShapeID[" << i << "] = " +  QString::fromStdString(vectShape[i]->getShapeID());
     }
 
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_perimeter());

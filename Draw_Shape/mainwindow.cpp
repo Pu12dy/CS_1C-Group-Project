@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     for (int i = 0; i < ui->widget->numberOfShapes();i++)// Populate shapes into shape selector
     {
-        ui->selectShape->addItem(QString::fromStdString(std::to_string(ui->widget->get(i)->getShapeID())));
+        ui->selectShape->addItem(QString::fromStdString(std::string(ui->widget->get(i)->getShapeName())));
     }
 
     //Populating the pen color drop down box
@@ -201,7 +201,6 @@ void MainWindow::on_moveShape_clicked()
     ui->widget->moveShape(ui->selectShape->currentIndex(), offSetX, offSetY);
     ui->offSetX_lineEdit->clear();
     ui->offSetY_lineEdit->clear();
-
 }
 
 void MainWindow::on_changePen_clicked()
