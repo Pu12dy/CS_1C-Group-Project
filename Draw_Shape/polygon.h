@@ -16,7 +16,7 @@ public:
     void moveShape(int offsetX, int offsetY) override;
     double perimeter() const override;
     double area() const override;
-    std::string getShapeType();
+    std::string getShapeType() const;
 
 private:
     vector<line*> lines;

@@ -6,10 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    for (int i = 0; i < ui->widget->numberOfShapes();i++)// Populate shapes into shape selector
-    {
-        ui->selectShape->addItem(QString::fromStdString(std::string(ui->widget->get(i)->getShapeName())));
-    }
+
+    updateShapeSelectList();
 
     //Populating the pen color drop down box
     ui->penColor_list->addItem("Select");
@@ -131,14 +129,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->textFontFamily_list->addItem("Times");
 
     // Populating the create new shape drop down box
-    ui->createNewShape_Box->addItem("Rectangle");
-    ui->createNewShape_Box->addItem("Square");
-    ui->createNewShape_Box->addItem("Line");
-    ui->createNewShape_Box->addItem("Ellipse");
-    ui->createNewShape_Box->addItem("Circle");
-    ui->createNewShape_Box->addItem("Polyline");
-    ui->createNewShape_Box->addItem("Polygon");
-    ui->createNewShape_Box->addItem("Text");
+    ui->createNewShape_list->addItem("Select");
+    ui->createNewShape_list->addItem("Rectangle");
+    ui->createNewShape_list->addItem("Line");
+    ui->createNewShape_list->addItem("Ellipse");
+    ui->createNewShape_list->addItem("Polyline");
+    ui->createNewShape_list->addItem("Polygon");
+    ui->createNewShape_list->addItem("Text");
 
 
     //ui->adminFuncs->setVisible(false);
@@ -316,5 +313,14 @@ void MainWindow::on_moveDown_button_clicked()
 
 void MainWindow::on_createNewShape_Button_clicked()
 {
-   //ui->widget->
+   ui->widget->addShape(ui->createNewShape_list->currentIndex());
+   updateShapeSelectList();
+}
+
+void MainWindow::updateShapeSelectList()
+{
+    for (int i = 0; i < ui->widget->numberOfShapes();i++)// Populate shapes into shape selector
+    {
+        ui->selectShape->addItem(QString::fromStdString(std::string(ui->widget->get(i)->getShapeName())));
+    }
 }
