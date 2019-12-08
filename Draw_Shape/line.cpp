@@ -108,8 +108,8 @@ void line::changeShapeSize(int newSize)
         }
         else                    // if p1 is below p2
         {
-            p1.setX(p2.x() - (newSize * changeOfX)); // moves p2 up and right
-            p1.setY(p2.y() + (newSize * changeOfY));
+            p1.setX(p2.x() + (newSize * changeOfX)); // moves p2 up and right
+            p1.setY(p2.y() - (newSize * changeOfY));
         }
     }
     else                // diagonal line with p2 on left
@@ -118,8 +118,8 @@ void line::changeShapeSize(int newSize)
         changeOfX = p1.x() - p2.x();
         if (p1.y() < p2.y()) // if p1 is above p2
         {
-            p1.setX(p1.x() - (newSize * changeOfX)); // moves p1 up and right
-            p1.setY(p1.y() + (newSize * changeOfY));
+            p1.setX(p1.x() + (newSize * changeOfX)); // moves p1 up and right
+            p1.setY(p1.y() - (newSize * changeOfY));
         }
         else                // if p1 is below p2
         {
