@@ -41,6 +41,31 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Populationg Pen Join Style
     ui->penJoinStyle_list->addItem("Select");
+    ui->penJoinStyle_list->addItem("MiterJoin");
+    ui->penJoinStyle_list->addItem("BevelJoin");
+    ui->penJoinStyle_list->addItem("RoundJoin");
+
+    //Populating the brush color drop down box
+    ui->brushColor_list->addItem("Select");
+    ui->brushColor_list->addItem("White");
+    ui->brushColor_list->addItem("Black");
+    ui->brushColor_list->addItem("Red");
+    ui->brushColor_list->addItem("Green");
+    ui->brushColor_list->addItem("Blue");
+    ui->brushColor_list->addItem("Cyan");
+    ui->brushColor_list->addItem("Magenta");
+    ui->brushColor_list->addItem("Yellow");
+    ui->brushColor_list->addItem("Gray");
+
+    //Populating the brush style drop down box
+    ui->brushStyle_list->addItem("Select");
+    ui->brushStyle_list->addItem("SolidPattern");
+    ui->brushStyle_list->addItem("HorPattern");
+    ui->brushStyle_list->addItem("VerPattern");
+    ui->brushStyle_list->addItem("NoBrush");
+
+    //Populationg Pen Join Style
+    ui->penJoinStyle_list->addItem("Select");
     ui->penJoinStyle_list->addItem("Miter Join");
     ui->penJoinStyle_list->addItem("Bevel Join");
     ui->penJoinStyle_list->addItem("Round Join");

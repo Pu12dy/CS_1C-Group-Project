@@ -14,6 +14,8 @@ public:
     virtual ~polygon();
     void draw(QPaintDevice *toDraw);
     void moveShape(int offsetX, int offsetY);
+    int perimeter() const override;
+    double area() const override;
 
 private:
     vector<line*> lines;

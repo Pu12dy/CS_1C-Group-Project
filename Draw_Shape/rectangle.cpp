@@ -63,3 +63,13 @@ void rectangle::moveShape(int offsetX, int offsetY)
     x1 += offsetX;
     y1 += offsetY;
 }
+
+int rectangle::perimeter() const
+{
+    return (length * 2) + (width * 2);
+}
+
+double rectangle::area() const
+{
+    return length * width;
+}

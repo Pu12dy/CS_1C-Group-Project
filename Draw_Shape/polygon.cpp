@@ -1,4 +1,5 @@
 #include "polygon.h"
+#include <QLineF>
 
 polygon::polygon()
 {
@@ -70,4 +71,28 @@ void polygon::draw(QPaintDevice *toDraw)
      {
          lines[i]->moveShape(offsetX, offsetY);
      }
+ }
+
+ int polygon::perimeter() const
+ {
+     int result = 0;
+     for (int i = 0; i < lines.size(); ++i)
+     {
+       result += QLineF(lines[i]->getP1(), lines[i]->getP2()).length();
+     }
+     return result;
+ }
+
+ double polygon::area() const
+ {
+    // create array of x and y coordinates of each vertex in counterclockwise order
+    // repeat the coordinates of the first point in last element of array
+    // Multiply the x coordinate of each vertex by the y coordinate of the next vertex.
+    // Add the results.
+    // Multiply the y coordinate of each vertex by the x coordinate of the next vertex.
+    // Again, add these results
+    // Subtract the sum of the second products from the sum of the first products.
+    // Divide this difference by 2 to get the area of the polygon
+
+     return 0;
  }

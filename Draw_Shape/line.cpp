@@ -26,7 +26,6 @@ line::line(int shapeID, int x1, int y1, int x2, int y2)
     p1.setY(y1);
     p2.setX(x2);
     p2.setY(y2);
-
 }
 
 line::line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin) : line(shapeID, x1, y1, x2, y2)
@@ -68,5 +67,26 @@ void line::moveShape(int offsetX, int offsetY)
 
     p2.setX(p2.x() + offsetX);
     p2.setY(p2.y() + offsetY);
+}
+
+
+const QPoint line::getP1() const
+{
+    return p1;
+}
+
+const QPoint line::getP2() const
+{
+    return p2;
+}
+
+int line::perimeter() const
+{
+    return 0;
+}
+
+double line::area() const
+{
+    return 0;
 }
 

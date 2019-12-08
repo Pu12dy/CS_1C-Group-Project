@@ -1,4 +1,5 @@
 #include "ellipse.h"
+#include <math.h>
 
 ellipse::ellipse() : ellipse(131,100,100,200,30)
 {
@@ -50,7 +51,12 @@ void ellipse::moveShape(int offsetX, int offsetY)
     y1 += offsetY;
 }
 
-double ellipse::area()
+int ellipse::perimeter() const
+{
+    return ((2 * PI) * sqrt(pow(a,2) + pow(b,2) / 2));
+}
+
+double ellipse::area() const
 {
     return PI * a * b;
 }

@@ -44,6 +44,7 @@ SOURCES += \
 
 HEADERS += \
     circle.h \
+    extraCredit.h \
         mainwindow.h \
     polygon.h \
     polyline.h \

@@ -101,3 +101,12 @@ void text::moveShape(int offsetX, int offsetY)
     x += offsetX;
     y += offsetY;
 }
+
+int text::perimeter() const
+{
+    return 0;
+}
+double text::area() const
+{
+    return 0;
+}

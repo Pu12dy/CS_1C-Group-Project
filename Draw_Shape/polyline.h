@@ -15,8 +15,8 @@ public:
     virtual ~polyline();
     void draw(QPaintDevice *toDraw);
     void moveShape(int offsetX, int offsetY);
-    //    int perimeter();// Calculates the perimeters
-    //    double area();// Calculates the area
+    int perimeter() const; // Calculates the perimeters
+    double area() const;// Calculates the area
 
 private:
     vector<line*> lines;

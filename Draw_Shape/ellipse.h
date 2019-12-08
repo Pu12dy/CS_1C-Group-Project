@@ -26,8 +26,8 @@ public:
 
     void draw(QPaintDevice *toDraw); // Draws the shape
     void moveShape(int offsetX, int offsetY); // Moves the center of the shape
-    //int perimeter(); // Calculates the perimeters
-    double area();	 // Calculates the area (PI * a * b = area)
+    int perimeter() const;// Calculates the perimeters
+    double area() const;	 // Calculates the area (PI * a * b = area)
 };
 
 #endif /* ellipse_h */

@@ -1,3 +1,4 @@
+/*
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
@@ -26,4 +27,5 @@ public:
     double area();	 // Calculates the area (PI * a * b = area)
 };
 
-#endif // CIRCLE_H
+#endif // CIRCLE_H 
+*/

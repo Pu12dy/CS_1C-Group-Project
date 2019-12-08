@@ -1,6 +1,7 @@
 #ifndef CANVAS_H
 #define CANVAS_H
 
+#include <algorithm>
 #include <QWidget>
 #include <QDebug>
 #include "shapeParser.h"
@@ -10,9 +11,9 @@
 #include "text.h"
 #include "vector.h"
 #include "ellipse.h"
-#include "circle.h"
 #include "polyline.h"
 #include "polygon.h"
+#include "extraCredit.h"
 
 class canvas : public QWidget
 {

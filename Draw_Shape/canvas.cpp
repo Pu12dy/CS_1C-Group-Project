@@ -8,33 +8,58 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     this->setAutoFillBackground(true);
     this->setPalette(pal);
 
-    QPoint pp1(100,150);
-    QPoint pp2(600,220);
-    QPoint pp3(160,400);
-    QPoint pp4(500,280);
+//    QPoint pp1(100,150);
+//    QPoint pp2(600,220);
+//    QPoint pp3(160,400);
+//    QPoint pp4(500,280);
 
-    vector<QPoint> QP;
-    QP.push_back(pp1);
-    QP.push_back(pp2);
-    QP.push_back(pp3);
-    QP.push_back(pp4);
+//    vector<QPoint> QP;
+//    QP.push_back(pp1);
+//    QP.push_back(pp2);
+//    QP.push_back(pp3);
+//    QP.push_back(pp4);
 
     //in actual project, need to pass in vector filled with info from text
     shape* sh1 = new rectangle(1,10,10,50,100, "blue", 3, "dash dot line", "round cap", "round join");
     shape* sh2 = new line();
     shape* sh3 = new text("Memory is leaking...");
-    shape* sh4 = new rectangle(3,40,200, 100,120, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
+    shape* square = new rectangle(3,40,200, 100,100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
     shape* sh5 = new polyline();
-    shape* sh6 = new polygon(189, QP);
+    shape* sh6 = new polygon();
+    shape* sh7 = new ellipse();
+    shape* circle = new ellipse(314, 200, 200, 60, 60);
 
     vectShape.push_back(sh1);
     vectShape.push_back(sh2);
     vectShape.push_back(sh3);
-    vectShape.push_back(sh4);
+    vectShape.push_back(square);
     vectShape.push_back(sh5);
     vectShape.push_back(sh6);
+    vectShape.push_back(sh7);
+    vectShape.push_back(circle);
 
-    //qDebug() << vectShapeParsed.size();
+
+    // TESTING sort
+    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
+    for(int i = 0; i < vectShape.size(); i++)
+    {
+       qDebug() << "ShapeID[" << i << "] = "<< vectShape[i]->getShapeID();
+    }
+
+    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_perimeter());
+    // TESTING perimeter
+    for(int i = 0; i < vectShape.size(); i++)
+    {
+       qDebug() << "Perimeter[" << i << "] = "<< vectShape[i]->perimeter();
+    }
+
+   selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
+   // TESTING area
+    for(int i = 0; i < vectShape.size(); i++)
+    {
+       qDebug() << "Area[" << i << "] = "<< vectShape[i]->area();
+    }
+
     //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
     //qDebug() << vectShapeParsed.size();
 
@@ -55,7 +80,6 @@ void canvas::addNewRect(int shapeID, int x, int y, int l, int w)
 {
     addShape(new rectangle(shapeID, x, y, l, w));
 }
-
 
 void canvas::paintEvent(QPaintEvent *event){
 
