@@ -599,10 +599,10 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>151</width>
-       <height>51</height>
+       <x>100</x>
+       <y>30</y>
+       <width>111</width>
+       <height>70</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="createShape_layout">
@@ -627,13 +627,20 @@
         </item>
        </layout>
       </item>
+      <item>
+       <widget class="QPushButton" name="createNewShape_Button">
+        <property name="text">
+         <string>Ok</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>80</y>
+       <x>710</x>
+       <y>30</y>
        <width>111</width>
        <height>51</height>
       </rect>
@@ -645,7 +652,7 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>220</x>
+       <x>400</x>
        <y>20</y>
        <width>91</width>
        <height>81</height>

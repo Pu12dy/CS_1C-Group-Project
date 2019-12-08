@@ -53,6 +53,9 @@ private slots:
 
     void on_moveDown_button_clicked();
 
+
+    void on_createNewShape_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
 

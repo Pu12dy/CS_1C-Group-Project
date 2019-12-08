@@ -130,6 +130,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->textFontFamily_list->addItem("Helvetica");
     ui->textFontFamily_list->addItem("Times");
 
+    // Populating the create new shape drop down box
+    ui->createNewShape_Box->addItem("Rectangle");
+    ui->createNewShape_Box->addItem("Square");
+    ui->createNewShape_Box->addItem("Line");
+    ui->createNewShape_Box->addItem("Ellipse");
+    ui->createNewShape_Box->addItem("Circle");
+    ui->createNewShape_Box->addItem("Polyline");
+    ui->createNewShape_Box->addItem("Polygon");
+    ui->createNewShape_Box->addItem("Text");
+
+
     //ui->adminFuncs->setVisible(false);
 
 
@@ -301,4 +312,9 @@ void MainWindow::on_moveRight_button_clicked()
 void MainWindow::on_moveDown_button_clicked()
 {
     ui->widget->moveShape(ui->selectShape->currentIndex(), 0, 50);
+}
+
+void MainWindow::on_createNewShape_Button_clicked()
+{
+   ui->widget->
 }
