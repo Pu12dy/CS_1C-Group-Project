@@ -38,8 +38,9 @@ void viewTestimonials::addTestimonial(const QString userName, const QString rati
     QFile file("Testimonials.txt");
     file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append);
     QTextStream out(&file);
-    out << userName << qSetFieldWidth(20) << rating << "\n";
-    out << testimonialTxt << "\n\n";
+	out << "Name: " << userName; // << qSetFieldWidth(20)
+	out << "\nRating: " << rating << "/5\n";
+	out << "Review:\n" << testimonialTxt << "\n\n";
     file.close();
     refreshTestimonial();
 }
