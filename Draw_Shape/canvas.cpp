@@ -8,8 +8,6 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     this->setAutoFillBackground(true);
     this->setPalette(pal);
 
-    vectShapeParsed = parseShapes("/home/matthew/Desktop/CS/GroupProject1/CS_1C-Group-Project-master/build-Draw_Shape-Unnamed_a6892e-Debug/shapes.txt");
-
 //    QPoint pp1(100,150);
 //    QPoint pp2(600,220);
 //    QPoint pp3(160,400);
@@ -23,13 +21,12 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 
 /*
     //in actual project, need to pass in vector filled with info from text
-    shape* sh1 = new rectangle(1,10,10,50,100, "blue", 3, "dash dot line", "round cap", "round join");
-    shape* sh2 = new line();
-    shape* sh3 = new text("Memory is leaking...");
-
-    shape* square = new rectangle(3,40,200, 100,100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
-    shape* sh5 = new polyline();
-    shape* sh6 = new polygon();
+    shape* sh1 = new rectangle(1, 10, 10, 50, 100, "blue", 3, "dash dot line", "round cap", "round join");
+	shape* sh2 = new line();
+    shape* sh3 = new text(120,240,400,100, "HellO", "red", "AlignRight", 50, "Courier", "StyleItalic", "Thin");
+	shape* square = new rectangle(3, 40, 200, 100, 100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
+	shape* sh5 = new polygon();
+	shape* sh6 = new polyline();
     shape* sh7 = new ellipse();
     shape* circle = new ellipse(314, 200, 200, 60, 60);
 
@@ -69,7 +66,6 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     */
 
     saveShapes("shapes_save.txt", vectShapeParsed);
-
 }
 
 void canvas::addShape(shape *p)

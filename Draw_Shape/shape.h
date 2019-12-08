@@ -18,6 +18,7 @@ public:
     QPainter& getQPainter();
     QPen& getQPen();
     QBrush& getQBrush();
+    QFont& getQFont();
 
 
     virtual void draw(QPaintDevice *toDraw) = 0;
@@ -55,7 +56,7 @@ public:
 
     virtual void setTextString(std::string text);
     virtual void setTextColor(std::string textColor);
-    virtual void setTextAlignment(std::string textAlign);
+    Qt::AlignmentFlag setTextAlign(std::string textAlign);
     virtual void setTextPointSize(int textPointSize);
     virtual void setTextFontFamily(std::string textFont);
     virtual void setTextFontStyle(std::string textFStyle);
@@ -79,15 +80,10 @@ private:
     QPainter painter;
     QPen pen;
     QBrush brush;
+    QFont tFont;
 
 protected:
-    std::string textString;
-    Qt::GlobalColor textColor;
-    Qt::AlignmentFlag textAlignment;
-    int textPointSize;
-    std::string textFontFamily;
-    QFont::Style textFontStyle;
-    QFont::Weight textFontWeight;
+
 };
 
 #endif // SHAPE_H
