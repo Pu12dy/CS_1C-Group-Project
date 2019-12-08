@@ -37,10 +37,10 @@ QFont& shape::getQFont()
 }
 
 
-//void shape::draw(QPaintDevice *toDraw)
-//{
+void shape::draw(QPaintDevice *toDraw)
+{
 
-//}
+}
 
 
 //int Shape::getShapeID() // Returns shapeID
@@ -53,9 +53,19 @@ void shape::setShapeID(int num)
     shapeID = num;
 }
 
-std::string shape::getShapeID() const
+int shape::getShapeID() const
 {
-    return std::to_string(shapeID);
+    return shapeID;
+}
+
+std::string shape::getID() const
+{
+    return std::to_string(getShapeID());
+}
+
+std::string shape::getShapeName() const
+{
+    return getShapeType() + " " + getID();
 }
 
 //void shape::setPen(const QPen& pen)
@@ -190,7 +200,10 @@ void shape::setBrushStyle(Qt::BrushStyle style){
     brush.setStyle(style);
 }
 
+void shape::setFontProperties(std::string textFont, std::string textFStyle, std::string textFWeight)
+{
 
+}
 
 void shape::setTextString(std::string text){}
 void shape::setTextColor(std::string textColor) {
@@ -219,9 +232,15 @@ void shape::setTextPointSize(int textPointSize) {
     tFont.setPointSize(textPointSize);
 }
 void shape::setTextFontFamily(std::string textFont) {
-    tFont.setFamily(textFont.c_str());
+    if(textFont == "Courier")
+        painter.setFont(QFont("Courier"));
+    else if(textFont == "Helvetica")
+        painter.setFont(QFont("Helvetica"));
+    else if(textFont == "Times")
+        painter.setFont(QFont("Helvetica"));
+    else if(textFont == "Comic Sans MS")
+        painter.setFont(QFont("Comic Sans MS"));
 }
-
 void shape::setTextFontStyle(std::string textFStyle) {
     if(textFStyle == "StyleNormal")
         tFont.setStyle(QFont::StyleNormal);
@@ -243,133 +262,7 @@ void shape::setTextFontWeight(std::string textFWeight) {
         tFont.setWeight(QFont::Bold);
     else
         tFont.setWeight(QFont::Normal); //Default
+
+
 }
 
-
-std::string shape::getShapeName()
-{
-    return getShapeType() + " " + getShapeID();
-}
-
-std::string shape::getTextColorString()
-{
-    if(textColor == Qt::white)
-    {
-        return "white";
-    }
-    else if(textColor == Qt::black)
-    {
-        return "black";
-    }
-    else if(textColor == Qt::red)
-    {
-        return "red";
-    }
-    else if(textColor == Qt::green)
-    {
-        return "green";
-    }
-    else if(textColor == Qt::blue)
-    {
-        return "blue";
-    }
-    else if(textColor == Qt::magenta)
-    {
-        return "magenta";
-    }
-    else if(textColor == Qt::yellow)
-    {
-        return "yellow";;
-    }
-    else if(textColor == Qt::gray)
-    {
-        return "gray";
-    }
-    else
-    {
-        return "black";
-    }
-}
-
-
-std::string shape::getTextAlignmentString()
-{
-    if(textAlignment == Qt::AlignLeft)
-    {
-        return "AlignLeft";
-    }
-    else if(textAlignment == Qt::AlignRight)
-    {
-        return "AlignRight";
-    }
-    else if(textAlignment == Qt::AlignTop)
-    {
-        return "AlignTop";
-    }
-    else if(textAlignment == Qt::AlignBottom)
-    {
-        return "AlignBottom";
-    }
-    else if(textAlignment == Qt::AlignCenter)
-    {
-        return "AlignCenter";
-    }
-    else
-    {
-        return "AlignCenter";
-    }
-}
-
-int shape::getTextPointSize()
-{
-    return textPointSize;
-}
-
-std::string shape::getTextFontFamilyString()
-{
-    return textFontFamily;
-}
-
-std::string shape::getTextFontStyleString()
-{
-    if(textFontStyle == QFont::StyleNormal)
-    {
-        return "StyleNomral";
-    }
-    else if(textFontStyle == QFont::StyleItalic)
-    {
-        return "StyleItalic";
-    }
-    else if(textFontStyle == QFont::StyleOblique)
-    {
-        return "StyleOblique";
-    }
-    else
-    {
-        return "StyleNormal";
-    }
-}
-
-std::string shape::getTextFontWeightString()
-{
-    if(textFontWeight == QFont::Thin)
-    {
-        return "Thin";
-    }
-    else if(textFontWeight == QFont::Light)
-    {
-        return "Light";
-    }
-    else if(textFontWeight == QFont::Normal)
-    {
-        return "Normal";
-    }
-    else if(textFontWeight == QFont::Bold)
-    {
-        return "Bold";
-    }
-    else
-    {
-        return "Normal";
-    }
-}
