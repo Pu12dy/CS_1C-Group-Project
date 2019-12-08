@@ -599,8 +599,8 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
+       <x>100</x>
+       <y>30</y>
        <width>156</width>
        <height>75</height>
       </rect>
@@ -618,7 +618,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QComboBox" name="createNewShape_list"/>
+           <widget class="QComboBox" name="createNewShape_Box"/>
           </item>
           <item>
            <widget class="QPushButton" name="createNewShape_Button">
@@ -636,7 +636,7 @@
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>280</x>
+       <x>710</x>
        <y>30</y>
        <width>111</width>
        <height>51</height>
@@ -649,7 +649,7 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>400</x>
        <y>20</y>
        <width>91</width>
        <height>81</height>

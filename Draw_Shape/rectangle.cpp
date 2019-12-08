@@ -8,8 +8,8 @@ rectangle::rectangle() : rectangle(99,400,30,100,150)
 rectangle::rectangle(int shapeID, int x, int y, int l, int w)
 {
     setShapeID(shapeID);
-    this->x = x;
-    this->y = y;
+    x1 = x;
+    y1 = y;
     length = l;
     width = w;
 
@@ -54,24 +54,14 @@ void rectangle::draw(QPaintDevice *toDraw){
     getQPainter().begin(toDraw);
     getQPainter().setPen(getQPen());
     getQPainter().setBrush(getQBrush());
-    getQPainter().drawRect(x,y,length,width);
+    getQPainter().drawRect(x1,y1,length,width);
     getQPainter().end();
 }
 
 void rectangle::moveShape(int offsetX, int offsetY)
 {
-    x += offsetX;
-    y += offsetY;
-
-    //Ensuring shape does not move out of screen
-    if (x < 0)
-        x = 0;
-    else if (x > 950)
-        x = 950;
-    if (y < 0)
-        y = 0;
-    else if (y > 450)
-        y = 450;
+    x1 += offsetX;
+    y1 += offsetY;
 }
 
 double rectangle::perimeter() const
@@ -84,7 +74,7 @@ double rectangle::area() const
     return length * width;
 }
 
-std::string rectangle::getShapeType() const
+std::string rectangle::getShapeType()
 {
     return "Rectangle";
 }

@@ -31,16 +31,12 @@ QBrush& shape::getQBrush()
     return brush;
 }
 
-QFont& shape::getQFont()
-{
-    return tFont;
-}
 
 
-void shape::draw(QPaintDevice *toDraw)
-{
+//void shape::draw(QPaintDevice *toDraw)
+//{
 
-}
+//}
 
 
 //int Shape::getShapeID() // Returns shapeID
@@ -53,19 +49,9 @@ void shape::setShapeID(int num)
     shapeID = num;
 }
 
-int shape::getShapeID() const
+std::string shape::getShapeID() const
 {
-    return shapeID;
-}
-
-std::string shape::getID() const
-{
-    return std::to_string(getShapeID());
-}
-
-std::string shape::getShapeName() const
-{
-    return getShapeType() + " " + getID();
+    return std::to_string(shapeID);
 }
 
 //void shape::setPen(const QPen& pen)
@@ -200,69 +186,16 @@ void shape::setBrushStyle(Qt::BrushStyle style){
     brush.setStyle(style);
 }
 
-void shape::setFontProperties(std::string textFont, std::string textFStyle, std::string textFWeight)
-{
-
-}
-
 void shape::setTextString(std::string text){}
-void shape::setTextColor(std::string textColor) {
-    setPenColor(textColor);
-}
-//void shape::setTextAlignment(std::string textAlign) {
+void shape::setTextColor(std::string textColor) {}
+void shape::setTextAlignment(std::string textAlign) {}
+void shape::setTextPointSize(int textPointSize) {}
+void shape::setTextFontFamily(std::string textFont) {}
+void shape::setTextFontStyle(std::string textFStyle) {}
+void shape::setTextFontWeight(std::string textFWeight) {}
 
-//}
 
-Qt::AlignmentFlag shape::setTextAlign(std::string textAlign)
+std::string shape::getShapeName()
 {
-    if(textAlign == "AlignLeft")
-        return Qt::AlignLeft;
-    else if(textAlign == "AlignRight")
-        return Qt::AlignRight;
-    else if(textAlign == "AlignTop")
-       return Qt::AlignTop;
-    else if(textAlign == "AlignBottom")
-        return Qt::AlignBottom;
-    else if(textAlign == "AlignCenter")
-        return Qt::AlignBottom;
-    else
-        return Qt::AlignLeft;
+    return getShapeType() + " " + getShapeID();
 }
-void shape::setTextPointSize(int textPointSize) {
-    tFont.setPointSize(textPointSize);
-}
-void shape::setTextFontFamily(std::string textFont) {
-    if(textFont == "Courier")
-        painter.setFont(QFont("Courier"));
-    else if(textFont == "Helvetica")
-        painter.setFont(QFont("Helvetica"));
-    else if(textFont == "Times")
-        painter.setFont(QFont("Helvetica"));
-    else if(textFont == "Comic Sans MS")
-        painter.setFont(QFont("Comic Sans MS"));
-}
-void shape::setTextFontStyle(std::string textFStyle) {
-    if(textFStyle == "StyleNormal")
-        tFont.setStyle(QFont::StyleNormal);
-    else if(textFStyle == "StyleItalic")
-        tFont.setStyle(QFont::StyleItalic);
-    else if(textFStyle == "StyleOblique")
-        tFont.setStyle(QFont::StyleOblique);
-    else
-        tFont.setStyle(QFont::StyleNormal); //Default
-}
-void shape::setTextFontWeight(std::string textFWeight) {
-    if(textFWeight == "Thin")
-        tFont.setWeight(QFont::Thin);
-    else if(textFWeight == "Light")
-        tFont.setWeight(QFont::Light);
-    else if(textFWeight == "Normal")
-        tFont.setWeight(QFont::Normal);
-    else if(textFWeight == "Bold")
-        tFont.setWeight(QFont::Bold);
-    else
-        tFont.setWeight(QFont::Normal); //Default
-
-
-}
-

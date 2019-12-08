@@ -17,7 +17,7 @@ public:
     void moveShape(int offsetX, int offsetY) override;
     double perimeter() const; // Calculates the perimeters
     double area() const;// Calculates the area
-    std::string getShapeType() const override;
+    std::string getShapeType() override;
 
 private:
     vector<line*> lines;

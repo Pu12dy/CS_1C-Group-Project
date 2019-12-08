@@ -88,7 +88,7 @@ double line::area() const
 {
     return 0;
 }
-std::string line::getShapeType() const
+std::string line::getShapeType()
 {
     return "Line";
 }

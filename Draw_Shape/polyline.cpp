@@ -79,7 +79,7 @@ double polyline::area() const
     return 0;
 }
 
-std::string polyline::getShapeType() const
+std::string polyline::getShapeType()
 {
     return "Polyline";
 }

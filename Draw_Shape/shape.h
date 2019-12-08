@@ -18,17 +18,16 @@ public:
     QPainter& getQPainter();
     QPen& getQPen();
     QBrush& getQBrush();
-    QFont& getQFont();
 
 
     virtual void draw(QPaintDevice *toDraw) = 0;
-    virtual double perimeter() const = 0 ;// Calculates the perimeters
+    virtual double perimeter() const = 0;// Calculates the perimeters
     virtual double area() const = 0;// Calculates the area
-    virtual std::string getShapeType() const = 0;
-    std::string getShapeName() const;
+    std::string getShapeName();
+    virtual std::string getShapeType() = 0;
     void setShapeID(int num);
-    int getShapeID() const;
-    std::string getID() const;
+    std::string getShapeID() const;
+
 //    void setPen(const QPen& pen);
 //    void setBrush(const QBrush& brush);
 //    void setText(const text& text);
@@ -54,11 +53,9 @@ public:
     virtual void setBrushStyle(std::string style);
     virtual void setBrushStyle(Qt::BrushStyle style);
 
-    virtual void setFontProperties(std::string textFont, std::string textFStyle, std::string textFWeight);
     virtual void setTextString(std::string text);
     virtual void setTextColor(std::string textColor);
-    Qt::AlignmentFlag setTextAlign(std::string textAlign);
-    //virtual void setTextAlignment(std::string textAlign);
+    virtual void setTextAlignment(std::string textAlign);
     virtual void setTextPointSize(int textPointSize);
     virtual void setTextFontFamily(std::string textFont);
     virtual void setTextFontStyle(std::string textFStyle);
@@ -73,10 +70,15 @@ private:
     QPainter painter;
     QPen pen;
     QBrush brush;
-    QFont tFont;
 
 protected:
-
+    std::string textString;
+    Qt::GlobalColor textColor;
+    Qt::AlignmentFlag textAlignment;
+    int textPointSize;
+    std::string textFontFamily;
+    QFont::Style textFontStyle;
+    QFont::Weight textFontWeight;
 };
 
 #endif // SHAPE_H

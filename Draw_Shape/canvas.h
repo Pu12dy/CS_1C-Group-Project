@@ -27,8 +27,7 @@ public:
     shape* get(int a);
     int numberOfShapes();
 
-    void addShape(shape* p);//Adds to the vector of shapes
-    void addShape(int shape);// Called by mainwindow
+    void addShape(shape* p);
     void addNewLine(int shapeID, int x1, int y1, int x2, int y2);
     void addNewRect(int shapeID, int x, int y, int l, int w);
     shape* getActiveShape();
@@ -47,7 +46,6 @@ public:
     void setTextPointSize(int shapeIndex, int textPointSize);
     void setTextFontFamily(int shapeIndex, std::string textFont);
     void setTextFontStyle(int shapeIndex, std::string textFStyle);
-    void assignShapeID();
 
 
 

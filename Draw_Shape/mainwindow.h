@@ -61,8 +61,6 @@ private:
 
     void arrowPressed(QKeyEvent* keyEvent);
 
-    void updateShapeSelectList();
-
     //bool enableAdminFunctions;
     //login* logWindow;
     //shape* activeShape;
