@@ -24,7 +24,7 @@ public:
     const QPoint getP2() const;
     double perimeter() const;// Calculates the perimeters
     double area() const;// Calculates the area
-    std::string getShapeType();
+    std::string getShapeType() const;
 
 private:
     QPoint p1;
