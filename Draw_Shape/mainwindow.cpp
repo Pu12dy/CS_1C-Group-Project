@@ -316,5 +316,5 @@ void MainWindow::on_moveDown_button_clicked()
 
 void MainWindow::on_createNewShape_Button_clicked()
 {
-   ui->widget->
+   //ui->widget->
 }

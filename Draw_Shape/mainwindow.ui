@@ -601,8 +601,8 @@
       <rect>
        <x>100</x>
        <y>30</y>
-       <width>111</width>
-       <height>70</height>
+       <width>156</width>
+       <height>75</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="createShape_layout">
@@ -616,23 +616,20 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QComboBox" name="createNewShape_Box"/>
-        </item>
-        <item>
-         <widget class="QPushButton" name="createShape_button">
-          <property name="text">
-           <string>OK</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QComboBox" name="createNewShape_Box"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="createNewShape_Button">
+            <property name="text">
+             <string>Ok</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
-      </item>
-      <item>
-       <widget class="QPushButton" name="createNewShape_Button">
-        <property name="text">
-         <string>Ok</string>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>
