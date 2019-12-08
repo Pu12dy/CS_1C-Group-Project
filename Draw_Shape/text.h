@@ -21,10 +21,17 @@ public:
     void setTextFontStyle(std::string textFStyle) override;
     void setTextFontWeight(std::string textFWeight) override;
     void moveShape(int offsetX, int offsetY);
-    void changeShapeSize(int newSize) override;
     double perimeter() const override;
     double area() const override;    
     std::string getShapeType();
+
+    virtual char getShapeCharIdentifier();
+    virtual std::string getXYCoords();
+    std::string getTextString();
+
+    text(int shapeID, int x, int y, const char *str);
+    text(int shapeID, int x, int y, const char *str, std::string textColor, std::string textAlignment, int textPointSize, std::string textFontFamily, std::string textFontStyle, std::string textFontWeight);
+
 private:
     QString *str;
     int x; //x position

@@ -51,11 +51,6 @@ void ellipse::moveShape(int offsetX, int offsetY)
     y1 += offsetY;
 }
 
-void ellipse::changeShapeSize(int newSize)
-{
-    a += newSize;
-    b += newSize;
-}
 double ellipse::perimeter() const
 {
     return ((2 * PI) * sqrt(pow(a,2) + pow(b,2) / 2));
@@ -69,4 +64,30 @@ double ellipse::area() const
 std::string ellipse::getShapeType()
 {
     return "Ellipse";
+}
+
+char ellipse::getShapeCharIdentifier()
+{
+    return 'E';
+}
+
+std::string ellipse::getXYCoords()
+{
+    std::string coords = std::to_string(this->x1);
+    coords.append(" ");
+    coords.append(std::to_string(this->y1));
+    coords.append(" ");
+    coords.append(std::to_string(this->a));
+    coords.append(" ");
+    coords.append(std::to_string(this->b));
+    coords.append("\n");
+
+    return coords;
+}
+
+ellipse::ellipse(int shapeId, int x1, int y1, int a, int b, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin, std::string brushColor, std::string brushStyle) :
+    ellipse(shapeId, x1, y1, a, b, penColor, penWidth, penStyle, penCap, penJoin)
+{
+    setBrushColor(brushColor);
+    setBrushStyle(brushStyle);
 }

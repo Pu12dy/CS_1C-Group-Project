@@ -24,6 +24,7 @@ void text::setTextString(std::string text)
 
 void text::setTextColor(std::string color)
 {
+
     if(color == "white")
         textColor = Qt::white;
     else if(color == "black")
@@ -102,11 +103,6 @@ void text::moveShape(int offsetX, int offsetY)
     y += offsetY;
 }
 
-void text::changeShapeSize(int newSize)
-{
-    this->textPointSize = this->textPointSize + newSize;
-}
-
 double text::perimeter() const
 {
     return 0;
@@ -119,4 +115,47 @@ double text::area() const
 std::string text::getShapeType()
 {
     return "Text";
+}
+
+char text::getShapeCharIdentifier()
+{
+    return 'T';
+}
+
+std::string text::getXYCoords()
+{
+    std::string coords = std::to_string(this->x);
+    coords.append(" ");
+    coords.append(std::to_string(this->y));
+
+    return coords;
+}
+
+std::string text::getTextString()
+{
+    std::string convert;
+
+    convert = str->QString::toStdString();
+
+    return convert;
+}
+
+text::text(int shapeID, int x, int y, const char *str)
+{
+    setShapeID(shapeID);
+    this->x = x;
+    this->y = y;
+    this->str = new QString(str);
+    setPenColor(Qt::green);
+}
+
+text::text(int shapeID, int x, int y, const char *str, std::string textColor, std::string textAlignment, int textPointSize, std::string textFontFamily, std::string textFontStyle, std::string textFontWeight) :
+    text(shapeID, x, y, str)
+{
+    setTextAlignment(textAlignment);
+    setTextPointSize(textPointSize);
+    setTextFontFamily(textFontFamily);
+    setTextFontStyle(textFontStyle);
+    setTextFontWeight(textFontWeight);
+    setTextColor(textColor);
 }

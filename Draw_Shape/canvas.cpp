@@ -8,6 +8,8 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     this->setAutoFillBackground(true);
     this->setPalette(pal);
 
+    vectShapeParsed = parseShapes("/home/matthew/Desktop/CS/GroupProject1/CS_1C-Group-Project-master/build-Draw_Shape-Unnamed_a6892e-Debug/shapes.txt");
+
 //    QPoint pp1(100,150);
 //    QPoint pp2(600,220);
 //    QPoint pp3(160,400);
@@ -19,10 +21,12 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 //    QP.push_back(pp3);
 //    QP.push_back(pp4);
 
+/*
     //in actual project, need to pass in vector filled with info from text
     shape* sh1 = new rectangle(1,10,10,50,100, "blue", 3, "dash dot line", "round cap", "round join");
     shape* sh2 = new line();
     shape* sh3 = new text("Memory is leaking...");
+
     shape* square = new rectangle(3,40,200, 100,100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
     shape* sh5 = new polyline();
     shape* sh6 = new polygon();
@@ -61,6 +65,10 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 
     //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
     //qDebug() << vectShapeParsed.size();
+
+    */
+
+    saveShapes("shapes_save.txt", vectShapeParsed);
 
 }
 

@@ -68,10 +68,6 @@ void polyline::moveShape(int offsetX, int offsetY)
         lines[i]->moveShape(offsetX, offsetY);
     }
 }
-void polyline::changeShapeSize(int newSize)
-{
-
-}
 
 double polyline::perimeter() const
 {
@@ -86,4 +82,14 @@ double polyline::area() const
 std::string polyline::getShapeType()
 {
     return "Polyline";
+}
+
+char polyline::getShapeCharIdentifier()
+{
+    return 'P';
+}
+
+std::string polyline::getXYCoords()
+{
+    return "tempPolyLine";
 }
