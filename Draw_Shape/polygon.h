@@ -14,6 +14,7 @@ public:
     virtual ~polygon();
     void draw(QPaintDevice *toDraw) override;
     void moveShape(int offsetX, int offsetY) override;
+    void changeShapeSize(int newSize) override;
     double perimeter() const override;
     double area() const override;
     std::string getShapeType();

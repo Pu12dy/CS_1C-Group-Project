@@ -68,6 +68,10 @@ void polyline::moveShape(int offsetX, int offsetY)
         lines[i]->moveShape(offsetX, offsetY);
     }
 }
+void polyline::changeShapeSize(int newSize)
+{
+
+}
 
 double polyline::perimeter() const
 {

@@ -102,6 +102,11 @@ void text::moveShape(int offsetX, int offsetY)
     y += offsetY;
 }
 
+void text::changeShapeSize(int newSize)
+{
+    this->textPointSize = this->textPointSize + newSize;
+}
+
 double text::perimeter() const
 {
     return 0;

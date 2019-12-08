@@ -21,6 +21,7 @@ public:
     void setTextFontStyle(std::string textFStyle) override;
     void setTextFontWeight(std::string textFWeight) override;
     void moveShape(int offsetX, int offsetY);
+    void changeShapeSize(int newSize) override;
     double perimeter() const override;
     double area() const override;    
     std::string getShapeType();

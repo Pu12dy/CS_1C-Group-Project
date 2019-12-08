@@ -32,7 +32,7 @@ public:
 //    void setBrush(const QBrush& brush);
 //    void setText(const text& text);
     virtual void moveShape(int offsetX, int offsetY) = 0;
-
+    virtual void changeShapeSize(int newSize) = 0;
     virtual void setPenColor(std::string color);
     virtual void setPenColor(const QColor& color);
 

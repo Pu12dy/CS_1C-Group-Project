@@ -51,6 +51,11 @@ void ellipse::moveShape(int offsetX, int offsetY)
     y1 += offsetY;
 }
 
+void ellipse::changeShapeSize(int newSize)
+{
+    a += newSize;
+    b += newSize;
+}
 double ellipse::perimeter() const
 {
     return ((2 * PI) * sqrt(pow(a,2) + pow(b,2) / 2));
