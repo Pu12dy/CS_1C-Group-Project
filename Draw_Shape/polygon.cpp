@@ -73,7 +73,7 @@ void polygon::draw(QPaintDevice *toDraw)
      }
  }
 
- int polygon::perimeter() const
+ double polygon::perimeter() const
  {
      int result = 0;
      for (int i = 0; i < lines.size(); ++i)
@@ -95,4 +95,8 @@ void polygon::draw(QPaintDevice *toDraw)
     // Divide this difference by 2 to get the area of the polygon
 
      return 0;
+ }
+ std::string polygon::getShapeType()
+ {
+     return "Polygon";
  }

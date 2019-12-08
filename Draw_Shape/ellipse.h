@@ -15,7 +15,6 @@ private:
     int y1; // point y for center of ellipse
     int a;  // semi major axis (width/radius)
     int b;  // semi minor axis (height/radius)
-    int shapeID;
 
 public:
     ellipse();  // Default Constructor
@@ -26,8 +25,9 @@ public:
 
     void draw(QPaintDevice *toDraw); // Draws the shape
     void moveShape(int offsetX, int offsetY); // Moves the center of the shape
-    int perimeter() const;// Calculates the perimeters
+    double perimeter() const;// Calculates the perimeters
     double area() const;	 // Calculates the area (PI * a * b = area)
+    std::string getShapeType();
 };
 
 #endif /* ellipse_h */

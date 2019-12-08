@@ -102,11 +102,16 @@ void text::moveShape(int offsetX, int offsetY)
     y += offsetY;
 }
 
-int text::perimeter() const
+double text::perimeter() const
 {
     return 0;
 }
 double text::area() const
 {
     return 0;
+}
+
+std::string text::getShapeType()
+{
+    return "Text";
 }

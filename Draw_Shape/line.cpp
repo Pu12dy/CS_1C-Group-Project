@@ -79,7 +79,7 @@ const QPoint line::getP2() const
     return p2;
 }
 
-int line::perimeter() const
+double line::perimeter() const
 {
     return 0;
 }
@@ -87,4 +87,8 @@ int line::perimeter() const
 double line::area() const
 {
     return 0;
+}
+std::string line::getShapeType()
+{
+    return "Line";
 }

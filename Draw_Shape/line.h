@@ -22,8 +22,9 @@ public:
     void moveShape(int offsetX, int offsetY);
     const QPoint getP1() const;
     const QPoint getP2() const;
-    int perimeter() const;// Calculates the perimeters
+    double perimeter() const;// Calculates the perimeters
     double area() const;// Calculates the area
+    std::string getShapeType();
 
 private:
     QPoint p1;

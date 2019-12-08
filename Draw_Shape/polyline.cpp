@@ -69,7 +69,7 @@ void polyline::moveShape(int offsetX, int offsetY)
     }
 }
 
-int polyline::perimeter() const
+double polyline::perimeter() const
 {
     return 0;
 }
@@ -77,4 +77,9 @@ int polyline::perimeter() const
 double polyline::area() const
 {
     return 0;
+}
+
+std::string polyline::getShapeType()
+{
+    return "Polyline";
 }

@@ -64,7 +64,7 @@ void rectangle::moveShape(int offsetX, int offsetY)
     y1 += offsetY;
 }
 
-int rectangle::perimeter() const
+double rectangle::perimeter() const
 {
     return (length * 2) + (width * 2);
 }
@@ -72,4 +72,9 @@ int rectangle::perimeter() const
 double rectangle::area() const
 {
     return length * width;
+}
+
+std::string rectangle::getShapeType()
+{
+    return "Rectangle";
 }
