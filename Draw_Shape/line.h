@@ -20,13 +20,12 @@ public:
 
     void draw(QPaintDevice *toDraw); // Draws the shape
     void moveShape(int offsetX, int offsetY);
+    void changeShapeSize(int newSize) override;
     const QPoint getP1() const;
     const QPoint getP2() const;
     double perimeter() const;// Calculates the perimeters
     double area() const;// Calculates the area
     std::string getShapeType();
-    char getShapeCharIdentifier();
-    std::string getXYCoords();
 
 private:
     QPoint p1;

@@ -25,14 +25,10 @@ public:
 
     void draw(QPaintDevice *toDraw); // Draws the shape
     void moveShape(int offsetX, int offsetY); // Moves the center of the shape
+    void changeShapeSize(int newSize) override;
     double perimeter() const;// Calculates the perimeters
     double area() const;	 // Calculates the area (PI * a * b = area)
     std::string getShapeType();
-
-    virtual char getShapeCharIdentifier();
-    virtual std::string getXYCoords();
-
-    ellipse(int shapeId, int x1, int y1, int a, int b, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin, std::string brushColor, std::string brushStyle);
 };
 
 #endif /* ellipse_h */

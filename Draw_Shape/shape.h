@@ -33,7 +33,7 @@ public:
 //    void setBrush(const QBrush& brush);
 //    void setText(const text& text);
     virtual void moveShape(int offsetX, int offsetY) = 0;
-
+    virtual void changeShapeSize(int newSize) = 0;
     virtual void setPenColor(std::string color);
     virtual void setPenColor(const QColor& color);
 
@@ -65,15 +65,6 @@ public:
 //    bool operator==(const shape &rightSide);
 //    bool operator<(const shape &rightSide);
 //    shape& operator=(const shape &rightSide);
-
-    virtual char getShapeCharIdentifier() = 0;
-    virtual std::string getXYCoords() = 0;
-    std::string getTextColorString();
-    std::string getTextAlignmentString();
-    int getTextPointSize();
-    std::string getTextFontFamilyString();
-    std::string getTextFontStyleString();
-    std::string getTextFontWeightString();
 
 private:
     int shapeID;

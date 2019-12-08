@@ -64,6 +64,12 @@ void rectangle::moveShape(int offsetX, int offsetY)
     y1 += offsetY;
 }
 
+void rectangle::changeShapeSize(int newSize)
+{
+    length += newSize;
+    width  += newSize;
+}
+
 double rectangle::perimeter() const
 {
     return (length * 2) + (width * 2);
@@ -77,23 +83,4 @@ double rectangle::area() const
 std::string rectangle::getShapeType()
 {
     return "Rectangle";
-}
-
-char rectangle::getShapeCharIdentifier()
-{
-    return 'R';
-}
-
-std::string rectangle::getXYCoords()
-{
-    std::string coords = std::to_string(this->x1);
-    coords.append(" ");
-    coords.append(std::to_string(this->y1));
-    coords.append(" ");
-    coords.append(std::to_string(this->length));
-    coords.append(" ");
-    coords.append(std::to_string(this->width));
-    coords.append("\n");
-
-    return coords;
 }
