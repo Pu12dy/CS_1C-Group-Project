@@ -1,5 +1,5 @@
 #include "circle.h"
-
+/*
 circle::circle() : circle(222,300,300,30)
 {
     //shapeId = 222;
@@ -49,4 +49,4 @@ void circle::draw(QPaintDevice *toDraw)
     getQPainter().setBrush(getQBrush());
     getQPainter().drawEllipse(QRect(x1,y1,r,r));
     getQPainter().end();
-}
+}*/

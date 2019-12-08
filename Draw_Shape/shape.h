@@ -23,7 +23,6 @@ public:
     virtual void draw(QPaintDevice *toDraw) = 0;
     virtual int perimeter() const = 0;// Calculates the perimeters
     virtual double area() const = 0;// Calculates the area
-//    int getShapeID();
     void setShapeID(int num);
     int getShapeID() const;
 //    void setPen(const QPen& pen);

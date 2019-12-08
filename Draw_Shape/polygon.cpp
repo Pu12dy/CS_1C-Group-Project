@@ -1,4 +1,5 @@
 #include "polygon.h"
+#include <QLineF>
 
 polygon::polygon()
 {

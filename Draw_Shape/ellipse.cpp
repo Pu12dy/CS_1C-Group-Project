@@ -1,4 +1,5 @@
 #include "ellipse.h"
+#include <math.h>
 
 ellipse::ellipse() : ellipse(131,100,100,200,30)
 {

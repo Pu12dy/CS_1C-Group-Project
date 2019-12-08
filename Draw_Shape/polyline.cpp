@@ -78,4 +78,3 @@ double polyline::area() const
 {
     return 0;
 }
-

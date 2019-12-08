@@ -33,10 +33,10 @@ QBrush& shape::getQBrush()
 
 
 
-void shape::draw(QPaintDevice *toDraw)
-{
+//void shape::draw(QPaintDevice *toDraw)
+//{
 
-}
+//}
 
 
 //int Shape::getShapeID() // Returns shapeID

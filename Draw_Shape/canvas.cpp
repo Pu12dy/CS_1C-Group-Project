@@ -8,6 +8,17 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     this->setAutoFillBackground(true);
     this->setPalette(pal);
 
+//    QPoint pp1(100,150);
+//    QPoint pp2(600,220);
+//    QPoint pp3(160,400);
+//    QPoint pp4(500,280);
+
+//    vector<QPoint> QP;
+//    QP.push_back(pp1);
+//    QP.push_back(pp2);
+//    QP.push_back(pp3);
+//    QP.push_back(pp4);
+
     //in actual project, need to pass in vector filled with info from text
     shape* sh1 = new rectangle(1,10,10,50,100, "blue", 3, "dash dot line", "round cap", "round join");
     shape* sh2 = new line();
@@ -49,7 +60,6 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
        qDebug() << "Area[" << i << "] = "<< vectShape[i]->area();
     }
 
-    //qDebug() << vectShapeParsed.size();
     //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
     //qDebug() << vectShapeParsed.size();
 
@@ -70,7 +80,6 @@ void canvas::addNewRect(int shapeID, int x, int y, int l, int w)
 {
     addShape(new rectangle(shapeID, x, y, l, w));
 }
-
 
 void canvas::paintEvent(QPaintEvent *event){
 

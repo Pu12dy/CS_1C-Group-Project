@@ -26,7 +26,6 @@ line::line(int shapeID, int x1, int y1, int x2, int y2)
     p1.setY(y1);
     p2.setX(x2);
     p2.setY(y2);
-
 }
 
 line::line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin) : line(shapeID, x1, y1, x2, y2)
