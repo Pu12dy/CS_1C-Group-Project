@@ -88,7 +88,26 @@ double line::area() const
 {
     return 0;
 }
-std::string line::getShapeType() const
+std::string line::getShapeType()
 {
     return "Line";
+}
+
+char line::getShapeCharIdentifier()
+{
+    return 'L';
+}
+
+std::string line::getXYCoords()
+{
+    std::string coords = std::to_string(this->p1.x());
+    coords.append(" ");
+    coords.append(std::to_string(this->p1.y()));
+    coords.append(" ");
+    coords.append(std::to_string(this->p2.x()));
+    coords.append(" ");
+    coords.append(std::to_string(this->p2.y()));
+    coords.append("\n");
+
+    return coords;
 }

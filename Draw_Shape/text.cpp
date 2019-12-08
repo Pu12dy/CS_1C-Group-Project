@@ -8,78 +8,154 @@ text::text() : text("default")
 text::text(const char *str){
     this->str = new QString(str);
     setPenColor(Qt::green);
-    x = 200;
-    y = 50;
 }
-
-text::text(int x, int y, int l, int w, std::string textString, std::string textColor, std::string textAlignment, int textPointSize, std::string textFontFamily,
-     std::string textFStyle, std::string textFWeight)
-{
-    this->str = new QString(textString.c_str());
-    this->x = x; //x position
-    this->y = y; //y position
-    rectText = QRect(x,y, l, w);
-    length = l;
-    width = w;
-    setTextColor(textColor);
-    //textAlignmentP = setTextAlign(textAlignment);
-    setTextPointSize(textPointSize);
-    setTextFontFamily(textFontFamily);
-    setTextFontStyle(textFStyle);
-    setTextFontWeight(textFWeight);
-    textAlignProp = textAlignment;
-
-}
-
-text::~text(){}
 
 void text::draw(QPaintDevice *toDraw){
     getQPainter().begin(toDraw);
     getQPainter().setPen(getQPen());
-    //getQPainter().drawText(x,y,*str);
-    const QRect rectDraw(x,y,length, width);
-    const QString strDraw(*str);
-    getQPainter().setFont(getQFont());
-    //getQPainter().drawText(rectDraw, Qt::AlignCenter, strDraw);
-    getQPainter().drawText(rectDraw, setTextAlign(textAlignProp), strDraw);
+    getQPainter().drawText(200,50,*str);
     getQPainter().end();
 }
 
 void text::setTextString(std::string text)
 {
-    delete str;
-    str = new QString(text.c_str());
+    textString = text;
 }
 
+void text::setTextColor(std::string color)
+{
 
+    if(color == "white")
+        textColor = Qt::white;
+    else if(color == "black")
+        textColor = Qt::black;
+    else if(color == "red")
+        textColor = Qt::red;
+    else if(color == "green")
+        textColor = Qt::green;
+    else if(color == "blue")
+        textColor = Qt::blue;
+    else if(color == "magenta")
+        textColor = Qt::magenta;
+    else if(color == "yellow")
+        textColor = Qt::yellow;
+    else if(color == "gray")
+        textColor = Qt::gray;
+    else
+        textColor = Qt::black;
+}
+
+void text::setTextAlignment(std::string textAlign)
+{
+    if(textAlign == "AlignLeft")
+        textAlignment = Qt::AlignLeft;
+    else if(textAlign == "AlignRight")
+        textAlignment = Qt::AlignRight;
+    else if(textAlign == "AlignTop")
+        textAlignment = Qt::AlignTop;
+    else if(textAlign == "AlignBottom")
+        textAlignment = Qt::AlignBottom;
+    else if(textAlign == "AlignCenter")
+        textAlignment = Qt::AlignCenter;
+    else
+        textAlignment = Qt::AlignCenter;
+}
+
+void text::setTextPointSize(int textPointSize)
+{
+    this->textPointSize = textPointSize;
+}
+
+void text::setTextFontFamily(std::string textFont)
+{
+    textFontFamily = textFont;
+}
+
+void text::setTextFontStyle(std::string textFStyle)
+{
+    if(textFStyle == "StyleNormal")
+        textFontStyle = QFont::StyleNormal;
+    else if(textFStyle == "StyleItalic")
+        textFontStyle = QFont::StyleItalic;
+    else if(textFStyle == "StyleOblique")
+        textFontStyle = QFont::StyleOblique;
+    else
+        textFontStyle = QFont::StyleNormal;
+}
+
+void text::setTextFontWeight(std::string textFWeight)
+{
+    if(textFWeight == "Thin")
+        textFontWeight = QFont::Thin;
+    else if(textFWeight == "Light")
+        textFontWeight = QFont::Light;
+    else if(textFWeight == "Normal")
+        textFontWeight = QFont::Normal;
+    else if(textFWeight == "Bold")
+        textFontWeight = QFont::Bold;
+    else
+        textFontWeight = QFont::Normal;
+}
 
 void text::moveShape(int offsetX, int offsetY)
 {
     x += offsetX;
     y += offsetY;
-
-    //Ensuring shape does not move out of screen
-    if (x < 0)
-        x = 0;
-    else if (x > 950)
-        x = 950;
-    if (y < 0)
-        y = 0;
-    else if (y > 450)
-        y = 450;
-
-}
-
-std::string text::getShapeType() const
-{
-    return "Text";
 }
 
 double text::perimeter() const
 {
-    return 0.0;
+    return 0;
 }
 double text::area() const
 {
-    return 0.0;
+    return 0;
+}
+
+std::string text::getShapeType()
+{
+    return "Text";
+}
+
+char text::getShapeCharIdentifier()
+{
+    return 'T';
+}
+
+std::string text::getXYCoords()
+{
+    std::string coords = std::to_string(this->x);
+    coords.append(" ");
+    coords.append(std::to_string(this->y));
+
+    return coords;
+}
+
+std::string text::getTextString()
+{
+    std::string convert;
+
+    convert = str->QString::toStdString();
+
+    return convert;
+}
+
+text::text(int shapeID, int x, int y, const char *str)
+{
+    setShapeID(shapeID);
+    this->x = x;
+    this->y = y;
+    this->str = new QString(str);
+    setPenColor(Qt::green);
+}
+
+text::text(int shapeID, int x, int y, const char *str, std::string textColor, std::string textAlignment, int textPointSize, std::string textFontFamily, std::string textFontStyle, std::string textFontWeight) :
+    text(shapeID, x, y, str)
+{
+    setTextAlignment(textAlignment);
+    setTextPointSize(textPointSize);
+    setTextFontFamily(textFontFamily);
+    setTextFontStyle(textFontStyle);
+    setTextFontWeight(textFontWeight);
+    setTextColor(textColor);
 }

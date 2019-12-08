@@ -79,7 +79,17 @@ double polyline::area() const
     return 0;
 }
 
-std::string polyline::getShapeType() const
+std::string polyline::getShapeType()
 {
     return "Polyline";
+}
+
+char polyline::getShapeCharIdentifier()
+{
+    return 'P';
+}
+
+std::string polyline::getXYCoords()
+{
+    return "tempPolyLine";
 }

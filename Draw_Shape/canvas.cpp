@@ -8,6 +8,8 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     this->setAutoFillBackground(true);
     this->setPalette(pal);
 
+    vectShapeParsed = parseShapes("/home/matthew/Desktop/CS/GroupProject1/CS_1C-Group-Project-master/build-Draw_Shape-Unnamed_a6892e-Debug/shapes.txt");
+
 //    QPoint pp1(100,150);
 //    QPoint pp2(600,220);
 //    QPoint pp3(160,400);
@@ -19,13 +21,15 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 //    QP.push_back(pp3);
 //    QP.push_back(pp4);
 
+/*
     //in actual project, need to pass in vector filled with info from text
-    shape* sh1 = new rectangle(1, 10, 10, 50, 100, "blue", 3, "dash dot line", "round cap", "round join");
+    shape* sh1 = new rectangle(1,10,10,50,100, "blue", 3, "dash dot line", "round cap", "round join");
     shape* sh2 = new line();
-    shape* sh3 = new text(120,240,400,100, "HellO", "red", "AlignRight", 50, "Courier", "StyleItalic", "Thin");
-    shape* square = new rectangle(3, 40, 200, 100, 100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
-    shape* sh5 = new polygon();
-    shape* sh6 = new polyline();
+    shape* sh3 = new text("Memory is leaking...");
+
+    shape* square = new rectangle(3,40,200, 100,100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
+    shape* sh5 = new polyline();
+    shape* sh6 = new polygon();
     shape* sh7 = new ellipse();
     shape* circle = new ellipse(314, 200, 200, 60, 60);
 
@@ -38,13 +42,11 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     vectShape.push_back(sh7);
     vectShape.push_back(circle);
 
-    assignShapeID();
-
     // TESTING sort
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
     for(int i = 0; i < vectShape.size(); i++)
     {
-       qDebug() << "ShapeID[" << i << "] = " +  QString::fromStdString(vectShape[i]->getID());
+       qDebug() << "ShapeID[" << i << "] = " +  QString::fromStdString(vectShape[i]->getShapeID());
     }
 
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_perimeter());
@@ -64,17 +66,17 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
     //qDebug() << vectShapeParsed.size();
 
+    */
+
+    saveShapes("shapes_save.txt", vectShapeParsed);
+
 }
 
-void canvas::assignShapeID()
+void canvas::addShape(shape *p)
 {
-    for(int i = 0; i < vectShape.size(); i++)
-    {
-       vectShape[i]->setShapeID(100 + i);
-    }
+    //use whichever vector we decide
+    vectShapeParsed.push_back(p);
 }
-
-
 
 void canvas::addNewLine(int shapeID, int x1, int y1, int x2, int y2)
 {
@@ -96,6 +98,7 @@ void canvas::paintEvent(QPaintEvent *event){
         vectShapeParsed[i]->draw(this);
     }
 //    vectShapeParsed[0]->draw(this);
+
 
 }
 
@@ -171,7 +174,7 @@ void canvas::setTextColor(int shapeIndex, std::string textColor)
 
 void canvas::setTextAlignment(int shapeIndex, std::string textAlign)
 {
-    vectShape[shapeIndex]->setTextAlign(textAlign);//call the shape's native
+    vectShape[shapeIndex]->setTextAlignment(textAlign);//call the shape's native
     this->update();
 }
 
@@ -196,41 +199,5 @@ void canvas::setTextFontStyle(int shapeIndex, std::string textFStyle)
 void canvas::setTextFontWeight(int shapeIndex, std::string textFWeight)
 {
     vectShape[shapeIndex]->setTextFontWeight(textFWeight);//call the shape's native
-    this->update();
-}
-
-void canvas::addShape(int shape)
-{
-    switch (shape)
-    {
-    case 1:
-        addShape(new rectangle());
-        break;
-    case 2:
-        addShape(new line());
-        break;
-    case 3:
-        addShape(new ellipse());
-        break;
-    case 4:
-        addShape(new polyline());
-        break;
-    case 5:
-        addShape(new polygon());
-        break;
-    case 6:
-        addShape(new text());
-        break;
-    default:
-        break;
-    }
-
-}
-
-void canvas::addShape(shape *p)
-{
-    //use whichever vector we decide
-    vectShape.push_back(p);
-    assignShapeID();
     this->update();
 }

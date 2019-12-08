@@ -6,11 +6,11 @@ ellipse::ellipse() : ellipse(131,100,100,200,30)
 
 }
 
-ellipse::ellipse(int shapeID,int x, int y, int a, int b)
+ellipse::ellipse(int shapeID,int x1, int y1, int a, int b)
 {
     setShapeID(shapeID);
-    this->x = x;
-    this->y = y;
+    this->x1 = x1;
+    this->y1 = y1;
     this->a = a;
     this->b = b;
 }
@@ -41,25 +41,14 @@ void ellipse::draw(QPaintDevice *toDraw)
     getQPainter().begin(toDraw);
     getQPainter().setPen(getQPen());
     getQPainter().setBrush(getQBrush());
-    getQPainter().drawEllipse(QRect(x,y,a,b));
+    getQPainter().drawEllipse(QRect(x1,y1,a,b));
     getQPainter().end();
 }
 
 void ellipse::moveShape(int offsetX, int offsetY)
 {
-    x += offsetX;
-    y += offsetY;
-
-    //Ensuring shape does not move out of screen
-    if (x < 0)
-        x = 0;
-    else if (x > 950)
-        x = 950;
-    if (y < 0)
-        y = 0;
-    else if (y > 450)
-        y = 450;
-
+    x1 += offsetX;
+    y1 += offsetY;
 }
 
 double ellipse::perimeter() const
@@ -72,7 +61,33 @@ double ellipse::area() const
     return PI * a * b;
 }
 
-std::string ellipse::getShapeType() const
+std::string ellipse::getShapeType()
 {
     return "Ellipse";
+}
+
+char ellipse::getShapeCharIdentifier()
+{
+    return 'E';
+}
+
+std::string ellipse::getXYCoords()
+{
+    std::string coords = std::to_string(this->x1);
+    coords.append(" ");
+    coords.append(std::to_string(this->y1));
+    coords.append(" ");
+    coords.append(std::to_string(this->a));
+    coords.append(" ");
+    coords.append(std::to_string(this->b));
+    coords.append("\n");
+
+    return coords;
+}
+
+ellipse::ellipse(int shapeId, int x1, int y1, int a, int b, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin, std::string brushColor, std::string brushStyle) :
+    ellipse(shapeId, x1, y1, a, b, penColor, penWidth, penStyle, penCap, penJoin)
+{
+    setBrushColor(brushColor);
+    setBrushStyle(brushStyle);
 }
