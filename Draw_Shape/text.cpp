@@ -8,19 +8,25 @@ text::text() : text("default")
 text::text(const char *str){
     this->str = new QString(str);
     setPenColor(Qt::green);
+    x = 200;
+    y = 50;
 }
 
-void text::draw(QPaintDevice *toDraw){
-    getQPainter().begin(toDraw);
-    getQPainter().setPen(getQPen());
-    getQPainter().drawText(200,50,*str);
-    getQPainter().end();
-}
-
-void text::setTextString(std::string text)
+text::text(int x, int y, int l, int w, std::string textString, std::string textColor, std::string textAlignment, int textPointSize, std::string textFontFamily,
+     std::string textFStyle, std::string textFWeight)
 {
-    textString = text;
-}
+    this->str = new QString(textString.c_str());
+    this->x = x; //x position
+    this->y = y; //y position
+    length = l;
+    width = w;
+    setTextColor(textColor);
+    //textAlignmentP = setTextAlign(textAlignment);
+    setTextPointSize(textPointSize);
+    setTextFontFamily(textFontFamily);
+    setTextFontStyle(textFStyle);
+    setTextFontWeight(textFWeight);
+    textAlignProp = textAlignment;
 
 void text::setTextColor(std::string color)
 {
@@ -45,57 +51,27 @@ void text::setTextColor(std::string color)
         textColor = Qt::black;
 }
 
-void text::setTextAlignment(std::string textAlign)
-{
-    if(textAlign == "AlignLeft")
-        textAlignment = Qt::AlignLeft;
-    else if(textAlign == "AlignRight")
-        textAlignment = Qt::AlignRight;
-    else if(textAlign == "AlignTop")
-        textAlignment = Qt::AlignTop;
-    else if(textAlign == "AlignBottom")
-        textAlignment = Qt::AlignBottom;
-    else if(textAlign == "AlignCenter")
-        textAlignment = Qt::AlignCenter;
-    else
-        textAlignment = Qt::AlignCenter;
+text::~text(){}
+
+void text::draw(QPaintDevice *toDraw){
+    getQPainter().begin(toDraw);
+    getQPainter().setPen(getQPen());
+    //getQPainter().drawText(x,y,*str);
+    const QRect rectDraw(x,y,length, width);
+    const QString strDraw(*str);
+    getQPainter().setFont(getQFont());
+    //getQPainter().drawText(rectDraw, Qt::AlignCenter, strDraw);
+    getQPainter().drawText(rectDraw, setTextAlign(textAlignProp), strDraw);
+    getQPainter().end();
 }
 
-void text::setTextPointSize(int textPointSize)
+void text::setTextString(std::string text)
 {
-    this->textPointSize = textPointSize;
+    delete str;
+    str = new QString(text.c_str());
 }
 
-void text::setTextFontFamily(std::string textFont)
-{
-    textFontFamily = textFont;
-}
 
-void text::setTextFontStyle(std::string textFStyle)
-{
-    if(textFStyle == "StyleNormal")
-        textFontStyle = QFont::StyleNormal;
-    else if(textFStyle == "StyleItalic")
-        textFontStyle = QFont::StyleItalic;
-    else if(textFStyle == "StyleOblique")
-        textFontStyle = QFont::StyleOblique;
-    else
-        textFontStyle = QFont::StyleNormal;
-}
-
-void text::setTextFontWeight(std::string textFWeight)
-{
-    if(textFWeight == "Thin")
-        textFontWeight = QFont::Thin;
-    else if(textFWeight == "Light")
-        textFontWeight = QFont::Light;
-    else if(textFWeight == "Normal")
-        textFontWeight = QFont::Normal;
-    else if(textFWeight == "Bold")
-        textFontWeight = QFont::Bold;
-    else
-        textFontWeight = QFont::Normal;
-}
 
 void text::moveShape(int offsetX, int offsetY)
 {
