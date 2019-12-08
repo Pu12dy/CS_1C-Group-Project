@@ -1,10 +1,12 @@
 #include "login.h"
 #include "ui_login.h"
+#include <QtDebug>
 
 login::login(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::login)
 {
+
     ui->setupUi(this);
     this->setWindowTitle("Login");
     users = getUsers();
@@ -17,7 +19,7 @@ login::login(QWidget *parent) :
 
 login::~login()
 {
-    saveUsersToFile();
+    // saveUsersToFile();
     for (int i = 0; i < users.size(); i++)
     {
         delete users[i];
@@ -89,12 +91,13 @@ Vector<User*> login::getUsers()
     {
         return fromFile;
     }
+
     QTextStream in(&file);
     QString username;
     QString password;
     QString adminText;
     bool isAdmin;
-    while (!file.atEnd())
+    while (!in.atEnd())
     {
         in >> username;
         in >> password;
@@ -107,10 +110,10 @@ Vector<User*> login::getUsers()
         {
             isAdmin = false;
         }
+        qDebug() << "Added user from file to vector.";
         fromFile.push_back(new User(username, password, isAdmin));
     }
     file.close();
-
     return fromFile;
 }
 
@@ -128,8 +131,9 @@ void login::on_pushButton_NewAccount_clicked()
         users.push_back(new User(username, password, true));
     }
 
+    saveUsersToFile();
     ui->lineEdit_Username->clear();
     ui->lineEdit_Password->clear();
-    saveUsersToFile();
+
 
 }
