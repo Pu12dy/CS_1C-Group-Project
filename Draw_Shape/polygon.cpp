@@ -74,6 +74,11 @@ void polygon::draw(QPaintDevice *toDraw)
      }
  }
 
+ void polygon::changeShapeSize(int newSize)
+ {
+
+ }
+
  double polygon::perimeter() const
  {
      int result = 0;
