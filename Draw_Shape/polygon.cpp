@@ -71,6 +71,7 @@ void polygon::draw(QPaintDevice *toDraw)
      {
          lines[i]->moveShape(offsetX, offsetY);
      }
+
  }
 
  double polygon::perimeter() const
@@ -96,7 +97,7 @@ void polygon::draw(QPaintDevice *toDraw)
 
      return 0;
  }
- std::string polygon::getShapeType()
+ std::string polygon::getShapeType() const
  {
      return "Polygon";
  }
