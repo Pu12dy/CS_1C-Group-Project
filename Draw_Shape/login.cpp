@@ -19,7 +19,7 @@ login::login(QWidget *parent) :
 
 login::~login()
 {
-    // saveUsersToFile();
+    saveUsersToFile();
     for (int i = 0; i < users.size(); i++)
     {
         delete users[i];
