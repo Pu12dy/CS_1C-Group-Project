@@ -711,6 +711,45 @@
       </property>
      </widget>
     </widget>
+    <widget class="QGroupBox" name="shapeSize_groupbox">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>20</y>
+       <width>71</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Shape Size</string>
+     </property>
+     <widget class="QPushButton" name="decreaseSize">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>-</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="increaseSize">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>21</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>+</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
