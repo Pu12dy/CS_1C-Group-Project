@@ -60,6 +60,7 @@ private:
     Ui::MainWindow *ui;
 
     void arrowPressed(QKeyEvent* keyEvent);
+    void updateShapeSelectList();
 
     //bool enableAdminFunctions;
     //login* logWindow;
