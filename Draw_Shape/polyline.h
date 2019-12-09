@@ -11,6 +11,8 @@ class polyline : public shape
 public:
     polyline();
     polyline(int shapeID, Vector<QPoint> p1);
+
+    // Matt use this constructor in parser
     polyline(int shapeID, Vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
     virtual ~polyline() override;
     void draw(QPaintDevice *toDraw) override;

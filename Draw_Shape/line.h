@@ -14,6 +14,8 @@ public:
          std::string bColor, std::string bStyle);
     line(int shapeID, int x1, int y1, int x2, int y2);
     line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
+
+    // Matt use this constructor in parser
     line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin,
          std::string bColor, std::string bStyle);
     virtual ~line() override;

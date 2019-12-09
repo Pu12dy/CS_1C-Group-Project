@@ -10,6 +10,8 @@ class polygon : public shape
 public:
     polygon();
     polygon(int shapeID, Vector<QPoint> p1);
+
+    // Matt use this constructor in parser
     polygon(int shapeID, Vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
     virtual ~polygon() override;
     void draw(QPaintDevice *toDraw) override;
