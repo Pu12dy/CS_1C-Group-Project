@@ -51,7 +51,9 @@ public:
     void changeShapeSize(int shapeIndex, int newSize);
     void removeShape(int index);
     void makeSquareOrCircle(int index);
-
+    void moveNode(int shapeIndex, int node, int offSetX, int offSetY);
+    void addNode(int shapeIndex, int node);
+    void removeNode(int shapeIndex, int node);
 
 
 private:

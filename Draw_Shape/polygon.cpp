@@ -151,3 +151,13 @@ int polygon::numberOfNodes() const
 {
     return points.size();
 }
+
+void polygon::addNode(int index)
+{
+    QPoint newNode(points[index].x() + 10, points[index].y() + 10);
+    points.insert(&points[index], newNode);
+}
+void polygon::removeNode(int index)
+{
+    points.erase(&points[index]);
+}

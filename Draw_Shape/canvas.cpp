@@ -260,3 +260,14 @@ void canvas::moveNode(int shapeIndex, int node, int offSetX, int offSetY)
     vectShape[shapeIndex]->moveNode(node, offSetX, offSetY);
     this->update();
 }
+
+void canvas::addNode(int shapeIndex, int node)
+{
+    vectShape[shapeIndex]->addNode(node);
+    this->update();
+}
+void canvas::removeNode(int shapeIndex, int node)
+{
+    vectShape[shapeIndex]->removeNode(node);
+    this->update();
+}

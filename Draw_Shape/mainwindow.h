@@ -74,12 +74,18 @@ private slots:
 
     void on_moveNode_right_clicked();
 
+    void on_addNode_clicked();
+
+    void on_removeNode_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     void arrowPressed(QKeyEvent* keyEvent);
 
     void updateShapeSelectList();
+
+    void updateNodeList(int index);
 
     //bool enableAdminFunctions;
     //login* logWindow;

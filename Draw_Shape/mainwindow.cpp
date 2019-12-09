@@ -39,9 +39,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Populationg Pen Join Style
     ui->penJoinStyle_list->addItem("Select");
-    ui->penJoinStyle_list->addItem("MiterJoin");
-    ui->penJoinStyle_list->addItem("BevelJoin");
-    ui->penJoinStyle_list->addItem("RoundJoin");
+    ui->penJoinStyle_list->addItem("Miter Join");
+    ui->penJoinStyle_list->addItem("Bevel Join");
+    ui->penJoinStyle_list->addItem("Round Join");
 
     //Populating the brush color drop down box
     ui->brushColor_list->addItem("Select");
@@ -351,11 +351,9 @@ void MainWindow::on_selectShape_activated(int index)
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
         ui->adjPolys_box->setEnabled(true);
+        ui->shapeSize_groupbox->setEnabled(false);
         ui->nodeSelect_list->clear();
-        for (int i = 0; i < ui->widget->get(index - 1)->numberOfNodes(); i++)
-        {
-            ui->nodeSelect_list->addItem(QString::fromStdString(std::to_string(i+1)));
-        }
+        updateNodeList(index - 1);
     }
     else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polygon")
     {
@@ -364,11 +362,10 @@ void MainWindow::on_selectShape_activated(int index)
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
         ui->adjPolys_box->setEnabled(true);
+        ui->shapeSize_groupbox->setEnabled(false);
         ui->nodeSelect_list->clear();
-        for (int i = 0; i < ui->widget->get(index - 1)->numberOfNodes(); i++)
-        {
-            ui->nodeSelect_list->addItem(QString::fromStdString(std::to_string(i+1)));
-        }
+        updateNodeList(index - 1);
+
     }
     else
     {
@@ -433,4 +430,25 @@ void MainWindow::on_moveNode_down_clicked()
 void MainWindow::on_moveNode_right_clicked()
 {
     ui->widget->moveNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex(), 10, 0);
+}
+
+void MainWindow::on_addNode_clicked()
+{
+    ui->widget->addNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex());
+    updateNodeList(ui->selectShape->currentIndex() - 1);
+}
+
+void MainWindow::on_removeNode_clicked()
+{
+    ui->widget->removeNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex());
+    updateNodeList(ui->selectShape->currentIndex() - 1);
+}
+
+void MainWindow::updateNodeList(int index)
+{
+    ui->nodeSelect_list->clear();
+    for (int i = 0; i < ui->widget->get(index)->numberOfNodes(); i++)
+    {
+        ui->nodeSelect_list->addItem(QString::fromStdString(std::to_string(i+1)));
+    }
 }

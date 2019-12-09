@@ -200,11 +200,6 @@ void shape::setBrushStyle(Qt::BrushStyle style){
     brush.setStyle(style);
 }
 
-void shape::setFontProperties(std::string textFont, std::string textFStyle, std::string textFWeight)
-{
-
-}
-
 void shape::setTextString(std::string text){}
 void shape::setTextColor(std::string textColor) {
     setPenColor(textColor);
@@ -279,4 +274,13 @@ void shape::moveNode(int index, int offsetX, int offSetY)
 int shape::numberOfNodes() const
 {
     return 0;
+}
+
+void shape::addNode(int index)
+{
+
+}
+void shape::removeNode(int index)
+{
+
 }

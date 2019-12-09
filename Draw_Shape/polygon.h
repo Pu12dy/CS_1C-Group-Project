@@ -20,6 +20,8 @@ public:
     std::string getShapeType() const override;
     void moveNode(int index, int offsetX, int offSetY) override;
     int numberOfNodes() const override;
+    void addNode(int index) override;
+    void removeNode(int index) override;
 
 private:
     vector<line*> lines;

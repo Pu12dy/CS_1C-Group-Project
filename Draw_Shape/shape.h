@@ -52,8 +52,6 @@ public:
 
     virtual void setBrushStyle(std::string style);
     virtual void setBrushStyle(Qt::BrushStyle style);
-
-    virtual void setFontProperties(std::string textFont, std::string textFStyle, std::string textFWeight);
     virtual void setTextString(std::string text);
     virtual void setTextColor(std::string textColor);
     Qt::AlignmentFlag setTextAlign(std::string textAlign);
@@ -65,6 +63,8 @@ public:
     virtual void makeSquareOrCircle();
     virtual void moveNode(int index, int offsetX, int offSetY);
     virtual int numberOfNodes() const;
+    virtual void addNode(int index);
+    virtual void removeNode(int index);
 
 
 private:

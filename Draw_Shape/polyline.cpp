@@ -52,9 +52,10 @@ void polyline::draw(QPaintDevice *toDraw)
 
 void polyline::moveShape(int offsetX, int offsetY)
 {
-    for (int i = 0; i < lines.size(); ++i)
+    for(int i = 0; i < points.size(); ++i)
     {
-        lines[i]->moveShape(offsetX, offsetY);
+       points[i].setX(points[i].x()+offsetX);
+       points[i].setY(points[i].y()+offsetY);
     }
 }
 
@@ -102,4 +103,14 @@ void polyline::moveNode(int index, int offsetX, int offsetY)
 int polyline::numberOfNodes() const
 {
     return points.size();
+}
+
+void polyline::addNode(int index)
+{
+    QPoint newNode(points[index].x() + 10, points[index].y() + 10);
+    points.insert(&points[index], newNode);
+}
+void polyline::removeNode(int index)
+{
+    points.erase(&points[index]);
 }
