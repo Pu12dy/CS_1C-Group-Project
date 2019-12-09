@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <string>
+#include "vector.h"
 #include <QDebug>
 #include <QKeyEvent>
 
@@ -66,6 +67,16 @@ public:
     virtual void addNode(int index);
     virtual void removeNode(int index);
 
+    virtual std::string getTextString() const;
+    std::string getTextColorString() const;
+    virtual std::string getTextAlignmentString() const;
+    std::string getTextPointSize() const;
+    std::string getTextFontFamilyString() const;
+    std::string getTextFontStyleString() const;
+    std::string getTextFontWeightString() const;
+    virtual std::string getXYCoords() const;
+    virtual std::string getLengthWidth() const;
+    virtual std::string getPoints() const;
 
 private:
     int shapeID;
@@ -73,6 +84,11 @@ private:
     QPen pen;
     QBrush brush;
     QFont tFont;
+
+// For saving shapes purposes
+    std::string textColor;
+    std::string textAlignment;
+    std::string textFontStyle;
 
 protected:
 

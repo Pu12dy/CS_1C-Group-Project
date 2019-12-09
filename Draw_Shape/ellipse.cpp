@@ -97,3 +97,13 @@ void ellipse::makeSquareOrCircle()
 {
     b = a;
 }
+
+std::string ellipse::getXYCoords() const
+{
+    return std::to_string(x) + " " + std::to_string(y);
+}
+
+std::string ellipse::getLengthWidth() const
+{
+    return std::to_string(a) + " " + std::to_string(b);
+}

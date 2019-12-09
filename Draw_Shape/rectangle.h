@@ -21,6 +21,8 @@ public:
     double area() const override;
     std::string getShapeType() const override;
     void makeSquareOrCircle() override;
+    std::string getXYCoords() const override;
+    std::string getLengthWidth() const override;
 
 
 private:

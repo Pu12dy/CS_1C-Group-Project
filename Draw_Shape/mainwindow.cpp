@@ -115,6 +115,7 @@ MainWindow::MainWindow(QWidget *parent) :
     on_selectShape_activated(0);
 
     //ui->adminFuncs->setVisible(false);
+    //ui->additionalSettings_groupbox->setVisible(false);
 
 
 }
@@ -159,19 +160,21 @@ void MainWindow::userIsAdmin()
 
     QMessageBox::information(this, "Login", "Username and Password is Correct");
     ui->adminFuncs->setVisible(true);
+    ui->additionalSettings_groupbox->setVisible(true);
 
 }
 
 void MainWindow::on_actionLogout_triggered()
 {
     ui->adminFuncs->setVisible(false);
+    ui->additionalSettings_groupbox->setVisible(false);
 }
 
 void MainWindow::on_moveShape_clicked()
 {
     int offSetX = ui->offSetX_lineEdit->text().toInt();
     int offSetY = ui->offSetY_lineEdit->text().toInt();
-    ui->widget->moveShape(ui->selectShape->currentIndex(), offSetX, offSetY);
+    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, offSetX, offSetY);
     ui->offSetX_lineEdit->clear();
     ui->offSetY_lineEdit->clear();
 }
@@ -342,7 +345,9 @@ void MainWindow::on_selectShape_activated(int index)
         ui->brushSettings->setEnabled(false);
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
-        ui->adjPolys_box->setEnabled(false);
+        ui->adjPolys_box->setEnabled(true);
+        ui->addNode_box->setEnabled(false);
+        updateNodeList(index - 1);
     }
     else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polyline")
     {
@@ -440,8 +445,12 @@ void MainWindow::on_addNode_clicked()
 
 void MainWindow::on_removeNode_clicked()
 {
-    ui->widget->removeNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex());
-    updateNodeList(ui->selectShape->currentIndex() - 1);
+    if (ui->widget->get(ui->selectShape->currentIndex() - 1)->numberOfNodes() > 2)
+    {
+        ui->widget->removeNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex());
+        updateNodeList(ui->selectShape->currentIndex() - 1);
+    }
+
 }
 
 void MainWindow::updateNodeList(int index)

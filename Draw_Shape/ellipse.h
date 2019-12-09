@@ -34,6 +34,8 @@ public:
     double area() const override;	 // Calculates the area (PI * a * b = area)
     std::string getShapeType() const override;
     void makeSquareOrCircle() override;
+    std::string getXYCoords() const override;
+    std::string getLengthWidth() const override;
 };
 
 #endif /* ellipse_h */

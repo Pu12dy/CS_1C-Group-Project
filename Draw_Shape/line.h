@@ -9,15 +9,8 @@ class line : public shape
 {
 public:
     line();
-    line(int shapeID, QPoint p1, QPoint p2);
-    line(int shapeID, QPoint p1, QPoint p2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin,
-         std::string bColor, std::string bStyle);
+    line(int shapeID, Vector<QPoint*> points, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
     line(int shapeID, int x1, int y1, int x2, int y2);
-    line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
-
-    // Matt use this constructor in parser
-    line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin,
-         std::string bColor, std::string bStyle);
     virtual ~line() override;
 
     void draw(QPaintDevice *toDraw) override; // Draws the shape
@@ -28,10 +21,12 @@ public:
     double perimeter() const override;// Calculates the perimeters
     double area() const override;// Calculates the area
     std::string getShapeType() const override;
+    std::string getPoints() const override;
+    int numberOfNodes() const override;
+    void moveNode(int index, int offsetX, int offsetY) override;
 
 private:
-    QPoint p1;
-    QPoint p2;
+    Vector<QPoint*> points;
 
 };
 

@@ -8,35 +8,8 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     this->setAutoFillBackground(true);
     this->setPalette(pal);
 
-//    QPoint pp1(100,150);
-//    QPoint pp2(600,220);
-//    QPoint pp3(160,400);
-//    QPoint pp4(500,280);
+    vectShape = parseShapes("shapes.txt");
 
-//    vector<QPoint> QP;
-//    QP.push_back(pp1);
-//    QP.push_back(pp2);
-//    QP.push_back(pp3);
-//    QP.push_back(pp4);
-
-    //in actual project, need to pass in vector filled with info from text
-    shape* sh1 = new rectangle(1, 10, 10, 50, 100, "blue", 3, "dash dot line", "round cap", "round join");
-    shape* sh2 = new line();
-    shape* sh3 = new text(120,240,400,100, "HellO", "red", "alignright", 50, "courier", "styleitalic", "thin");
-    shape* square = new rectangle(3, 40, 200, 100, 100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
-    shape* sh5 = new polygon();
-    shape* sh6 = new polyline();
-    shape* sh7 = new ellipse(2, 800, 300, 100, 50, "blue", 3, "dash dot line", "round cap", "round join", "blue","solid pattern");
-    shape* circle = new ellipse(314, 200, 200, 60, 60);
-
-    vectShape.push_back(sh1);
-    vectShape.push_back(sh2);
-    vectShape.push_back(sh3);
-    vectShape.push_back(square);
-    vectShape.push_back(sh5);
-    vectShape.push_back(sh6);
-    vectShape.push_back(sh7);
-    vectShape.push_back(circle);
 
     assignShapeID();
 
@@ -63,10 +36,14 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
        qDebug() << "Area[" << i << "] = "<< vectShape[i]->area();
     }*/
 
+}
 
-    //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
-    //qDebug() << vectShapeParsed.size();
-
+canvas::~canvas()
+{
+    saveShapes("shapes.txt", vectShape);//save shapes to file
+    for (int i = 0; i < vectShape.size(); i++) {
+        delete vectShape[i];
+    }
 }
 
 void canvas::assignShapeID()
@@ -94,12 +71,6 @@ void canvas::paintEvent(QPaintEvent *event){
     for(int i = 0; i < vectShape.size(); i++){
         vectShape[i]->draw(this);
     }
-
-    for(int i = 0; i < vectShapeParsed.size(); ++i){
-        vectShapeParsed[i]->draw(this);
-    }
-//    vectShapeParsed[0]->draw(this);
-
 }
 
 shape* canvas::get(int a)

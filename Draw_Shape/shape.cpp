@@ -186,11 +186,11 @@ void shape::setBrushColor(const QColor& color){
 }
 
 void shape::setBrushStyle(std::string style){
-    if(style == "solid pattern")
+    if(style == "solid pattern" || style == "SolidPattern")
         brush.setStyle(Qt::SolidPattern);
-    else if(style == "hor pattern")
+    else if(style == "hor pattern" || style == "HorPattern")
         brush.setStyle(Qt::HorPattern);
-    else if(style == "ver pattern")
+    else if(style == "ver pattern" || style == "VerPattern")
         brush.setStyle(Qt::VerPattern);
     else
         brush.setStyle(Qt::NoBrush);
@@ -202,6 +202,7 @@ void shape::setBrushStyle(Qt::BrushStyle style){
 
 void shape::setTextString(std::string text){}
 void shape::setTextColor(std::string textColor) {
+    this->textColor = textColor;
     setPenColor(textColor);
 }
 
@@ -212,15 +213,15 @@ void shape::setTextAlignment(std::string textAlign)
 
 Qt::AlignmentFlag shape::setTextAlign(std::string textAlign)
 {
-    if(textAlign == "align left")
+    if(textAlign == "align left" || textAlign == "alignleft" || textAlign == "AlignLeft")
         return Qt::AlignLeft;
-    else if(textAlign == "align right")
+    else if(textAlign == "align right" || textAlign == "Align Right" || textAlign == "AlignRight")
         return Qt::AlignRight;
-    else if(textAlign == "align top")
+    else if(textAlign == "align top" || textAlign == "Align Top" || textAlign == "AlignTop")
        return Qt::AlignTop;
-    else if(textAlign == "align bottom")
+    else if(textAlign == "align bottom" || textAlign == "Align Bottom" || textAlign == "AlignBottom")
         return Qt::AlignBottom;
-    else if(textAlign == "align center")
+    else if(textAlign == "align center" || textAlign == "Align Center" || textAlign == "AlignBottom")
         return Qt::AlignBottom;
     else
         return Qt::AlignLeft;
@@ -240,11 +241,12 @@ void shape::setTextFontFamily(std::string textFont) {
 
 }
 void shape::setTextFontStyle(std::string textFStyle) {
-    if(textFStyle == "style normal")
+    textFontStyle = textFStyle;
+    if(textFStyle == "style normal" || textFStyle == "Style Normal" || textFStyle == "StyleNormal")
         tFont.setStyle(QFont::StyleNormal);
-    else if(textFStyle == "style italic")
+    else if(textFStyle == "style italic" || textFStyle == "Style Italic" || textFStyle == "StyleItalic")
         tFont.setStyle(QFont::StyleItalic);
-    else if(textFStyle == "style oblique")
+    else if(textFStyle == "style oblique" || textFStyle == "Style Oblique" || textFStyle == "StyleOblique")
         tFont.setStyle(QFont::StyleOblique);
     else
         tFont.setStyle(QFont::StyleNormal); //Default
@@ -261,6 +263,64 @@ void shape::setTextFontWeight(std::string textFWeight) {
     else
         tFont.setWeight(QFont::Normal); //Default
 }
+
+std::string shape::getTextString() const
+{
+    return "";// meant to be overriden
+}
+
+std::string shape::getTextColorString() const
+{
+    return textColor;
+}
+
+std::string shape::getTextAlignmentString() const
+{
+    return "";
+}
+
+std::string shape::getTextPointSize() const
+{
+    return std::to_string(tFont.pointSize());
+}
+
+std::string shape::getTextFontFamilyString() const
+{
+    return tFont.family().toStdString();
+}
+
+std::string shape::getTextFontStyleString() const
+{
+    return textFontStyle;
+}
+
+std::string shape::getTextFontWeightString() const
+{
+    switch(tFont.weight())
+    {
+    case 0:
+        return "thin";
+    case 25:
+        return "light";
+    case 50:
+        return "normal";
+    case 75:
+        return "bold";
+    default:
+        return "normal";
+    }
+}
+
+std::string shape::getXYCoords() const
+{
+    return "";
+}
+
+std::string shape::getLengthWidth() const
+{
+    return "";
+}
+
 void shape::makeSquareOrCircle()
 {
 
@@ -283,4 +343,9 @@ void shape::addNode(int index)
 void shape::removeNode(int index)
 {
 
+}
+
+std::string shape::getPoints() const
+{
+    return "";
 }

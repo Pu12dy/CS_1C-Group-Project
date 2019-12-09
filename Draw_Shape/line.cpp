@@ -5,138 +5,64 @@ line::line() : line(100,50,100,100,10)
 
 }
 
-line::line(int shapeID, QPoint p1, QPoint p2)
+line::line(int shapeID, Vector<QPoint*> points, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin)
 {
     setShapeID(shapeID);
-    this->p1 = p1;
-    this->p2 = p2;
-}
-
-line::line(int shapeID, QPoint p1, QPoint p2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin,
-     std::string bColor, std::string bStyle)
-    : line(shapeID, p1.x(), p1.y(), p2.x(), p2.y(), penColor, penWidth, penStyle, penCap, penJoin, bColor, bStyle)
-{
-
+    this->points = points;
+    setPenColor(penColor);
+    setPenWidth(penWidth);
+    setPenStyle(penStyle);
+    setPenCapStyle(penCap);
+    setPenJoinStyle(penJoin);
 }
 
 line::line(int shapeID, int x1, int y1, int x2, int y2)
 {
     setShapeID(shapeID);
-    p1.setX(x1);
-    p1.setY(y1);
-    p2.setX(x2);
-    p2.setY(y2);
-}
-
-line::line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin) : line(shapeID, x1, y1, x2, y2)
-{
-    setPenColor(penColor);
-    setPenWidth(penWidth);
-    setPenStyle(penStyle);
-    setPenCapStyle(penCap);
-    setPenJoinStyle(penJoin);
-}
-
-line::line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin, std::string bColor, std::string bStyle)
- : line(shapeID, x1, y1, x2, y2)
-{
-    setPenColor(penColor);
-    setPenWidth(penWidth);
-    setPenStyle(penStyle);
-    setPenCapStyle(penCap);
-    setPenJoinStyle(penJoin);
-    setBrushColor(bColor);
-    setBrushStyle(bStyle);
+    points.push_back(new QPoint(x1, y1));
+    points.push_back(new QPoint(x2, y2));
 }
 
 line::~line()
-{}
+{
+    for (int i = 0; i < points.size(); i++)
+    {
+        delete points[i];
+    }
 
-void line::draw(QPaintDevice *toDraw){
+}
+
+void line::draw(QPaintDevice *toDraw)
+{
     getQPainter().begin(toDraw);
     getQPainter().setPen(getQPen());
     getQPainter().setBrush(getQBrush());
-    getQPainter().drawLine(p1,p2);
+    getQPainter().drawLine(*points[0], *points[1]);
     getQPainter().end();
 }
 
 void line::moveShape(int offsetX, int offsetY)
 {
-    p1.setX(p1.x() + offsetX);
-    p1.setY(p1.y() + offsetY);
-
-    p2.setX(p2.x() + offsetX);
-    p2.setY(p2.y() + offsetY);
+    for (int i = 0; i < points.size(); i++)
+    {
+        points[i]->setX(points[i]->x() + offsetX);
+        points[i]->setY(points[i]->y() + offsetY);
+    }
 }
 
 void line::changeShapeSize(int newSize)
 {
 
-    int changeOfX;
-    int changeOfY;
-
-    if(p1.x() == p2.x()) // checking if line is vertical
-    {
-        if (p1.y() < p2.y()) // if p1 is above p2
-        {
-            p1.setY(p1.y() - newSize); // moves p1 up
-        }
-        else                // if p2 is above p1
-        {
-            p1.setY(p1.y() + newSize); // moves p1 down
-        }
-    }
-    else if (p1.y() == p2.y()) // checking if line is horizontal
-    {
-        if (p1.x() < p2.x())   // if p1 is on left
-        {
-            p1.setX(p1.x() - newSize); // moves p1 left
-        }
-        else                   // if p1 is on right
-        {
-            p1.setX(p1.x() - newSize); // moves p1 right
-        }
-    }
-    else if (p1.x() < p2.x()) // diagonal line with p1 on left
-    {
-        changeOfY = p2.y() - p1.y();
-        changeOfX = p2.x() - p1.x();
-        if (p1.y() < p2.y())    // if p1 is above p2
-        {
-            p1.setX(p2.x() + (newSize * changeOfX)); // moves p2 down and right
-            p1.setY(p2.y() + (newSize * changeOfY));
-        }
-        else                    // if p1 is below p2
-        {
-            p1.setX(p2.x() + (newSize * changeOfX)); // moves p2 up and right
-            p1.setY(p2.y() - (newSize * changeOfY));
-        }
-    }
-    else                // diagonal line with p2 on left
-    {
-        changeOfY = p1.y() - p2.y();
-        changeOfX = p1.x() - p2.x();
-        if (p1.y() < p2.y()) // if p1 is above p2
-        {
-            p1.setX(p1.x() + (newSize * changeOfX)); // moves p1 up and right
-            p1.setY(p1.y() - (newSize * changeOfY));
-        }
-        else                // if p1 is below p2
-        {
-            p1.setX(p1.x() + (newSize * changeOfX)); // moves p1 down and left
-            p1.setY(p1.y() + (newSize * changeOfY));
-        }
-    }
 }
 
 const QPoint line::getP1() const
 {
-    return p1;
+    return *points[0];
 }
 
 const QPoint line::getP2() const
 {
-    return p2;
+    return *points[1];
 }
 
 double line::perimeter() const
@@ -151,4 +77,36 @@ double line::area() const
 std::string line::getShapeType() const
 {
     return "Line";
+}
+std::string line::getPoints() const
+{
+    std::string returnString = "";
+    returnString += "2\n";//indicate number of nodes to read
+    for (int i = 0; i < 2; i++)
+    {
+        returnString += std::to_string(points[i]->x()) + " " + std::to_string(points[i]->y()) + "\n";
+    }
+    return returnString;
+}
+
+int line::numberOfNodes() const
+{
+    return 2;
+}
+
+void line::moveNode(int index, int offsetX, int offsetY)
+{
+    if (points[index]->x() + offsetX < 0)
+        points[index]->setX(0);
+    else if (points[index]->x() + offsetX > 950)
+        points[index]->setX(950);
+    else
+        points[index]->setX(points[index]->x() +offsetX);
+
+    if (points[index]->y() + offsetY < 0)
+        points[index]->setY(0);
+    else if (points[index]->y() + offsetY > 450)
+        points[index]->setY(450);
+    else
+        points[index]->setY(points[index]->y() + offsetY);
 }

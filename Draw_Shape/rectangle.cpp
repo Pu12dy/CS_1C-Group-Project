@@ -104,3 +104,12 @@ void rectangle::makeSquareOrCircle()
 {
     width = length;
 }
+std::string rectangle::getXYCoords() const
+{
+    return std::to_string(x) + " " + std::to_string(y);
+}
+
+std::string rectangle::getLengthWidth() const
+{
+    return std::to_string(length) + " " + std::to_string(width);
+}

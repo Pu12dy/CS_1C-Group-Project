@@ -23,6 +23,9 @@ public:
 
 
     explicit canvas(QWidget *parent = nullptr);
+
+    ~canvas() override;
+
     void paintEvent(QPaintEvent *event) override;
     shape* get(int a);
     int numberOfShapes();
@@ -58,7 +61,6 @@ public:
 
 private:
     Vector<shape*> vectShape;
-    Vector<shape*> vectShapeParsed;
 
 signals:
 
