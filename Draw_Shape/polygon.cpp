@@ -70,7 +70,6 @@ void polygon::changeShapeSize(int newSize)
 
 }
 
-
 double polygon::perimeter() const
 {
  int result = 0;
@@ -90,36 +89,34 @@ double polygon::perimeter() const
  return result;
 }
 
- double polygon::area() const
- {
-    // create array of x and y coordinates of each vertex in counterclockwise order
-    // repeat the coordinates of the first point in last element of array
-    // Multiply the x coordinate of each vertex by the y coordinate of the next vertex.
-    // Add the results.
-    // Multiply the y coordinate of each vertex by the x coordinate of the next vertex.
-    // Again, add these results
-    // Subtract the sum of the second products from the sum of the first products.
-    // Divide this difference by 2 to get the area of the polygon
+double polygon::area() const
+{
+// create array of x and y coordinates of each vertex in counterclockwise order
+// repeat the coordinates of the first point in last element of array
+// Multiply the x coordinate of each vertex by the y coordinate of the next vertex.
+// Add the results.
+// Multiply the y coordinate of each vertex by the x coordinate of the next vertex.
+// Again, add these results
+// Subtract the sum of the second products from the sum of the first products.
+// Divide this difference by 2 to get the area of the polygon
 
-    double area = 0;
-    double total = 0;
-    double valOne = 0;
-    double valTwo = 0;
-    double valThree = 0;
-    double valFour = 0;
+double area = 0;
+double total = 0;
+double valOne = 0;
+double valTwo = 0;
+double valThree = 0;
+double valFour = 0;
 
-    for (int i = 0; i <= points.size() - 2; i++)
+for (int i = 0; i <= lines.size() - 2; i++)
+{
+    int d = i + 1;
+    valOne = QLineF(lines[i]->getP1(),lines[i]->getP2()).x1();
+    valThree = QLineF(lines[i]->getP1(),lines[i]->getP2()).y1();
+
+    for (int j = i; j < d; ++j)
     {
-        int d = i + 1;
-        valOne = QLineF(points[i],points[i + 1]).x1();
-        valThree = QLineF(points[i],points[i + 1]).y1();
-
-        for (int j = i; j < d; ++j)
-        {
-            valTwo = QLineF(points[i],points[i + 1]).y2();
-            valFour = QLineF(points[i],points[i + 1]).x2();
-        }
-        total += ((valOne * valTwo) - (valThree * valFour));
+        valTwo = QLineF(lines[i]->getP1(),lines[i]->getP2()).y2();
+        valFour = QLineF(lines[i]->getP1(),lines[i]->getP2()).x2();
     }
     total += ((valOne * valTwo) - (valThree * valFour));
 }
@@ -150,7 +147,7 @@ void polygon::moveNode(int index, int offsetX, int offsetY)
         points[index].setY(points[index].y() + offsetY);
 }
 
-int polygon::numberOfNodes()
+int polygon::numberOfNodes() const
 {
     return points.size();
 }

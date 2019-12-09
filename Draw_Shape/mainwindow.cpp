@@ -112,6 +112,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->createNewShape_list->addItem("Text");
 
     updateShapeSelectList();
+    on_selectShape_activated(0);
 
     //ui->adminFuncs->setVisible(false);
 
@@ -327,20 +328,34 @@ void MainWindow::on_selectShape_activated(int index)
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(false);
     }
-
     else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Text")
     {
         ui->penSettings->setEnabled(false);
         ui->brushSettings->setEnabled(false);
         ui->textSettings->setEnabled(true);
         ui->additionalSettings_groupbox->setEnabled(true);
+        ui->adjPolys_box->setEnabled(false);
     }
-    else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Line" || QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polyline")
+    else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Line")
     {
         ui->penSettings->setEnabled(true);
         ui->brushSettings->setEnabled(false);
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
+        ui->adjPolys_box->setEnabled(false);
+    }
+    else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polyline")
+    {
+        ui->penSettings->setEnabled(true);
+        ui->brushSettings->setEnabled(false);
+        ui->textSettings->setEnabled(false);
+        ui->additionalSettings_groupbox->setEnabled(true);
+        ui->adjPolys_box->setEnabled(true);
+        ui->nodeSelect_list->clear();
+        for (int i = 0; i < ui->widget->get(index - 1)->numberOfNodes(); i++)
+        {
+            ui->nodeSelect_list->addItem(QString::fromStdString(std::to_string(i+1)));
+        }
     }
     else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polygon")
     {
@@ -348,7 +363,8 @@ void MainWindow::on_selectShape_activated(int index)
         ui->brushSettings->setEnabled(true);
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
-        ui->nodeSelect_list->addItem("1");
+        ui->adjPolys_box->setEnabled(true);
+        ui->nodeSelect_list->clear();
         for (int i = 0; i < ui->widget->get(index - 1)->numberOfNodes(); i++)
         {
             ui->nodeSelect_list->addItem(QString::fromStdString(std::to_string(i+1)));
@@ -360,23 +376,30 @@ void MainWindow::on_selectShape_activated(int index)
         ui->brushSettings->setEnabled(true);
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
+        ui->adjPolys_box->setEnabled(false);
     }
 }
 
 void MainWindow::on_decreaseSize_clicked()
 {
-    ui->widget->changeShapeSize(ui->selectShape->currentIndex() - 1, -10);
+    if (ui->selectShape->currentIndex() > 0)
+        ui->widget->changeShapeSize(ui->selectShape->currentIndex() - 1, -10);
 }
 
 void MainWindow::on_increaseSize_clicked()
 {
-    ui->widget->changeShapeSize(ui->selectShape->currentIndex() - 1, 10);
+    if (ui->selectShape->currentIndex() > 0)
+        ui->widget->changeShapeSize(ui->selectShape->currentIndex() - 1, 10);
 }
 
 void MainWindow::on_removeShape_clicked()
 {
-    ui->widget->removeShape(ui->selectShape->currentIndex() - 1);
-    updateShapeSelectList();
+    if (ui->selectShape->currentIndex() > 0)
+    {
+        ui->widget->removeShape(ui->selectShape->currentIndex() - 1);
+        updateShapeSelectList();
+    }
+
 }
 
 void MainWindow::on_makeSqCir_clicked()
@@ -390,4 +413,24 @@ void MainWindow::on_makeSqCir_clicked()
     }
     updateShapeSelectList();
     on_selectShape_activated(0);
+}
+
+void MainWindow::on_moveNode_up_clicked()
+{
+    ui->widget->moveNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex(), 0, -10);
+}
+
+void MainWindow::on_moveNode_left_clicked()
+{
+    ui->widget->moveNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex(), -10, 0);
+}
+
+void MainWindow::on_moveNode_down_clicked()
+{
+    ui->widget->moveNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex(), 0, 10);
+}
+
+void MainWindow::on_moveNode_right_clicked()
+{
+    ui->widget->moveNode(ui->selectShape->currentIndex() - 1, ui->nodeSelect_list->currentIndex(), 10, 0);
 }

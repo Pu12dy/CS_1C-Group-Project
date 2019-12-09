@@ -66,6 +66,14 @@ private slots:
 
     void on_makeSqCir_clicked();
 
+    void on_moveNode_up_clicked();
+
+    void on_moveNode_left_clicked();
+
+    void on_moveNode_down_clicked();
+
+    void on_moveNode_right_clicked();
+
 private:
     Ui::MainWindow *ui;
 

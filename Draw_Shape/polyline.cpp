@@ -4,43 +4,32 @@ polyline::polyline()
 {
     setShapeID(116);
     // Tester QPoints for polyline
-    vector<QPoint> p1;
     QPoint point;
 
     point.setX(50);
     point.setY(150);
-    p1.push_back(point);
+    points.push_back(point);
 
     point.setX(100);
     point.setY(250);
-    p1.push_back(point);
+    points.push_back(point);
 
     point.setX(150);
     point.setY(150);
-    p1.push_back(point);
+    points.push_back(point);
 
     point.setX(200);
     point.setY(250);
-    p1.push_back(point);
-
-    for (int i = 0; i < p1.size() - 1; ++i)
-    {
-        line *temp = new line(116, p1[i], p1[i + 1]);
-        lines.push_back(temp);
-    }
+    points.push_back(point);
 }
 
-polyline::polyline(int shapeID, vector<QPoint> p1)
+polyline::polyline(int shapeID, Vector<QPoint> p1)
 {
     setShapeID(shapeID);
-    for (int i = 0; i < p1.size() - 1; ++i)
-    {
-        line *temp = new line(shapeID, p1[i], p1[i + 1]);
-        lines.push_back(temp);
-    }
+    points = p1;
 }
 
-polyline::polyline(int shapeID, vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin)
+polyline::polyline(int shapeID, Vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin)
     : polyline(shapeID, p1)
 {
     setPenColor(penColor);
@@ -54,10 +43,10 @@ polyline::~polyline(){}
 
 void polyline::draw(QPaintDevice *toDraw)
 {
-    for (int i = 0; i < lines.size(); ++i)
-    {
-        lines[i]->draw(toDraw);
-    }
+    getQPainter().begin(toDraw);
+    getQPainter().setPen(getQPen());
+    getQPainter().drawPolyline(points.getArrayFromVector(), points.size());
+    getQPainter().end();
 }
 
 
@@ -91,4 +80,26 @@ double polyline::area() const
 std::string polyline::getShapeType() const
 {
     return "Polyline";
+}
+
+void polyline::moveNode(int index, int offsetX, int offsetY)
+{
+    if (points[index].x() + offsetX < 0)
+        points[index].setX(0);
+    else if (points[index].x() + offsetX > 950)
+        points[index].setX(950);
+    else
+        points[index].setX(points[index].x() +offsetX);
+
+    if (points[index].y() + offsetY < 0)
+        points[index].setY(0);
+    else if (points[index].y() + offsetY > 450)
+        points[index].setY(450);
+    else
+        points[index].setY(points[index].y() + offsetY);
+}
+
+int polyline::numberOfNodes() const
+{
+    return points.size();
 }

@@ -11,15 +11,15 @@ public:
     polygon();
     polygon(int shapeID, Vector<QPoint> p1);
     polygon(int shapeID, Vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
-    virtual ~polygon();
+    virtual ~polygon() override;
     void draw(QPaintDevice *toDraw) override;
     void moveShape(int offsetX, int offsetY) override;
     void changeShapeSize(int newSize) override;
     double perimeter() const override;
     double area() const override;
-    std::string getShapeType() const;
+    std::string getShapeType() const override;
     void moveNode(int index, int offsetX, int offSetY) override;
-    int numberOfNodes();
+    int numberOfNodes() const override;
 
 private:
     vector<line*> lines;
