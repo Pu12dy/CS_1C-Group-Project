@@ -84,9 +84,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Populating the text font style drop down box
     ui->textFontStyle_list->addItem("Select");
-    ui->textFontStyle_list->addItem("StyleNormal");
-    ui->textFontStyle_list->addItem("StyleItalic");
-    ui->textFontStyle_list->addItem("StyleOblique");
+    ui->textFontStyle_list->addItem("Style Normal");
+    ui->textFontStyle_list->addItem("Style Italic");
+    ui->textFontStyle_list->addItem("Style Oblique");
 
     //Populating the text font weight drop down box
     ui->textFontWeight_list->addItem("Select");
@@ -97,8 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Populating the text font family drop down box
     ui->textFontFamily_list->addItem("Select");
-    ui->textFontFamily_list->addItem("Comic");
-    ui->textFontFamily_list->addItem("Sans MS");
+    ui->textFontFamily_list->addItem("Comic Sans MS");
     ui->textFontFamily_list->addItem("Courier");
     ui->textFontFamily_list->addItem("Helvetica");
     ui->textFontFamily_list->addItem("Times");
@@ -254,7 +253,7 @@ void MainWindow::on_changeText_clicked()
         }
 
         //Change text point size
-        if (ui->textPointSize_lineEdit->text().toInt() >= -1 && ui->textPointSize_lineEdit->text().toInt() <= 50 )
+        if (ui->textPointSize_lineEdit->text().toInt() > 0 && ui->textPointSize_lineEdit->text().toInt() <= 50 )
         {
             ui->widget->setTextPointSize(ui->selectShape->currentIndex() - 1, ui->textPointSize_lineEdit->text().toInt());
         }
@@ -281,22 +280,26 @@ void MainWindow::on_changeText_clicked()
 
 void MainWindow::on_moveUp_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 0, -50);
+    if (ui->selectShape->currentIndex() > 0)
+        ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 0, -50);
 }
 
 void MainWindow::on_moveLeft_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, -50, 0);
+    if (ui->selectShape->currentIndex() > 0)
+        ui->widget->moveShape(ui->selectShape->currentIndex() - 1, -50, 0);
 }
 
 void MainWindow::on_moveRight_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 50, 0);
+    if (ui->selectShape->currentIndex() > 0)
+        ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 50, 0);
 }
 
 void MainWindow::on_moveDown_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 0, 50);
+    if (ui->selectShape->currentIndex() > 0)
+        ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 0, 50);
 }
 
 void MainWindow::on_createNewShape_Button_clicked()
@@ -332,14 +335,24 @@ void MainWindow::on_selectShape_activated(int index)
         ui->textSettings->setEnabled(true);
         ui->additionalSettings_groupbox->setEnabled(true);
     }
-
-
     else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Line" || QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polyline")
     {
         ui->penSettings->setEnabled(true);
         ui->brushSettings->setEnabled(false);
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
+    }
+    else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polygon")
+    {
+        ui->penSettings->setEnabled(true);
+        ui->brushSettings->setEnabled(true);
+        ui->textSettings->setEnabled(false);
+        ui->additionalSettings_groupbox->setEnabled(true);
+        ui->nodeSelect_list->addItem("1");
+        for (int i = 0; i < ui->widget->get(index - 1)->numberOfNodes(); i++)
+        {
+            ui->nodeSelect_list->addItem(QString::fromStdString(std::to_string(i+1)));
+        }
     }
     else
     {

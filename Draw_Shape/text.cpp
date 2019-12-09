@@ -41,8 +41,13 @@ void text::draw(QPaintDevice *toDraw){
     const QString strDraw(*str);
     getQPainter().setFont(getQFont());
     //getQPainter().drawText(rectDraw, Qt::AlignCenter, strDraw);
-    getQPainter().drawText(rectDraw, setTextAlignment(textAlignProp), strDraw);
+    getQPainter().drawText(rectDraw, setTextAlign(textAlignProp), strDraw);
     getQPainter().end();
+}
+
+void text::setTextAlignment(std::string textAlign)
+{
+    textAlignProp = textAlign;
 }
 
 void text::setTextString(std::string text)

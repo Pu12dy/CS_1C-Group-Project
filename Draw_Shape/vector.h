@@ -27,6 +27,7 @@ public:
         {
             elem[i] = src.elem[i];
         }
+
     }
 
     Vector(Vector&& src){// move constructor
@@ -88,12 +89,16 @@ public:
 
     }
 
+    T* getArrayFromVector()
+    {
+        return elem;
+    }
 
     const T& operator[](int n) const // access: return reference
     {
         if (n < size_v)
         {
-            return &elem[n];
+            return elem[n];
         }
         throw outOfBounds();
     }

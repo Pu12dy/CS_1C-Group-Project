@@ -29,12 +29,10 @@ public:
     void setShapeID(int num);
     int getShapeID() const;
     std::string getID() const;
-//    void setPen(const QPen& pen);
-//    void setBrush(const QBrush& brush);
-//    void setText(const text& text);
 
     virtual void moveShape(int offsetX, int offsetY) = 0;
     virtual void changeShapeSize(int newSize) = 0;
+
     virtual void setPenColor(std::string color);
     virtual void setPenColor(const QColor& color);
 
@@ -58,17 +56,16 @@ public:
     virtual void setFontProperties(std::string textFont, std::string textFStyle, std::string textFWeight);
     virtual void setTextString(std::string text);
     virtual void setTextColor(std::string textColor);
-    Qt::AlignmentFlag setTextAlignment(std::string textAlign);
-    //virtual void setTextAlignment(std::string textAlign);
+    Qt::AlignmentFlag setTextAlign(std::string textAlign);
+    virtual void setTextAlignment(std::string textAlign);
     virtual void setTextPointSize(int textPointSize);
     virtual void setTextFontFamily(std::string textFont);
     virtual void setTextFontStyle(std::string textFStyle);
     virtual void setTextFontWeight(std::string textFWeight);
     virtual void makeSquareOrCircle();
+    virtual void moveNode(int index, int offsetX, int offSetY);
+    virtual int numberOfNodes() const;
 
-//    bool operator==(const shape &rightSide);
-//    bool operator<(const shape &rightSide);
-//    shape& operator=(const shape &rightSide);
 
 private:
     int shapeID;

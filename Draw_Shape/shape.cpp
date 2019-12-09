@@ -209,21 +209,23 @@ void shape::setTextString(std::string text){}
 void shape::setTextColor(std::string textColor) {
     setPenColor(textColor);
 }
-//void shape::setTextAlignment(std::string textAlign) {
 
-//}
-
-Qt::AlignmentFlag shape::setTextAlignment(std::string textAlign)
+void shape::setTextAlignment(std::string textAlign)
 {
-    if(textAlign == "alignleft")
+
+}
+
+Qt::AlignmentFlag shape::setTextAlign(std::string textAlign)
+{
+    if(textAlign == "align left")
         return Qt::AlignLeft;
-    else if(textAlign == "alignright")
+    else if(textAlign == "align right")
         return Qt::AlignRight;
-    else if(textAlign == "aligntop")
+    else if(textAlign == "align top")
        return Qt::AlignTop;
-    else if(textAlign == "alignbottom")
+    else if(textAlign == "align bottom")
         return Qt::AlignBottom;
-    else if(textAlign == "aligncenter")
+    else if(textAlign == "align center")
         return Qt::AlignBottom;
     else
         return Qt::AlignLeft;
@@ -233,20 +235,21 @@ void shape::setTextPointSize(int textPointSize) {
 }
 void shape::setTextFontFamily(std::string textFont) {
     if(textFont == "courier")
-        painter.setFont(QFont("Courier"));
+        tFont.setFamily(QString::fromStdString("Courier"));
     else if(textFont == "helvetica")
-        painter.setFont(QFont("Helvetica"));
+        tFont.setFamily(QString::fromStdString("Helvetica"));
     else if(textFont == "times")
-        painter.setFont(QFont("Times"));
+        tFont.setFamily(QString::fromStdString("Times"));
     else if(textFont == "comic sans ms")
-        painter.setFont(QFont("Comic Sans MS"));
+        tFont.setFamily(QString::fromStdString("Comic Sans MS"));
+
 }
 void shape::setTextFontStyle(std::string textFStyle) {
-    if(textFStyle == "stylenormal")
+    if(textFStyle == "style normal")
         tFont.setStyle(QFont::StyleNormal);
-    else if(textFStyle == "styleitalic")
+    else if(textFStyle == "style italic")
         tFont.setStyle(QFont::StyleItalic);
-    else if(textFStyle == "styleoblique")
+    else if(textFStyle == "style oblique")
         tFont.setStyle(QFont::StyleOblique);
     else
         tFont.setStyle(QFont::StyleNormal); //Default
@@ -268,4 +271,12 @@ void shape::makeSquareOrCircle()
 
 }
 
+void shape::moveNode(int index, int offsetX, int offSetY)
+{
 
+}
+
+int shape::numberOfNodes() const
+{
+    return 0;
+}

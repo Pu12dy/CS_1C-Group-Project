@@ -21,6 +21,7 @@ public:
     std::string getShapeType() const override;
     double perimeter() const override;
     double area() const override;
+    void setTextAlignment(std::string textAlign) override;
 
 
 private:

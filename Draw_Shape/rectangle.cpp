@@ -80,12 +80,6 @@ void rectangle::changeShapeSize(int newSize)
     width  += newSize;
 }
 
-void rectangle::changeShapeSize(int newSize)
-{
-    length += newSize;
-    width  += newSize;
-}
-
 double rectangle::perimeter() const
 {
     return (length * 2) + (width * 2);

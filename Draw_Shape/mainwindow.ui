@@ -624,7 +624,7 @@
       <string>Remove Shape</string>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="moveShape_box">
      <property name="geometry">
       <rect>
        <x>180</x>
@@ -740,6 +740,94 @@
      <property name="text">
       <string>Make Square/ Circle</string>
      </property>
+    </widget>
+    <widget class="QGroupBox" name="adjPolys_box">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>20</y>
+       <width>201</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Adjust Polygons and Polylines</string>
+     </property>
+     <widget class="QGroupBox" name="moveNode_box">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>20</y>
+        <width>81</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QPushButton" name="moveNode_up">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>10</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>U</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="moveNode_left">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>L</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="moveNode_right">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>R</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="moveNode_down">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>21</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>D</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QComboBox" name="nodeSelect_list">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
