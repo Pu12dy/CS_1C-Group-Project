@@ -9,8 +9,8 @@ class polygon : public shape
 {
 public:
     polygon();
-    polygon(int shapeID, vector<QPoint> p1);
-    polygon(int shapeID, vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
+    polygon(int shapeID, Vector<QPoint> p1);
+    polygon(int shapeID, Vector<QPoint> p1, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
     virtual ~polygon();
     void draw(QPaintDevice *toDraw) override;
     void moveShape(int offsetX, int offsetY) override;
@@ -21,6 +21,7 @@ public:
 
 private:
     vector<line*> lines;
+    Vector<QPoint> points;
 };
 
 #endif // POLYGON_H
