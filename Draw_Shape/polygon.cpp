@@ -100,28 +100,29 @@ void polygon::draw(QPaintDevice *toDraw)
     // Subtract the sum of the second products from the sum of the first products.
     // Divide this difference by 2 to get the area of the polygon
 
-    double area = 0;
-    double total = 0;
-    double valOne = 0;
-    double valTwo = 0;
-    double valThree = 0;
-    double valFour = 0;
+//    double area = 0;
+//    double total = 0;
+//    double valOne = 0;
+//    double valTwo = 0;
+//    double valThree = 0;
+//    double valFour = 0;
 
-    for (int i = 0; i <= lines.size() - 2; i++)
-    {
-        int d = i + 1;
-        valOne = QLineF(lines[i]->getP1(),lines[i]->getP2()).x1();
-        valThree = QLineF(lines[i]->getP1(),lines[i]->getP2()).y1();
+//    for (int i = 0; i <= lines.size() - 2; i++)
+//    {
+//        int d = i + 1;
+//        valOne = QLineF(lines[i]->getP1(),lines[i]->getP2()).x1();
+//        valThree = QLineF(lines[i]->getP1(),lines[i]->getP2()).y1();
 
-        for (int j = i; j < d; ++j)
-        {
-            valTwo = QLineF(lines[i]->getP1(),lines[i]->getP2()).y2();
-            valFour = QLineF(lines[i]->getP1(),lines[i]->getP2()).x2();
-        }
-        total += ((valOne * valTwo) - (valThree * valFour));
-    }
+//        for (int j = i; j < d; ++j)
+//        {
+//            valTwo = QLineF(lines[i]->getP1(),lines[i]->getP2()).y2();
+//            valFour = QLineF(lines[i]->getP1(),lines[i]->getP2()).x2();
+//        }
+//        total += ((valOne * valTwo) - (valThree * valFour));
+//    }
 
-    return qFabs(total / 2);
+   // return qFabs(total / 2);
+    return 0;
  }
 
 
