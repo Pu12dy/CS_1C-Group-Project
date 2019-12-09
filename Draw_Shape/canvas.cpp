@@ -41,7 +41,6 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     assignShapeID();
 
 
-    /*
     // TESTING sort
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
     for(int i = 0; i < vectShape.size(); i++)
@@ -56,12 +55,12 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
        qDebug() << "Perimeter[" << i << "] = "<< vectShape[i]->perimeter();
     }
 
-   selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
-   // TESTING area
+    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
+    // TESTING area
     for(int i = 0; i < vectShape.size(); i++)
     {
        qDebug() << "Area[" << i << "] = "<< vectShape[i]->area();
-    }*/
+    }
 
 
     //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
