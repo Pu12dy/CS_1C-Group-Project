@@ -15,12 +15,10 @@ public:
     virtual ~polyline();
     void draw(QPaintDevice *toDraw) override;
     void moveShape(int offsetX, int offsetY) override;
+    void changeShapeSize(int newSize) override;
     double perimeter() const; // Calculates the perimeters
     double area() const;// Calculates the area
-    std::string getShapeType() override;
-
-    virtual char getShapeCharIdentifier();
-    virtual std::string getXYCoords();
+    std::string getShapeType() const override;
 
 private:
     vector<line*> lines;

@@ -27,7 +27,6 @@ public:
         {
             elem[i] = src.elem[i];
         }
-
     }
 
     Vector(Vector&& src){// move constructor

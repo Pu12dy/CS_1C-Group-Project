@@ -1,12 +1,10 @@
 #include "login.h"
 #include "ui_login.h"
-#include <QtDebug>
 
 login::login(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::login)
 {
-
     ui->setupUi(this);
     this->setWindowTitle("Login");
     users = getUsers();
@@ -91,7 +89,6 @@ Vector<User*> login::getUsers()
     {
         return fromFile;
     }
-
     QTextStream in(&file);
     QString username;
     QString password;
@@ -110,10 +107,10 @@ Vector<User*> login::getUsers()
         {
             isAdmin = false;
         }
-        qDebug() << "Added user from file to vector.";
         fromFile.push_back(new User(username, password, isAdmin));
     }
     file.close();
+
     return fromFile;
 }
 

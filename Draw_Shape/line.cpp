@@ -69,6 +69,66 @@ void line::moveShape(int offsetX, int offsetY)
     p2.setY(p2.y() + offsetY);
 }
 
+void line::changeShapeSize(int newSize)
+{
+
+    int changeOfX;
+    int changeOfY;
+
+    if(p1.x() == p2.x()) // checking if line is vertical
+    {
+        if (p1.y() < p2.y()) // if p1 is above p2
+        {
+            p1.setY(p1.y() - newSize); // moves p1 up
+        }
+        else                // if p2 is above p1
+        {
+            p1.setY(p1.y() + newSize); // moves p1 down
+        }
+    }
+    else if (p1.y() == p2.y()) // checking if line is horizontal
+    {
+        if (p1.x() < p2.x())   // if p1 is on left
+        {
+            p1.setX(p1.x() - newSize); // moves p1 left
+        }
+        else                   // if p1 is on right
+        {
+            p1.setX(p1.x() - newSize); // moves p1 right
+        }
+    }
+    else if (p1.x() < p2.x()) // diagonal line with p1 on left
+    {
+        changeOfY = p2.y() - p1.y();
+        changeOfX = p2.x() - p1.x();
+        if (p1.y() < p2.y())    // if p1 is above p2
+        {
+            p1.setX(p2.x() + (newSize * changeOfX)); // moves p2 down and right
+            p1.setY(p2.y() + (newSize * changeOfY));
+        }
+        else                    // if p1 is below p2
+        {
+            p1.setX(p2.x() + (newSize * changeOfX)); // moves p2 up and right
+            p1.setY(p2.y() - (newSize * changeOfY));
+        }
+    }
+    else                // diagonal line with p2 on left
+    {
+        changeOfY = p1.y() - p2.y();
+        changeOfX = p1.x() - p2.x();
+        if (p1.y() < p2.y()) // if p1 is above p2
+        {
+            p1.setX(p1.x() + (newSize * changeOfX)); // moves p1 up and right
+            p1.setY(p1.y() - (newSize * changeOfY));
+        }
+        else                // if p1 is below p2
+        {
+            p1.setX(p1.x() + (newSize * changeOfX)); // moves p1 down and left
+            p1.setY(p1.y() + (newSize * changeOfY));
+        }
+    }
+}
+
 const QPoint line::getP1() const
 {
     return p1;
@@ -88,26 +148,7 @@ double line::area() const
 {
     return 0;
 }
-std::string line::getShapeType()
+std::string line::getShapeType() const
 {
     return "Line";
-}
-
-char line::getShapeCharIdentifier()
-{
-    return 'L';
-}
-
-std::string line::getXYCoords()
-{
-    std::string coords = std::to_string(this->p1.x());
-    coords.append(" ");
-    coords.append(std::to_string(this->p1.y()));
-    coords.append(" ");
-    coords.append(std::to_string(this->p2.x()));
-    coords.append(" ");
-    coords.append(std::to_string(this->p2.y()));
-    coords.append("\n");
-
-    return coords;
 }

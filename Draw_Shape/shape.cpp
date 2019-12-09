@@ -37,10 +37,10 @@ QFont& shape::getQFont()
 }
 
 
-//void shape::draw(QPaintDevice *toDraw)
-//{
+void shape::draw(QPaintDevice *toDraw)
+{
 
-//}
+}
 
 
 //int Shape::getShapeID() // Returns shapeID
@@ -53,9 +53,19 @@ void shape::setShapeID(int num)
     shapeID = num;
 }
 
-std::string shape::getShapeID() const
+int shape::getShapeID() const
 {
-    return std::to_string(shapeID);
+    return shapeID;
+}
+
+std::string shape::getID() const
+{
+    return std::to_string(getShapeID());
+}
+
+std::string shape::getShapeName() const
+{
+    return getShapeType() + " " + getID();
 }
 
 //void shape::setPen(const QPen& pen)
@@ -176,11 +186,11 @@ void shape::setBrushColor(const QColor& color){
 }
 
 void shape::setBrushStyle(std::string style){
-    if(style == "SolidPattern")
+    if(style == "solid pattern")
         brush.setStyle(Qt::SolidPattern);
-    else if(style == "HorPattern")
+    else if(style == "hor pattern")
         brush.setStyle(Qt::HorPattern);
-    else if(style == "VerPattern")
+    else if(style == "ver pattern")
         brush.setStyle(Qt::VerPattern);
     else
         brush.setStyle(Qt::NoBrush);
@@ -190,7 +200,10 @@ void shape::setBrushStyle(Qt::BrushStyle style){
     brush.setStyle(style);
 }
 
+void shape::setFontProperties(std::string textFont, std::string textFStyle, std::string textFWeight)
+{
 
+}
 
 void shape::setTextString(std::string text){}
 void shape::setTextColor(std::string textColor) {
@@ -200,17 +213,17 @@ void shape::setTextColor(std::string textColor) {
 
 //}
 
-Qt::AlignmentFlag shape::setTextAlign(std::string textAlign)
+Qt::AlignmentFlag shape::setTextAlignment(std::string textAlign)
 {
-    if(textAlign == "AlignLeft")
+    if(textAlign == "alignleft")
         return Qt::AlignLeft;
-    else if(textAlign == "AlignRight")
+    else if(textAlign == "alignright")
         return Qt::AlignRight;
-    else if(textAlign == "AlignTop")
+    else if(textAlign == "aligntop")
        return Qt::AlignTop;
-    else if(textAlign == "AlignBottom")
+    else if(textAlign == "alignbottom")
         return Qt::AlignBottom;
-    else if(textAlign == "AlignCenter")
+    else if(textAlign == "aligncenter")
         return Qt::AlignBottom;
     else
         return Qt::AlignLeft;
@@ -219,157 +232,40 @@ void shape::setTextPointSize(int textPointSize) {
     tFont.setPointSize(textPointSize);
 }
 void shape::setTextFontFamily(std::string textFont) {
-    tFont.setFamily(textFont.c_str());
+    if(textFont == "courier")
+        painter.setFont(QFont("Courier"));
+    else if(textFont == "helvetica")
+        painter.setFont(QFont("Helvetica"));
+    else if(textFont == "times")
+        painter.setFont(QFont("Times"));
+    else if(textFont == "comic sans ms")
+        painter.setFont(QFont("Comic Sans MS"));
 }
-
 void shape::setTextFontStyle(std::string textFStyle) {
-    if(textFStyle == "StyleNormal")
+    if(textFStyle == "stylenormal")
         tFont.setStyle(QFont::StyleNormal);
-    else if(textFStyle == "StyleItalic")
+    else if(textFStyle == "styleitalic")
         tFont.setStyle(QFont::StyleItalic);
-    else if(textFStyle == "StyleOblique")
+    else if(textFStyle == "styleoblique")
         tFont.setStyle(QFont::StyleOblique);
     else
         tFont.setStyle(QFont::StyleNormal); //Default
 }
 void shape::setTextFontWeight(std::string textFWeight) {
-    if(textFWeight == "Thin")
+    if(textFWeight == "thin")
         tFont.setWeight(QFont::Thin);
-    else if(textFWeight == "Light")
+    else if(textFWeight == "light")
         tFont.setWeight(QFont::Light);
-    else if(textFWeight == "Normal")
+    else if(textFWeight == "normal")
         tFont.setWeight(QFont::Normal);
-    else if(textFWeight == "Bold")
+    else if(textFWeight == "bold")
         tFont.setWeight(QFont::Bold);
     else
         tFont.setWeight(QFont::Normal); //Default
 }
-
-
-std::string shape::getShapeName()
+void shape::makeSquareOrCircle()
 {
-    return getShapeType() + " " + getShapeID();
-}
 
-std::string shape::getTextColorString()
-{
-    if(textColor == Qt::white)
-    {
-        return "white";
-    }
-    else if(textColor == Qt::black)
-    {
-        return "black";
-    }
-    else if(textColor == Qt::red)
-    {
-        return "red";
-    }
-    else if(textColor == Qt::green)
-    {
-        return "green";
-    }
-    else if(textColor == Qt::blue)
-    {
-        return "blue";
-    }
-    else if(textColor == Qt::magenta)
-    {
-        return "magenta";
-    }
-    else if(textColor == Qt::yellow)
-    {
-        return "yellow";;
-    }
-    else if(textColor == Qt::gray)
-    {
-        return "gray";
-    }
-    else
-    {
-        return "black";
-    }
 }
 
 
-std::string shape::getTextAlignmentString()
-{
-    if(textAlignment == Qt::AlignLeft)
-    {
-        return "AlignLeft";
-    }
-    else if(textAlignment == Qt::AlignRight)
-    {
-        return "AlignRight";
-    }
-    else if(textAlignment == Qt::AlignTop)
-    {
-        return "AlignTop";
-    }
-    else if(textAlignment == Qt::AlignBottom)
-    {
-        return "AlignBottom";
-    }
-    else if(textAlignment == Qt::AlignCenter)
-    {
-        return "AlignCenter";
-    }
-    else
-    {
-        return "AlignCenter";
-    }
-}
-
-int shape::getTextPointSize()
-{
-    return textPointSize;
-}
-
-std::string shape::getTextFontFamilyString()
-{
-    return textFontFamily;
-}
-
-std::string shape::getTextFontStyleString()
-{
-    if(textFontStyle == QFont::StyleNormal)
-    {
-        return "StyleNomral";
-    }
-    else if(textFontStyle == QFont::StyleItalic)
-    {
-        return "StyleItalic";
-    }
-    else if(textFontStyle == QFont::StyleOblique)
-    {
-        return "StyleOblique";
-    }
-    else
-    {
-        return "StyleNormal";
-    }
-}
-
-std::string shape::getTextFontWeightString()
-{
-    if(textFontWeight == QFont::Thin)
-    {
-        return "Thin";
-    }
-    else if(textFontWeight == QFont::Light)
-    {
-        return "Light";
-    }
-    else if(textFontWeight == QFont::Normal)
-    {
-        return "Normal";
-    }
-    else if(textFontWeight == QFont::Bold)
-    {
-        return "Bold";
-    }
-    else
-    {
-        return "Normal";
-    }
-}

@@ -333,7 +333,7 @@
        <x>10</x>
        <y>320</y>
        <width>251</width>
-       <height>281</height>
+       <height>221</height>
       </rect>
      </property>
      <property name="title">
@@ -491,7 +491,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>220</y>
+        <y>170</y>
         <width>111</width>
         <height>41</height>
        </rect>
@@ -538,28 +538,6 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="layoutWidget_9">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>170</y>
-        <width>111</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="textFamily_layout">
-       <item>
-        <widget class="QLabel" name="textFamily_label">
-         <property name="text">
-          <string>Text Font Family</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QComboBox" name="textFamily_list"/>
-       </item>
-      </layout>
-     </widget>
     </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
@@ -590,7 +568,7 @@
       <x>10</x>
       <y>510</y>
       <width>1001</width>
-      <height>131</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="title">
@@ -599,8 +577,8 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>100</x>
-       <y>30</y>
+       <x>10</x>
+       <y>20</y>
        <width>156</width>
        <height>75</height>
       </rect>
@@ -618,7 +596,7 @@
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QComboBox" name="createNewShape_Box"/>
+           <widget class="QComboBox" name="createNewShape_list"/>
           </item>
           <item>
            <widget class="QPushButton" name="createNewShape_Button">
@@ -633,11 +611,11 @@
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="removeShape">
      <property name="geometry">
       <rect>
-       <x>710</x>
-       <y>30</y>
+       <x>370</x>
+       <y>20</y>
        <width>111</width>
        <height>51</height>
       </rect>
@@ -649,7 +627,7 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>400</x>
+       <x>180</x>
        <y>20</y>
        <width>91</width>
        <height>81</height>
@@ -714,7 +692,7 @@
     <widget class="QGroupBox" name="shapeSize_groupbox">
      <property name="geometry">
       <rect>
-       <x>410</x>
+       <x>290</x>
        <y>20</y>
        <width>71</width>
        <height>80</height>
@@ -749,6 +727,19 @@
        <string>+</string>
       </property>
      </widget>
+    </widget>
+    <widget class="QPushButton" name="makeSqCir">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>80</y>
+       <width>111</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Make Square/ Circle</string>
+     </property>
     </widget>
    </widget>
   </widget>

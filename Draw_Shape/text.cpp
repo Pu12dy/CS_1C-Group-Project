@@ -18,6 +18,7 @@ text::text(int x, int y, int l, int w, std::string textString, std::string textC
     this->str = new QString(textString.c_str());
     this->x = x; //x position
     this->y = y; //y position
+    rectText = QRect(x,y, l, w);
     length = l;
     width = w;
     setTextColor(textColor);
@@ -28,27 +29,6 @@ text::text(int x, int y, int l, int w, std::string textString, std::string textC
     setTextFontWeight(textFWeight);
     textAlignProp = textAlignment;
 
-void text::setTextColor(std::string color)
-{
-
-    if(color == "white")
-        textColor = Qt::white;
-    else if(color == "black")
-        textColor = Qt::black;
-    else if(color == "red")
-        textColor = Qt::red;
-    else if(color == "green")
-        textColor = Qt::green;
-    else if(color == "blue")
-        textColor = Qt::blue;
-    else if(color == "magenta")
-        textColor = Qt::magenta;
-    else if(color == "yellow")
-        textColor = Qt::yellow;
-    else if(color == "gray")
-        textColor = Qt::gray;
-    else
-        textColor = Qt::black;
 }
 
 text::~text(){}
@@ -61,7 +41,7 @@ void text::draw(QPaintDevice *toDraw){
     const QString strDraw(*str);
     getQPainter().setFont(getQFont());
     //getQPainter().drawText(rectDraw, Qt::AlignCenter, strDraw);
-    getQPainter().drawText(rectDraw, setTextAlign(textAlignProp), strDraw);
+    getQPainter().drawText(rectDraw, setTextAlignment(textAlignProp), strDraw);
     getQPainter().end();
 }
 
@@ -77,61 +57,35 @@ void text::moveShape(int offsetX, int offsetY)
 {
     x += offsetX;
     y += offsetY;
+
+    //Ensuring shape does not move out of screen
+    if (x < 0)
+        x = 0;
+    else if (x > 950)
+        x = 950;
+    if (y < 0)
+        y = 0;
+    else if (y > 450)
+        y = 450;
+
 }
 
-double text::perimeter() const
+void text::changeShapeSize(int newSize)
 {
-    return 0;
-}
-double text::area() const
-{
-    return 0;
+    setTextPointSize(newSize);
+    // this->textPointSize = this->textPointSize + newSize;
 }
 
-std::string text::getShapeType()
+std::string text::getShapeType() const
 {
     return "Text";
 }
 
-char text::getShapeCharIdentifier()
+double text::perimeter() const
 {
-    return 'T';
+    return 0.0;
 }
-
-std::string text::getXYCoords()
+double text::area() const
 {
-    std::string coords = std::to_string(this->x);
-    coords.append(" ");
-    coords.append(std::to_string(this->y));
-
-    return coords;
-}
-
-std::string text::getTextString()
-{
-    std::string convert;
-
-    convert = str->QString::toStdString();
-
-    return convert;
-}
-
-text::text(int shapeID, int x, int y, const char *str)
-{
-    setShapeID(shapeID);
-    this->x = x;
-    this->y = y;
-    this->str = new QString(str);
-    setPenColor(Qt::green);
-}
-
-text::text(int shapeID, int x, int y, const char *str, std::string textColor, std::string textAlignment, int textPointSize, std::string textFontFamily, std::string textFontStyle, std::string textFontWeight) :
-    text(shapeID, x, y, str)
-{
-    setTextAlignment(textAlignment);
-    setTextPointSize(textPointSize);
-    setTextFontFamily(textFontFamily);
-    setTextFontStyle(textFontStyle);
-    setTextFontWeight(textFontWeight);
-    setTextColor(textColor);
+    return 0.0;
 }

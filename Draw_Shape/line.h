@@ -16,17 +16,16 @@ public:
     line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
     line(int shapeID, int x1, int y1, int x2, int y2, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin,
          std::string bColor, std::string bStyle);
-    virtual ~line();
+    virtual ~line() override;
 
-    void draw(QPaintDevice *toDraw); // Draws the shape
-    void moveShape(int offsetX, int offsetY);
+    void draw(QPaintDevice *toDraw) override; // Draws the shape
+    void moveShape(int offsetX, int offsetY) override;
+    void changeShapeSize(int newSize) override;
     const QPoint getP1() const;
     const QPoint getP2() const;
-    double perimeter() const;// Calculates the perimeters
-    double area() const;// Calculates the area
-    std::string getShapeType();
-    char getShapeCharIdentifier();
-    std::string getXYCoords();
+    double perimeter() const override;// Calculates the perimeters
+    double area() const override;// Calculates the area
+    std::string getShapeType() const;
 
 private:
     QPoint p1;

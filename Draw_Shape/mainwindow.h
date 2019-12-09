@@ -56,10 +56,22 @@ private slots:
 
     void on_createNewShape_Button_clicked();
 
+    void on_selectShape_activated(int index);
+
+    void on_decreaseSize_clicked();
+
+    void on_increaseSize_clicked();
+
+    void on_removeShape_clicked();
+
+    void on_makeSqCir_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     void arrowPressed(QKeyEvent* keyEvent);
+
+    void updateShapeSelectList();
 
     //bool enableAdminFunctions;
     //login* logWindow;

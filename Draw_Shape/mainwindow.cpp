@@ -6,10 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    for (int i = 0; i < ui->widget->numberOfShapes();i++)// Populate shapes into shape selector
-    {
-        ui->selectShape->addItem(QString::fromStdString(std::string(ui->widget->get(i)->getShapeName())));
-    }
+
+
 
     //Populating the pen color drop down box
     ui->penColor_list->addItem("Select");
@@ -44,31 +42,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->penJoinStyle_list->addItem("MiterJoin");
     ui->penJoinStyle_list->addItem("BevelJoin");
     ui->penJoinStyle_list->addItem("RoundJoin");
-
-    //Populating the brush color drop down box
-    ui->brushColor_list->addItem("Select");
-    ui->brushColor_list->addItem("White");
-    ui->brushColor_list->addItem("Black");
-    ui->brushColor_list->addItem("Red");
-    ui->brushColor_list->addItem("Green");
-    ui->brushColor_list->addItem("Blue");
-    ui->brushColor_list->addItem("Cyan");
-    ui->brushColor_list->addItem("Magenta");
-    ui->brushColor_list->addItem("Yellow");
-    ui->brushColor_list->addItem("Gray");
-
-    //Populating the brush style drop down box
-    ui->brushStyle_list->addItem("Select");
-    ui->brushStyle_list->addItem("SolidPattern");
-    ui->brushStyle_list->addItem("HorPattern");
-    ui->brushStyle_list->addItem("VerPattern");
-    ui->brushStyle_list->addItem("NoBrush");
-
-    //Populationg Pen Join Style
-    ui->penJoinStyle_list->addItem("Select");
-    ui->penJoinStyle_list->addItem("Miter Join");
-    ui->penJoinStyle_list->addItem("Bevel Join");
-    ui->penJoinStyle_list->addItem("Round Join");
 
     //Populating the brush color drop down box
     ui->brushColor_list->addItem("Select");
@@ -131,15 +104,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->textFontFamily_list->addItem("Times");
 
     // Populating the create new shape drop down box
-    ui->createNewShape_Box->addItem("Rectangle");
-    ui->createNewShape_Box->addItem("Square");
-    ui->createNewShape_Box->addItem("Line");
-    ui->createNewShape_Box->addItem("Ellipse");
-    ui->createNewShape_Box->addItem("Circle");
-    ui->createNewShape_Box->addItem("Polyline");
-    ui->createNewShape_Box->addItem("Polygon");
-    ui->createNewShape_Box->addItem("Text");
+    ui->createNewShape_list->addItem("Select");
+    ui->createNewShape_list->addItem("Rectangle");
+    ui->createNewShape_list->addItem("Line");
+    ui->createNewShape_list->addItem("Ellipse");
+    ui->createNewShape_list->addItem("Polyline");
+    ui->createNewShape_list->addItem("Polygon");
+    ui->createNewShape_list->addItem("Text");
 
+    updateShapeSelectList();
 
     //ui->adminFuncs->setVisible(false);
 
@@ -205,116 +178,203 @@ void MainWindow::on_moveShape_clicked()
 
 void MainWindow::on_changePen_clicked()
 {
-    if  (ui->penColor_list->currentIndex() > 0)// Change pen color
+    if (ui->selectShape->currentIndex() > 0)
     {
-        ui->widget->setPenColor(ui->selectShape->currentIndex(), ui->penColor_list->currentText().toLower().toStdString());
+        if  (ui->penColor_list->currentIndex() > 0)// Change pen color
+        {
+            ui->widget->setPenColor(ui->selectShape->currentIndex() - 1, ui->penColor_list->currentText().toLower().toStdString());
+        }
+
+        // Change pen width
+        if (ui->penWidth_lineEdit->text().toInt() >= 0 && ui->penWidth_lineEdit->text().toInt() <= 20 )
+        {
+            ui->widget->setPenWidth(ui->selectShape->currentIndex() - 1, ui->penWidth_lineEdit->text().toInt());
+        }
+
+        // Change pen style
+        if (ui->penStyle_list->currentIndex() > 0)
+        {
+            ui->widget->setPenStyle(ui->selectShape->currentIndex() - 1, ui->penStyle_list->currentText().toLower().toStdString());
+        }
+
+        // Change pen cap style
+        if (ui->penCapStyle_list->currentIndex() > 0)
+        {
+            ui->widget->setPenCapStyle(ui->selectShape->currentIndex() - 1, ui->penCapStyle_list->currentText().toLower().toStdString());
+        }
+
+        //Change pen join Style
+        if (ui->penJoinStyle_list->currentIndex() > 0)
+        {
+            ui->widget->setPenCapStyle(ui->selectShape->currentIndex() - 1, ui->penJoinStyle_list->currentText().toLower().toStdString());
+        }
     }
 
-    // Change pen width
-    if (ui->penWidth_lineEdit->text().toInt() >= 0 && ui->penWidth_lineEdit->text().toInt() <= 20 )
-    {
-        ui->widget->setPenWidth(ui->selectShape->currentIndex(), ui->penWidth_lineEdit->text().toInt());
-    }
-
-    // Change pen style
-    if (ui->penStyle_list->currentIndex() > 0)
-    {
-        ui->widget->setPenStyle(ui->selectShape->currentIndex(), ui->penStyle_list->currentText().toLower().toStdString());
-    }
-
-    // Change pen cap style
-    if (ui->penCapStyle_list->currentIndex() > 0)
-    {
-        ui->widget->setPenCapStyle(ui->selectShape->currentIndex(), ui->penCapStyle_list->currentText().toLower().toStdString());
-    }
-
-    //Change pen join Style
-    if (ui->penJoinStyle_list->currentIndex() > 0)
-    {
-        ui->widget->setPenCapStyle(ui->selectShape->currentIndex(), ui->penJoinStyle_list->currentText().toLower().toStdString());
-    }
 }
 
 void MainWindow::on_changeBrush_clicked()
 {
-    //Change brush color
-    if (ui->brushColor_list->currentIndex() > 0)
+    if (ui->selectShape->currentIndex() > 0)
     {
-        ui->widget->setBrushColor(ui->selectShape->currentIndex(), ui->brushColor_list->currentText().toLower().toStdString());
+        //Change brush color
+        if (ui->brushColor_list->currentIndex() > 0)
+        {
+            ui->widget->setBrushColor(ui->selectShape->currentIndex() - 1, ui->brushColor_list->currentText().toLower().toStdString());
+        }
+
+        //Change brush Style
+        if (ui->brushStyle_list->currentIndex() > 0)
+        {
+            ui->widget->setBrushStyle(ui->selectShape->currentIndex() - 1, ui->brushStyle_list->currentText().toLower().toStdString());
+        }
     }
 
-    //Change brush Style
-    if (ui->brushStyle_list->currentIndex() > 0)
-    {
-        ui->widget->setBrushStyle(ui->selectShape->currentIndex(), ui->brushStyle_list->currentText().toLower().toStdString());
-    }
 }
 
 void MainWindow::on_changeText_clicked()
 {
-    //Change text string
-    if (ui->textString_lineEdit->text() != "")
+    if (ui->selectShape->currentIndex() > 0)
     {
-        ui->widget->setTextString(ui->selectShape->currentIndex(), ui->textString_lineEdit->text().toStdString());
+        //Change text string
+        if (ui->textString_lineEdit->text() != "")
+        {
+            ui->widget->setTextString(ui->selectShape->currentIndex() - 1, ui->textString_lineEdit->text().toStdString());
+        }
+
+        //Change text color
+        if (ui->textColor_list->currentIndex() > 0)
+        {
+            ui->widget->setTextColor(ui->selectShape->currentIndex() - 1, ui->textColor_list->currentText().toLower().toStdString());
+        }
+
+        //Change text alignment
+        if (ui->textAlignment_list->currentIndex() > 0)
+        {
+            ui->widget->setTextAlignment(ui->selectShape->currentIndex() - 1, ui->textAlignment_list->currentText().toLower().toStdString());
+        }
+
+        //Change text point size
+        if (ui->textPointSize_lineEdit->text().toInt() >= -1 && ui->textPointSize_lineEdit->text().toInt() <= 50 )
+        {
+            ui->widget->setTextPointSize(ui->selectShape->currentIndex() - 1, ui->textPointSize_lineEdit->text().toInt());
+        }
+
+        //Change text font family
+        if (ui->textFontFamily_list->currentIndex() > 0)
+        {
+            ui->widget->setTextFontFamily(ui->selectShape->currentIndex() - 1, ui->textFontFamily_list->currentText().toLower().toStdString());
+        }
+        //Change text font weight
+        if (ui->textFontWeight_list->currentIndex() > 0)
+        {
+            ui->widget->setTextFontWeight(ui->selectShape->currentIndex() - 1, ui->textFontWeight_list->currentText().toLower().toStdString());
+        }
+        //Change text font style
+        if (ui->textFontStyle_list->currentIndex() > 0)
+        {
+            ui->widget->setTextFontStyle(ui->selectShape->currentIndex() - 1, ui->textFontStyle_list->currentText().toLower().toStdString());
+        }
     }
 
-    //Change text color
-    if (ui->textColor_list->currentIndex() > 0)
-    {
-        ui->widget->setTextColor(ui->selectShape->currentIndex(), ui->textColor_list->currentText().toLower().toStdString());
-    }
-
-    //Change text alignment
-    if (ui->textAlignment_list->currentIndex() > 0)
-    {
-        ui->widget->setTextAlignment(ui->selectShape->currentIndex(), ui->textAlignment_list->currentText().toLower().toStdString());
-    }
-
-    //Change text point size
-    if (ui->textPointSize_lineEdit->text().toInt() >= -1 && ui->textPointSize_lineEdit->text().toInt() <= 50 )
-    {
-        ui->widget->setTextPointSize(ui->selectShape->currentIndex(), ui->textPointSize_lineEdit->text().toInt());
-    }
-
-    //Change text font family
-    if (ui->textFontFamily_list->currentIndex() > 0)
-    {
-        ui->widget->setTextFontFamily(ui->selectShape->currentIndex(), ui->textFontFamily_list->currentText().toLower().toStdString());
-    }
-    //Change text font weight
-    if (ui->textFontWeight_list->currentIndex() > 0)
-    {
-        ui->widget->setTextFontWeight(ui->selectShape->currentIndex(), ui->textFontWeight_list->currentText().toLower().toStdString());
-    }
-    //Change text font style
-    if (ui->textFontStyle_list->currentIndex() > 0)
-    {
-        ui->widget->setTextFontStyle(ui->selectShape->currentIndex(), ui->textFontStyle_list->currentText().toLower().toStdString());
-    }
 
 }
 
 void MainWindow::on_moveUp_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex(), 0, -50);
+    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 0, -50);
 }
 
 void MainWindow::on_moveLeft_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex(), -50, 0);
+    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, -50, 0);
 }
 
 void MainWindow::on_moveRight_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex(), 50, 0);
+    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 50, 0);
 }
 
 void MainWindow::on_moveDown_button_clicked()
 {
-    ui->widget->moveShape(ui->selectShape->currentIndex(), 0, 50);
+    ui->widget->moveShape(ui->selectShape->currentIndex() - 1, 0, 50);
 }
 
 void MainWindow::on_createNewShape_Button_clicked()
 {
-   //ui->widget->
+   ui->widget->addShape(ui->createNewShape_list->currentIndex());
+   updateShapeSelectList();
+}
+
+void MainWindow::updateShapeSelectList()
+{
+    ui->selectShape->clear();
+    ui->selectShape->addItem("Select");
+    for (int i = 0; i < ui->widget->numberOfShapes();i++)// Populate shapes into shape selector
+    {
+        ui->selectShape->addItem(QString::fromStdString(std::string(ui->widget->get(i)->getShapeName())));
+    }
+}
+
+void MainWindow::on_selectShape_activated(int index)
+{
+    if (index == 0)
+    {
+        ui->penSettings->setEnabled(false);
+        ui->brushSettings->setEnabled(false);
+        ui->textSettings->setEnabled(false);
+        ui->additionalSettings_groupbox->setEnabled(false);
+    }
+
+    else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Text")
+    {
+        ui->penSettings->setEnabled(false);
+        ui->brushSettings->setEnabled(false);
+        ui->textSettings->setEnabled(true);
+        ui->additionalSettings_groupbox->setEnabled(true);
+    }
+
+
+    else if (QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Line" || QString::fromStdString(ui->widget->get(index - 1)->getShapeType()) == "Polyline")
+    {
+        ui->penSettings->setEnabled(true);
+        ui->brushSettings->setEnabled(false);
+        ui->textSettings->setEnabled(false);
+        ui->additionalSettings_groupbox->setEnabled(true);
+    }
+    else
+    {
+        ui->penSettings->setEnabled(true);
+        ui->brushSettings->setEnabled(true);
+        ui->textSettings->setEnabled(false);
+        ui->additionalSettings_groupbox->setEnabled(true);
+    }
+}
+
+void MainWindow::on_decreaseSize_clicked()
+{
+    ui->widget->changeShapeSize(ui->selectShape->currentIndex() - 1, -10);
+}
+
+void MainWindow::on_increaseSize_clicked()
+{
+    ui->widget->changeShapeSize(ui->selectShape->currentIndex() - 1, 10);
+}
+
+void MainWindow::on_removeShape_clicked()
+{
+    ui->widget->removeShape(ui->selectShape->currentIndex() - 1);
+    updateShapeSelectList();
+}
+
+void MainWindow::on_makeSqCir_clicked()
+{
+    if (ui->selectShape->currentIndex() > 0)
+    {
+        if (ui->widget->get(ui->selectShape->currentIndex() - 1)->getShapeType() == "Rectangle" || ui->widget->get(ui->selectShape->currentIndex() - 1)->getShapeType() == "Ellipse")
+        {
+            ui->widget->makeSquareOrCircle(ui->selectShape->currentIndex() - 1);
+        }
+    }
+    updateShapeSelectList();
+    on_selectShape_activated(0);
 }

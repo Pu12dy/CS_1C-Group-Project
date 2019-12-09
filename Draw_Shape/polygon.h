@@ -14,12 +14,10 @@ public:
     virtual ~polygon();
     void draw(QPaintDevice *toDraw) override;
     void moveShape(int offsetX, int offsetY) override;
+    void changeShapeSize(int newSize) override;
     double perimeter() const override;
     double area() const override;
-    std::string getShapeType();
-
-    virtual char getShapeCharIdentifier();
-    virtual std::string getXYCoords();
+    std::string getShapeType() const;
 
 private:
     vector<line*> lines;
