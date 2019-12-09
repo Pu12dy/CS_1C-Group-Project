@@ -65,7 +65,6 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 
     //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
     //qDebug() << vectShapeParsed.size();
-
 }
 
 void canvas::assignShapeID()
