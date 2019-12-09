@@ -33,6 +33,12 @@ ellipse::ellipse(int shapeID, int x, int y, int a, int b, const QColor& color, i
     setPenCapStyle(pcStyle);
     setPenJoinStyle(pjStyle);
 }
+ellipse::ellipse(int shapeId, int x, int y, int a, int b, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin, std::string bColor, std::string bStyle)
+    :ellipse(shapeId, x, y, a, b, penColor, penWidth, penStyle, penCap, penJoin)
+{
+    setBrushColor(bColor);
+    setBrushStyle(bStyle);
+}
 
 ellipse::~ellipse(){}
 

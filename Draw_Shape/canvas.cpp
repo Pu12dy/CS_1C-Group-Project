@@ -26,7 +26,7 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     shape* square = new rectangle(3, 40, 200, 100, 100, Qt::yellow, 5, Qt::DashLine, Qt::FlatCap, Qt::MiterJoin);
     shape* sh5 = new polygon();
     shape* sh6 = new polyline();
-    shape* sh7 = new ellipse();
+    shape* sh7 = new ellipse(2, 800, 300, 100, 50, "blue", 3, "dash dot line", "round cap", "round join", "blue","solid pattern");
     shape* circle = new ellipse(314, 200, 200, 60, 60);
 
     vectShape.push_back(sh1);
@@ -41,6 +41,7 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
     assignShapeID();
 
 
+    /*
     // TESTING sort
     selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
     for(int i = 0; i < vectShape.size(); i++)
@@ -55,12 +56,12 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
        qDebug() << "Perimeter[" << i << "] = "<< vectShape[i]->perimeter();
     }
 
-    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
-    // TESTING area
+   selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
+   // TESTING area
     for(int i = 0; i < vectShape.size(); i++)
     {
        qDebug() << "Area[" << i << "] = "<< vectShape[i]->area();
-    }
+    }*/
 
 
     //vectShapeParsed = parseShapes("shapes.txt"); // Commented out because shape parser needs fixing, does not close program gracefully if shapes.txt not found
@@ -252,5 +253,10 @@ void canvas::removeShape(int index)
 void canvas::makeSquareOrCircle(int index)
 {
     vectShape[index]->makeSquareOrCircle();
+    this->update();
+}
+void canvas::moveNode(int shapeIndex, int node, int offSetX, int offSetY)
+{
+    vectShape[shapeIndex]->moveNode(node, offSetX, offSetY);
     this->update();
 }

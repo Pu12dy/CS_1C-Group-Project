@@ -21,6 +21,8 @@ public:
     ellipse(int shapeId, int x, int y, int a, int b); // Overload Constructor
     ellipse(int shapeId, int x, int y, int a, int b, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin);
     ellipse(int shapeID, int x, int y, int a, int b, const QColor& color, int penWidth, Qt::PenStyle pStyle, Qt::PenCapStyle pcStyle, Qt::PenJoinStyle pjStyle);
+    ellipse(int shapeId, int x, int y, int a, int b, std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin, std::string bColor, std::string bStyle);
+
     virtual ~ellipse() override; // Destructor
 
     void draw(QPaintDevice *toDraw) override; // Draws the shape
