@@ -101,6 +101,8 @@ void shape::setPenColor(std::string color){
         pen.setColor(Qt::yellow);
     else if(color == "gray")
         pen.setColor(Qt::gray);
+    else if(color == "cyan")
+        pen.setColor(Qt::cyan);
     else
         pen.setColor(Qt::black);
 }
@@ -177,6 +179,8 @@ void shape::setBrushColor(std::string color){
         brush.setColor(Qt::yellow);
     else if(color == "gray")
         brush.setColor(Qt::gray);
+    else if(color == "cyan")
+        brush.setColor(Qt::cyan);
     else
         brush.setColor(Qt::black);
 }

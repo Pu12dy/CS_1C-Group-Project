@@ -1,6 +1,6 @@
 #ifndef VECTOR_H
 #define VECTOR_H
-// a vector which approximates the stl vector
+
 
 #include<iostream>
 #include<string>
@@ -8,21 +8,41 @@
 
 template<class T>
 class Vector{
+    //! Class: Vector
+    //! A vector which approximates the stl vector
 private:
-    int size_v;// the number of elements stored in the vector
 
-    T* elem;// a pointer to the elements
 
-    int space;// The maximum storage of the vector
+    //! The number of elements stored in the vector
+    int size_v;
+
+    //! A pointer to the array holding the elements
+    T* elem;
+
+    //! The maximum storage of the vector
+    int space;
+
 public:
-    Vector(): size_v{0}, elem{nullptr}, space{0}{}// default constructor
+    //! Vector()
+    //! Default constructor
+    //! Sets size = 0
+    //! Sets elem to point to nullptr
+    //! Sets Space = 0
+    Vector(): size_v{0}, elem{nullptr}, space{0}{}
 
-    explicit Vector(int s): size_v{0}, elem{ new T[s]}, space{s}{// alternate constructor
+    //! Vector(int s)
+    //! Alternate constructor
+    //! Sets size = 0
+    //! Creates a new array of T objects of size s, the parameter
+    //! Sets space = s
+    explicit Vector(int s): size_v{0}, elem{ new T[s]}, space{s}{
 
     }
 
+    //! Vector(const Vector& src)
+    //! Copy constructor
     Vector(const Vector& src): size_v{src.size()}, elem{ new T[src.capacity()]}, space{src.capacity()}{// copy constructor
-        // Copy the elements over
+
         for (int i = 0; i < size_v; i++)
         {
             elem[i] = src.elem[i];
@@ -30,7 +50,9 @@ public:
 
     }
 
-    Vector(Vector&& src){// move constructor
+    //! Vector(Vector&& src)
+    //! Move constructor
+    Vector(Vector&& src){
         elem = src.elem;
         size_v = src.size_v;
 
@@ -38,7 +60,9 @@ public:
         src.size_v = 0;
     }
 
-    Vector& operator=(const Vector& src){// copy assignment
+    //! Vector& operator=(const Vector& src)
+    //! Copy assignment
+    Vector& operator=(const Vector& src){
         delete[] elem;// free the old space
 
         size_v = src.size();// copy value of size
@@ -53,7 +77,9 @@ public:
         return *this;
     }
 
-    Vector& operator=(Vector&& src) // move assignment
+    //! Vector& operator=(Vector&& src)
+    //! Move assignment
+    Vector& operator=(Vector&& src)
     {
         if(this != &src)
         {

@@ -42,7 +42,6 @@ SOURCES += \
     viewtestimonials.cpp
 
 HEADERS += \
-    circle.h \
     extraCredit.h \
         mainwindow.h \
     polygon.h \
