@@ -88,16 +88,16 @@ double valTwo = 0;
 double valThree = 0;
 double valFour = 0;
 
-for (int i = 0; i <= lines.size() - 2; i++)
+for (int i = 0; i <= points.size() - 2; i++)
 {
     int d = i + 1;
-    valOne = QLineF(lines[i]->getP1(),lines[i]->getP2()).x1();
-    valThree = QLineF(lines[i]->getP1(),lines[i]->getP2()).y1();
+    valOne = QLineF(*points[i], *points[i + 1]).x1();
+    valThree = QLineF(*points[i], *points[i + 1]).y1();
 
     for (int j = i; j < d; ++j)
     {
-        valTwo = QLineF(lines[i]->getP1(),lines[i]->getP2()).y2();
-        valFour = QLineF(lines[i]->getP1(),lines[i]->getP2()).x2();
+        valTwo = QLineF(*points[i], *points[i + 1]).y2();
+        valFour = QLineF(*points[i], *points[i + 1]).x2();
     }
     total += ((valOne * valTwo) - (valThree * valFour));
 }
