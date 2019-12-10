@@ -133,7 +133,7 @@
        <string>Update</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -405,7 +405,7 @@
        <string>Update</string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -861,7 +861,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -887,6 +887,7 @@
      <string>File</string>
     </property>
     <addaction name="actionLog_In"/>
+    <addaction name="actionShape_Report"/>
     <addaction name="actionTestimonials"/>
     <addaction name="actionContact_Us"/>
     <addaction name="actionLogout"/>
@@ -926,6 +927,11 @@
   <action name="actionLogout">
    <property name="text">
     <string>Logout</string>
+   </property>
+  </action>
+  <action name="actionShape_Report">
+   <property name="text">
+    <string>Shape Report</string>
    </property>
   </action>
  </widget>

@@ -1,5 +1,6 @@
 #include "canvas.h"
 
+//!
 canvas::canvas(QWidget *parent) : QWidget(parent)
 {
     //set background to white
@@ -10,31 +11,7 @@ canvas::canvas(QWidget *parent) : QWidget(parent)
 
     vectShape = parseShapes("shapes.txt");
 
-
     assignShapeID();
-
-
-    /*
-    // TESTING sort
-    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
-    for(int i = 0; i < vectShape.size(); i++)
-    {
-       qDebug() << "ShapeID[" << i << "] = " +  QString::fromStdString(vectShape[i]->getID());
-    }
-
-    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_perimeter());
-    // TESTING perimeter
-    for(int i = 0; i < vectShape.size(); i++)
-    {
-       qDebug() << "Perimeter[" << i << "] = "<< vectShape[i]->perimeter();
-    }
-
-   selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
-   // TESTING area
-    for(int i = 0; i < vectShape.size(); i++)
-    {
-       qDebug() << "Area[" << i << "] = "<< vectShape[i]->area();
-    }*/
 
 }
 
@@ -241,4 +218,31 @@ void canvas::removeNode(int shapeIndex, int node)
 {
     vectShape[shapeIndex]->removeNode(node);
     this->update();
+}
+
+void canvas::shapeReport()
+{
+    QString report = "";
+
+    // TESTING sort
+    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_id());
+    for(int i = 0; i < vectShape.size(); i++)
+    {
+       report += "ShapeID[" + QString::number(i) + "] " + QString::fromStdString(vectShape[i]->getShapeType()) + " = " + QString::fromStdString(vectShape[i]->getID()) + "\n";
+    }
+
+    selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_perimeter());
+    // TESTING perimeter
+    for(int i = 0; i < vectShape.size(); i++)
+    {
+       report += "Perimeter[" + QString::number(i) + "] " + QString::fromStdString(vectShape[i]->getShapeType()) + " = " + QString::number(vectShape[i]->perimeter()) + "\n";
+    }
+
+   selection_sort(vectShape.begin(), vectShape.end(), Cmp_by_area());
+   // TESTING area
+    for(int i = 0; i < vectShape.size(); i++)
+    {
+       report += "Area[" + QString::number(i) + "] " + QString::fromStdString(vectShape[i]->getShapeType()) + " = " + QString::number(vectShape[i]->area()) + "\n";
+    }
+    QMessageBox::information(this, "Report", report);
 }

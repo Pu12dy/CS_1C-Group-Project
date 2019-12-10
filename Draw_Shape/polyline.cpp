@@ -57,12 +57,33 @@ void polyline::moveShape(int offsetX, int offsetY)
     }
 }
 
-
+/*
 void polyline::changeShapeSize(int newSize)
 {
     for (int i = 0; i < lines.size(); ++i)
     {
         lines[i]->changeShapeSize(newSize);
+    }
+}
+*/
+
+void polyline::changeShapeSize(int newSize)
+{
+    if (newSize >= 0)
+    {
+        for (int i = 0; i < points.size(); ++i)
+        {
+            points[i]->setX(points[i]->x() * (newSize / 5));
+            points[i]->setY(points[i]->y() * (newSize / 5));
+        }
+    }
+    else
+    {
+        for (int i = 0; i < points.size(); ++i)
+        {
+            points[i]->setX(points[i]->x() - qFabs(newSize / 5));
+            points[i]->setY(points[i]->y() - qFabs(newSize / 5));
+        }
     }
 }
 

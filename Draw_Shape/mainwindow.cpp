@@ -471,7 +471,7 @@ void MainWindow::on_selectShape_activated(int index)
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
         ui->adjPolys_box->setEnabled(true);
-        ui->shapeSize_groupbox->setEnabled(false);
+        ui->shapeSize_groupbox->setEnabled(true);
         ui->addNode_box->setEnabled(true);
         ui->nodeSelect_list->clear();
         updateNodeList(index - 1);
@@ -484,7 +484,7 @@ void MainWindow::on_selectShape_activated(int index)
         ui->textSettings->setEnabled(false);
         ui->additionalSettings_groupbox->setEnabled(true);
         ui->adjPolys_box->setEnabled(true);
-        ui->shapeSize_groupbox->setEnabled(false);
+        ui->shapeSize_groupbox->setEnabled(true);
         ui->addNode_box->setEnabled(true);
         ui->nodeSelect_list->clear();
         updateNodeList(index - 1);
@@ -627,4 +627,11 @@ void MainWindow::updateNodeList(int index)
     {
         ui->nodeSelect_list->addItem(QString::fromStdString(std::to_string(i+1)));
     }
+}
+//!void on_actionShape_Report_triggered()
+//!Calls shapeReport() from canvas.h
+void MainWindow::on_actionShape_Report_triggered()
+{
+    ui->widget->shapeReport();
+    updateShapeSelectList();
 }

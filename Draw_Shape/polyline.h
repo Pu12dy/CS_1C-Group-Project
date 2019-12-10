@@ -4,6 +4,8 @@
 #include "shape.h"
 #include "line.h"
 #include <QPoint>
+#include <QLineF>
+#include <QtMath>
 #include "vector.h"
 
 class polyline : public shape

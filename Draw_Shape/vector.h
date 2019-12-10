@@ -98,13 +98,17 @@ public:
         return *this;
     }
 
-    ~Vector()// destructor
+    //! ~Vector()
+    //! Destructor
+    ~Vector()
     {
         delete[] elem;
     }
 
 
-    T& operator[](int n)// access: return reference
+    //! T& operator[](int n)
+    //! Access: returns reference
+    T& operator[](int n)
     {
 
         if (n < size_v)
@@ -115,12 +119,16 @@ public:
 
     }
 
+    //! T* getArrayFromVector()
+    //! Returns the elem pointer
     T* getArrayFromVector()
     {
         return elem;
     }
 
-    const T& operator[](int n) const // access: return reference
+    //! const T& operator[](int n)
+    //! Access: returns reference
+    const T& operator[](int n) const
     {
         if (n < size_v)
         {
@@ -129,16 +137,22 @@ public:
         throw outOfBounds();
     }
 
-    int size() const // the current size
+    //! int size() const
+    //! Returns the current size
+    int size() const
     {
         return size_v;
     }
 
-    int capacity() const{// current available space
+    //! int capacity() const
+    //! Returns current available space
+    int capacity() const{
         return space;
     }
 
-    void resize(int newsize){// grow the vector and give default values to the new elements
+    //! void resize(int newsize)
+    //! Grows the vector and give default values to the new elements
+    void resize(int newsize){
         reserve(newsize);
         for (int i = size_v; i < newsize; i++)
         {
@@ -147,7 +161,9 @@ public:
         size_v = newsize;
     }
 
-    void push_back(T val){ // add element
+    //! void push_back(T val)
+    //! Adds element
+    void push_back(T val){
         if (size_v == 0)// vector is empty
         {
             reserve(10);
@@ -160,7 +176,9 @@ public:
         size_v++;
     }
 
-    void reserve(int newalloc){//get more space
+    //! void reserve(int newalloc)
+    //! Get more space
+    void reserve(int newalloc){
         if (newalloc > space)
         {
             space = newalloc;
@@ -180,20 +198,19 @@ public:
 
     }
 
-    void print(){
-        for (int i = 0; i < size_v; i++){
-            std::cout << elem[i] << " ";
-        }
-        std::cout << std::endl;
-    }
-
+    //! using iterator = T*
+    //! Establishes that iterator is pointer of T type
     using iterator = T*;
 
+    //! using const_iterator = T*
+    //! Establishes that const_iterator is const pointer of T type
     using const_iterator = const T*;
 
-    iterator begin(){// points to first element
-        // returns null pointer if no elements
-        // else return the address of first element
+    //! iterator begin()
+    //! Points to first element
+    //! Returns null pointer if no elements
+    //! Else return the address of first element
+    iterator begin(){
         if (size_v == 0)
         {
             return nullptr;
@@ -201,9 +218,13 @@ public:
         return &elem[0];
     }
 
+
+    //! const_iterator begin() const
+    //! Points to first element
+    //! Returns null pointer if no elements
+    //! Else return the address of first element
     const_iterator begin() const{
-        // returns null pointer if no elements
-        // else return the address of first element
+
         if (size_v == 0)
         {
             return nullptr;
@@ -212,8 +233,12 @@ public:
 
     }
 
+    //! iterator end()
+    //! Points to one past last element
+    //! Returns null pointer if no elements
+    //! Else returns one past last element
     iterator end(){
-        // returns null pointer if no elements
+
         if (size_v == 0)
         {
             return nullptr;
@@ -221,6 +246,10 @@ public:
         return &elem[size_v];
     }
 
+    //! const_iterator end() const
+    //! Points to one past last element
+    //! Returns null pointer if no elements
+    //! Else returns one past last element
     const_iterator end() const{
         // returns null pointer if no elements
         if (size_v == 0)
@@ -232,7 +261,9 @@ public:
 
     }
 
-    iterator insert(iterator p, const T& v){// insert a new element v before p
+    //! iterator insert(iterator p, const T& v)
+    //! Insert a new element v before p
+    iterator insert(iterator p, const T& v){
         if (p < begin())
         {
             throw iteratorOutOfBounds();
@@ -252,7 +283,9 @@ public:
 
     }
 
-    iterator erase(iterator p){// remove element pointed to by p
+    //! iterator erase(iterator p)
+    //! Remove element pointed to by p
+    iterator erase(iterator p){
         if (p > end())//
         {
             throw iteratorOutOfBounds();

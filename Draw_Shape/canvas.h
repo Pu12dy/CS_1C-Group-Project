@@ -15,6 +15,7 @@
 #include "polyline.h"
 #include "polygon.h"
 #include "extraCredit.h"
+#include <QMessageBox>
 
 class canvas : public QWidget
 {
@@ -57,6 +58,7 @@ public:
     void moveNode(int shapeIndex, int node, int offSetX, int offSetY);
     void addNode(int shapeIndex, int node);
     void removeNode(int shapeIndex, int node);
+    void shapeReport();
 
 
 private:
