@@ -9,23 +9,32 @@ using namespace std;
 class Testimonial
 {
 public:
-	// class constructor
+    //! Testimonial()
+    //! Class constructor
     Testimonial();
-	// class destructor
+    //! ~Testimonial()
+    //! Class destructor
     ~Testimonial();
-	// class overloaded constructor
+    //! Testimonial(const QString userNameRhs, const QString testimonialTxtRhs, const QString ratingRhs)
+    //! Class overloaded constructor
     Testimonial(const QString userNameRhs, const QString testimonialTxtRhs, const QString ratingRhs);
-	// setter to set user id passed by const ref
+    //! QString getUserName()
+    //! Getter to get user name
     QString getUserName();
-	// setter to set the user name passed by const ref
+    //! void setUserName(const QString &userNameIn)
+    //! Setter to set the user name passed by const ref
     void setUserName(const QString &userNameIn);
-	// getter to get the testimonial text
+    //! void getTestimonialText()
+    //! Getter to get the testimonial text passed by const ref
     QString getTestimonialText();
-	// setter to set the testimonial text passed by const ref
+    //! void setTestimonialText(const QString testTxtIn)
+    //! Setter to set the testimonial text passed by const ref
     void setTestimonialText(const QString testTxtIn);
-	// getter to get the rating from the user
+    //! QString getRating()
+    //! Getter to get the rating from the user
     QString getRating();
-	// setter to set the rating passed by const ref
+    //! void setRating(const QString ratingIn)
+    //! Setter to set the rating passed by const ref
     void setRating(const QString ratingIn);
 private:
     QString userName;

@@ -1,6 +1,9 @@
 #include "viewtestimonials.h"
 #include "ui_viewtestimonials.h"
 
+//! viewTestimonials(QWidget *parent)
+//! Constructor
+//! Creates the Testimonials Window
 viewTestimonials::viewTestimonials(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::viewTestimonials)
@@ -14,6 +17,8 @@ viewTestimonials::viewTestimonials(QWidget *parent) :
 
 }
 
+//! void refreshTestimonial()
+//! Updates the Window with the latest testimonials
 void viewTestimonials::refreshTestimonial()
 {
     QFile file("Testimonials.txt");
@@ -23,6 +28,8 @@ void viewTestimonials::refreshTestimonial()
     file.close();
 }
 
+//! ~viewTestimonials()
+//! Destructor
 viewTestimonials::~viewTestimonials()
 {
 
@@ -33,6 +40,8 @@ viewTestimonials::~viewTestimonials()
     delete ui;
 }
 
+//! void addTestimonial(const QString userName, const QString rating, const QString testimonialTxt)
+//! Opens the file where the testimonials are kept to display to the screen
 void viewTestimonials::addTestimonial(const QString userName, const QString rating, const QString testimonialTxt)
 {
     QFile file("Testimonials.txt");
@@ -46,7 +55,8 @@ void viewTestimonials::addTestimonial(const QString userName, const QString rati
 }
 
 
-
+//! void on_addTestimonial_clicked()
+//! Adds a testimonial to the file
 void viewTestimonials::on_addTestimonial_clicked()
 {
     QString username = ui->username->text();

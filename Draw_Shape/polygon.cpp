@@ -54,7 +54,7 @@ polygon::~polygon()
 }
 //!A normal member function of the polygon class
 //!A method that returns no data and one argument is passed of type QPaintDevice
-//!Calls on vector classs to create new points and store the data
+//!Calls on vector class to create new points and store the data
 void polygon::draw(QPaintDevice *toDraw)
 {
     Vector <QPoint> newPoints;
@@ -68,7 +68,7 @@ void polygon::draw(QPaintDevice *toDraw)
     getQPainter().drawPolygon(newPoints.getArrayFromVector(), newPoints.size());
     getQPainter().end();
 }
-//!A normal meember function of the polygon class moveShape
+//!A normal member function of the polygon class moveShape
 //!This method has two argument passed of type int and no value returned
 //!Method allow user to move a existing polygon shape using points X and Y
 void polygon::moveShape(int offsetX, int offsetY)
@@ -104,34 +104,33 @@ double polygon::perimeter() const
 //! Again, add these results
 //! Subtract the sum of the second products from the sum of the first products.
 //! Divide this difference by 2 to get the area of the polygon
+
 double polygon::area() const
 {
 
 
-double area = 0;
 double total = 0;
 double valOne = 0;
 double valTwo = 0;
 double valThree = 0;
 double valFour = 0;
 
-for (int i = 0; i <= lines.size() - 2; i++)
+for (int i = 0; i <= points.size() - 2; i++)
 {
     int d = i + 1;
-    valOne = QLineF(lines[i]->getP1(),lines[i]->getP2()).x1();
-    valThree = QLineF(lines[i]->getP1(),lines[i]->getP2()).y1();
+    valOne = QLineF(*points[i],*points[i+1]).x1();
+    valThree = QLineF(*points[i],*points[i+1]).y1();
 
     for (int j = i; j < d; ++j)
     {
-        valTwo = QLineF(lines[i]->getP1(),lines[i]->getP2()).y2();
-        valFour = QLineF(lines[i]->getP1(),lines[i]->getP2()).x2();
+        valTwo = QLineF(*points[j],*points[j+1]).y2();
+        valFour = QLineF(*points[j],*points[j+1]).x2();
     }
     total += ((valOne * valTwo) - (valThree * valFour));
 }
 
 return qFabs(total / 2);
 }
-
 
 //!A normal memeber function string getShapeType() const
 //!A method that is a getter used to get the shape type "Polygon"
@@ -201,40 +200,20 @@ std::string polygon::getPoints() const
 //!Method that changes the size of polygon
 void polygon::changeShapeSize(int newSize)
 {
-     if (newSize > 0)
-     {
-         for (int i = 0; i < points.size(); ++i)
+    if (newSize > 0)
          {
-             points[i]->setX(points[i]->x() * (newSize / 5));
-             points[i]->setY(points[i]->y() * (newSize / 5));
-
-             //Ensuring shape does not move out of screen
-             if (QLineF(*points[i],*points[i]).x1() < 0)
-                 points[i]->setX(0);
-             else if (QLineF(*points[i],*points[i]).x1() > 950)
-                 points[i]->setX(950);
-             if (QLineF(*points[i],*points[i]).y1() < 0)
-                  points[i]->setY(0);
-             else if (QLineF(*points[i],*points[i]).y1() > 450)
-                 points[i]->setY(450);
-          }
-     }
-     else
-     {
-         for (int i = 0; i < points.size(); ++i)
-         {
-             points[i]->setX(points[i]->x() / qFabs(newSize / 5));
-             points[i]->setY(points[i]->y() / qFabs(newSize / 5));
-
-             //Ensuring shape does not move out of screen
-             if (QLineF(*points[i],*points[i]).x1() < 0)
-                 points[i]->setX(0);
-             else if (QLineF(*points[i],*points[i]).x1() > 950)
-                 points[i]->setX(950);
-             if (QLineF(*points[i],*points[i]).y1() < 0)
-                  points[i]->setY(0);
-             else if (QLineF(*points[i],*points[i]).y1() > 450)
-                 points[i]->setY(450);
+             for (int i = 0; i < points.size(); ++i)
+             {
+                 points[i]->setX(points[i]->x() * (newSize/5));
+                 points[i]->setY(points[i]->y() * (newSize/5));
+              }
          }
-     }
- }
+         else
+         {
+             for (int i = 0; i < points.size(); ++i)
+             {
+                 points[i]->setX(points[i]->x() / qFabs(newSize / 5));
+                 points[i]->setY(points[i]->y() / qFabs(newSize / 5));
+             }
+         }
+}

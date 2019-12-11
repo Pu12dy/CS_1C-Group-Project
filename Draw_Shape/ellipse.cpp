@@ -1,11 +1,16 @@
 #include "ellipse.h"
 #include <math.h>
-
+//!Class default constructor
+//!Creates default ellipse shape type
 ellipse::ellipse() : ellipse(131,100,100,200,30)
 {
 
 }
 
+//!Overloaded constructor for ellipse
+//Method sets shape ID x any cord, and a and b values
+//@param Passed: int, int, int, int
+//@return type: none
 ellipse::ellipse(int shapeID,int x, int y, int a, int b)
 {
     setShapeID(shapeID);
@@ -14,6 +19,11 @@ ellipse::ellipse(int shapeID,int x, int y, int a, int b)
     this->a = a;
     this->b = b;
 }
+
+//!Overloaded constructor for ellipse
+//!Method sets pen color, width, style, cap, join
+//@param Passed: int, int, int, int, int, string, int, string, string, string MIL: ellipse(int,int,int,int,int)
+//@return type: none
 ellipse::ellipse(int shapeId, int x1, int y1, int a, int b,
         std::string penColor, int penWidth, std::string penStyle, std::string penCap, std::string penJoin) : ellipse(shapeId,x1,y1,a,b)
 {
@@ -24,6 +34,10 @@ ellipse::ellipse(int shapeId, int x1, int y1, int a, int b,
     setPenJoinStyle(penJoin);
 }
 
+//!Overloaded constructor for ellipse
+//!Method sets pen color, width, style, cap, join
+//@param Passed: int, int, int, int, int, QColor, PenStyle, PenStyle, PenJoinStyle, MIL: ellipse(int,int,int,int,int)
+//@return type: none
 ellipse::ellipse(int shapeID, int x, int y, int a, int b, const QColor& color, int penWidth, Qt::PenStyle pStyle, Qt::PenCapStyle pcStyle, Qt::PenJoinStyle pjStyle) :
     ellipse(shapeID, x, y, a, b)
 {
@@ -40,8 +54,14 @@ ellipse::ellipse(int shapeId, int x, int y, int a, int b, std::string penColor, 
     setBrushStyle(bStyle);
 }
 
-ellipse::~ellipse(){}
+//!destructor for ellipse class
+ellipse::~ellipse(){
 
+}
+
+//!Method draw for the ellipse class
+//@param Passed: QPaintDevice
+//@return type: none
 void ellipse::draw(QPaintDevice *toDraw)
 {
     getQPainter().begin(toDraw);

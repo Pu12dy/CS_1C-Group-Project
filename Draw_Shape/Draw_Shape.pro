@@ -31,6 +31,7 @@ SOURCES += \
     polyline.cpp \
     rectangle.cpp \
     line.cpp \
+    report.cpp \
     shape.cpp \
     text.cpp \
     login.cpp \
@@ -46,6 +47,7 @@ HEADERS += \
         mainwindow.h \
     polygon.h \
     polyline.h \
+    report.h \
     shape.h \
     canvas.h \
     vector.h \
@@ -65,6 +67,7 @@ FORMS += \
         mainwindow.ui \
     login.ui \
     contactus.ui \
+    report.ui \
     viewtestimonials.ui
 
 RESOURCES += \

@@ -344,6 +344,7 @@ void shape::addNode(int index)
 {
 
 }
+
 void shape::removeNode(int index)
 {
 

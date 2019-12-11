@@ -15,6 +15,8 @@ login::login(QWidget *parent) :
 
 }
 
+//!Method name: ~login()
+//!Destructor that saves user files and data and deletes execess memory
 login::~login()
 {
     saveUsersToFile();
@@ -25,6 +27,8 @@ login::~login()
     delete ui;
 }
 
+//!Method name: void on_pushButton_Login_clicked()
+//!Method allows users to select a login button and lofin to an existing account
 void login::on_pushButton_Login_clicked()
 {
 
@@ -42,6 +46,12 @@ void login::on_pushButton_Login_clicked()
 
 }
 
+//!Method name: bool checkCorrectLogin(QString username, QString password)
+//!Method check what the user typed in against existing user login information
+//!returns true if information passed matches stored information
+//!returns false if information passed does not match stored information
+//@param Passed: QString, Qstring
+//@return type: bool
 bool login::checkCorrectLogin(QString username, QString password)
 {
     for (int i = 0; i < users.size(); i++)
@@ -53,6 +63,9 @@ bool login::checkCorrectLogin(QString username, QString password)
     }
     return false;
 }
+
+//!Method name: void saveUserFile()
+//!Method saves user information to a text file
 void login::saveUsersToFile()
 {
     QFile file("Users.txt");
@@ -79,6 +92,8 @@ void login::saveUsersToFile()
     file.close();
 }
 
+//!Method name: Vector<User*> getUsers()
+//!Method gets stored user data (password, username) from the text file where information is stored
 Vector<User*> login::getUsers()
 {
     Vector<User*>fromFile;
@@ -114,6 +129,10 @@ Vector<User*> login::getUsers()
     return fromFile;
 }
 
+//!Method name: void on_pushButton_NewAccount_clicked()
+//!Method allows user to choose the option to create a new account
+//!Saves new user information to text file
+//!If user information already exists an error message is returned
 void login::on_pushButton_NewAccount_clicked()
 {
     QString username = ui->lineEdit_Username->text();

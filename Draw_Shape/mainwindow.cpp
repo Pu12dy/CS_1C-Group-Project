@@ -632,6 +632,7 @@ void MainWindow::updateNodeList(int index)
 //!Calls shapeReport() from canvas.h
 void MainWindow::on_actionShape_Report_triggered()
 {
-    ui->widget->shapeReport();
-    updateShapeSelectList();
+    Report report;
+    report.setModal(true);
+    report.exec();
 }

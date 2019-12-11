@@ -40,7 +40,6 @@ line::~line()
     {
         delete points[i];
     }
-
 }
 
 //!void draw(QPaintDevice *toDraw)

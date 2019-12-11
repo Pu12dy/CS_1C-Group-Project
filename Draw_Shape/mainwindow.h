@@ -7,6 +7,7 @@
 #include <QMainWindow>
 #include "User.h"
 #include "shape.h"
+#include "report.h"
 
 namespace Ui {
 class MainWindow;

@@ -164,7 +164,7 @@ public:
     //! void push_back(T val)
     //! Adds element
     void push_back(T val){
-        if (size_v == 0)// vector is empty
+        if (size_v == 0 && space == 0)// vector is empty
         {
             reserve(10);
         }
@@ -280,7 +280,6 @@ public:
         size_v++;
 
         return p;
-
     }
 
     //! iterator erase(iterator p)

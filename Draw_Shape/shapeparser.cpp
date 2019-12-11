@@ -2,7 +2,7 @@
 #include"exceptions.h"
 
 // =============================================================================
-
+//!Function that acts as the Master to the parser that will call additional utility parser functions, ultimately returning a vector of shape pointer objects from the text file.
 Vector<shape*> parseShapes(std::string fileName)
 {
   Vector<shape*> vectorOfShapes;
@@ -36,6 +36,7 @@ Vector<shape*> parseShapes(std::string fileName)
 }
 
 // =============================================================================
+//!Function that ultimately parses the text file for one shape pointer object and returns that pointer.
 shape* createShape(std::fstream& file, std::string shapeType)
 {
   int shapeID = 0;
@@ -43,8 +44,8 @@ shape* createShape(std::fstream& file, std::string shapeType)
 
   int x = 0;
   int y = 0;
-  int a = 0;
-  int b = 0;
+  double a = 0;
+  double b = 0;
   std::string idString;
   std::string xString;
   std::string yString;
@@ -88,7 +89,7 @@ shape* createShape(std::fstream& file, std::string shapeType)
   {
     getDimensions(file, x, y, a , b);
     getPenBrushProperties(file, property, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle);
-    shapeP = new ellipse(shapeID, x, y, a, b, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle); // When using added constructor to change brushColor and brushStyle, canvas is entirely black
+    shapeP = new ellipse(shapeID, x, y, a, b, penColor, penWidth, penStyle, penCapStyle, penJoinStyle, brushColor, brushStyle);
   }
   else if (shapeType == "Text")
   {
@@ -116,7 +117,7 @@ shape* createShape(std::fstream& file, std::string shapeType)
 }
 
 // =======================================
-
+//!Function that acts as a utility to the parseShapes function. This function will be called in the createShapes function when needing to parse a polygon or polyline.
 void parsePoints(std::fstream& file, Vector<QPoint*>& points)
 {
     std::string numNodes;
@@ -133,8 +134,8 @@ void parsePoints(std::fstream& file, Vector<QPoint*>& points)
     }
 
 }
-
-void getDimensions(std::fstream& file, int& x, int& y, int& a, int &b)
+//!Function that acts as a utility to the parseShapes function. Will get dimensions from the txt file for the parser to then use this data.
+void getDimensions(std::fstream& file, int& x, int& y, double& a, double &b)
 {
     std::string xString;
     std::string yString;
@@ -153,7 +154,7 @@ void getDimensions(std::fstream& file, int& x, int& y, int& a, int &b)
     getline(file, bString, '\n');
     b = std::stoi(bString);
 }
-
+//!Function that acts as a utility to the saveShapes function. Gets the pen brush properties from shape pointers and writes them to the .txt file for saving.
 void getPenBrushProperties(std::fstream& file, std::string& property, std::string& penColor,int& penWidth, std::string& penStyle,
                            std::string& penCapStyle, std::string& penJoinStyle, std::string& brushColor, std::string& brushStyle)
 {
@@ -172,7 +173,7 @@ void getPenBrushProperties(std::fstream& file, std::string& property, std::strin
     getline(file, property, ' ');
     getline(file, brushStyle);
 }
-
+//!Function that acts as a utility to the saveShapes function. This function will get the pen brush properties, but without the brush properties.
 void getPenBrushProperties(std::fstream& file, std::string& property, std::string& penColor,int& penWidth, std::string& penStyle,
                            std::string& penCapStyle, std::string& penJoinStyle)
 {
@@ -189,7 +190,7 @@ void getPenBrushProperties(std::fstream& file, std::string& property, std::strin
 }
 
 // =======================================
-
+//!Function that acts as a utility to the saveShapes function. Gets the text properties from the shape pointer vector and writes them to the .txt file for saving.
 void getTextProperties(std::fstream& file, std::string& property, std::string& textColor, std::string& textAlignment, int& textPointSize,
                        std::string& textFontFamily, std::string& textFontStyle, std::string& textFontWeight)
 {
@@ -208,7 +209,7 @@ void getTextProperties(std::fstream& file, std::string& property, std::string& t
 }
 
 // =======================================
-
+//!Function that acts as the Master to saving a vector of shape pointers. This will call multiple save utility functions to evenutally overwrite the shapes.txt file for persistence after every execution.
 void saveShapes(std::string fileName, Vector<shape*> vectorOfShapes)
 {
     std::fstream file;
@@ -291,7 +292,7 @@ void saveShapes(std::string fileName, Vector<shape*> vectorOfShapes)
 }
 
 // ============================================================================
-
+//!Function that acts as a utility to the saveShapes function. This will return a string of the shape pointer objects penColor.
 std::string getPenColorString(shape* obj)
 {
     if (obj->getQPen().QPen::color() == Qt::white)
@@ -326,6 +327,10 @@ std::string getPenColorString(shape* obj)
     {
         return "gray";
     }
+    else if(obj->getQPen().QPen::color() == Qt::cyan)
+    {
+        return "cyan";
+    }
     else
     {
         return "black";
@@ -333,7 +338,7 @@ std::string getPenColorString(shape* obj)
 }
 
 // ============================================================================
-
+//!Function that acts as a utility to the saveShapes function. This will return a string of the shape pointer objects penStyle.
 std::string getPenStyleString(shape* obj)
 {
     if (obj->getQPen().QPen::style() == Qt::SolidLine)
@@ -367,7 +372,7 @@ std::string getPenStyleString(shape* obj)
 }
 
 // ============================================================================
-
+//!Function that acts as a utility to the saveShapes function. This will return a string of the shape pointer objects penCap.
 std::string getPenCapString(shape* obj)
 {
     if (obj->getQPen().QPen::capStyle() == Qt::SquareCap)
@@ -389,7 +394,7 @@ std::string getPenCapString(shape* obj)
 }
 
 // ============================================================================
-
+//!Function that acts as a utility to the saveShapes function. This will return a string of the shape pointer objects penJoin.
 std::string getPenJoinString(shape* obj)
 {
     if (obj->getQPen().QPen::joinStyle() == Qt::BevelJoin)
@@ -411,7 +416,7 @@ std::string getPenJoinString(shape* obj)
 }
 
 // ============================================================================
-
+//!Function that acts as a utility to the saveShapes function. This will return a string of the shape pointer objects brushColor.
 std::string getBrushColorString(shape* obj)
 {
     if (obj->getQBrush().QBrush::color() == Qt::white)
@@ -446,6 +451,10 @@ std::string getBrushColorString(shape* obj)
     {
         return "gray";
     }
+    else if(obj->getQBrush().QBrush::color() == Qt::cyan)
+    {
+        return "cyan";
+    }
     else
     {
         return "black";
@@ -453,7 +462,7 @@ std::string getBrushColorString(shape* obj)
 }
 
 // ============================================================================
-
+//!Function that acts as a utility to the saveShapes function. This will return a string of the shape pointer objects brushStyle.
 std::string getBrushStyleString(shape* obj)
 {
     if (obj->getQBrush().QBrush::style() == Qt::SolidPattern)
